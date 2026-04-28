@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Analytics Question Bank</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <header class="app-header">
+    <h1>Data Analytics Question Bank</h1>
+    <p>
+      Modular quiz app cho nhiều library/chủ đề: Pandas, NumPy, Matplotlib,
+      Seaborn, Plotly, SQL, Statistics, Machine Learning.
+    </p>
+  </header>
+
+  <div class="toolbar">
+    <div class="toolbar-inner">
+      <div class="filters">
+        <select id="libraryFilter"></select>
+        <select id="levelFilter"></select>
+        <select id="topicFilter"></select>
+        <input id="limitInput" type="number" min="1" value="30" title="Số câu muốn luyện" />
+        <select id="randomMode" title="Cách random câu hỏi">
+          <option value="filtered">Random theo bộ lọc hiện tại</option>
+          <option value="mix-current-library">Mix topic trong library hiện tại</option>
+          <option value="mix-all">Mix tất cả library/topic</option>
+        </select>
+        <div class="progress-box stats-inline">
+          <span>Tổng: <strong id="totalCount">0</strong></span>
+          <span>Đã giải: <strong id="answeredCount">0</strong></span>
+          <span>Chưa giải: <strong id="unansweredCount">0</strong></span>
+          <span>Đúng: <strong id="correctCount">0</strong></span>
+          <span>Sai: <strong id="wrongCount">0</strong></span>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn-secondary" id="btnUnanswered">Tới câu chưa làm</button>
+        <button class="btn-warning" id="btnWrongPractice">Làm lại câu sai</button>
+        <button class="btn-danger" id="btnResetAll">Reset toàn bộ</button>
+        <button class="btn-purple" id="btnRandom">Random practice</button>
+         <button class="btn-primary" id="btnSubmit">Nộp bài</button>
+         <button class="btn-secondary" id="btnExport">Export tiến trình</button>
+         <button class="btn-secondary" id="btnImport">Import tiến trình</button>
+         <button class="btn-secondary" id="btnClearProgress">Xóa tiến trình</button>
+         <input type="file" id="importFile" accept="application/json" style="display:none" />
+      </div>
+    </div>
+  </div>
+
+  <main class="container">
+
+    <section id="summary" class="summary-card">
+      <h2>Kết quả</h2>
+      <div class="score" id="scoreText"></div>
+      <p id="scoreComment"></p>
+      <div class="stats-grid" id="scoreBreakdown"></div>
+    </section>
+
+    <section id="quiz"></section>
+
+    <p class="footer-note">
+      Gợi ý: luyện Expert để kiểm tra logic dữ liệu, grain, join pitfall,
+      leakage, performance và pipeline validation.
+    </p>
+  </main>
+
+  <!-- Data files: thêm library mới ở đây -->
+  <script src="data/pandas.js"></script>
+  <script src="data/numpy.js"></script>
+  <script src="data/matplotlib.js"></script>
+  <script src="data/seaborn.js"></script>
+  <script src="data/plotly.js"></script>
+  <script src="data/data-quality.js"></script>
+  <script src="data/statistics.js"></script>
+  <script src="data/ab_testing.js"></script>
+  <script src="data/python_core.js"></script>
+  <script src="data/python_oop.js"></script>
+  <script src="data/python_intermediate.js"></script>
+  <script src="data/sklearn.js"></script>
+  <script src="data/model-evaluation.js"></script>
+  <script src="data/time_series.js"></script>
+  <script src="data/polars.js"></script>
+  <script src="data/duckdb.js"></script>
+  <script src="data/pyarrow_parquet.js"></script>
+  <script src="data/sql_python.js"></script>
+  <script src="data/api_web_data.js"></script>
+  <script src="data/pytest.js"></script>
+  <script src="data/automation.js"></script>
+  <script src="data/streamlit.js"></script>
+  <script src="data/project-structure.js"></script>
+
+
+
+  <!-- App logic -->
+  <script src="js/question-bank.js"></script>
+  <script src="js/quiz-engine.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>
