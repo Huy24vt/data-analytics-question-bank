@@ -446,3 +446,196 @@ button:focus {
     flex: 1 1 100%;
   }
 }
+
+/* =========================================================
+   MOBILE OPTIMIZATION
+   ========================================================= */
+
+@media (max-width: 640px) {
+  body {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .app-header {
+    padding: 22px 14px;
+  }
+
+  .app-header h1 {
+    font-size: 22px;
+    line-height: 1.25;
+    margin-bottom: 6px;
+  }
+
+  .app-header p {
+    font-size: 13px;
+    line-height: 1.45;
+  }
+
+  .container {
+    padding: 14px 10px 44px;
+  }
+
+  .toolbar {
+    position: static;
+    top: 0;
+    padding: 8px 0;
+    margin-bottom: 10px;
+    max-height: 72vh;
+    overflow-y: auto;
+  }
+
+  .toolbar-inner {
+    padding: 0 10px;
+    gap: 8px;
+  }
+
+  .filters {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    width: 100%;
+  }
+
+  select,
+  input[type="number"] {
+    width: 100%;
+    min-width: 0;
+    padding: 9px 10px;
+    font-size: 14px;
+    border-radius: 10px;
+  }
+
+  .stats-inline {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+    width: 100%;
+  }
+
+  .stats-inline span {
+    width: 100%;
+    justify-content: center;
+    padding: 7px 6px;
+    font-size: 12px;
+    border-radius: 10px;
+  }
+
+  .actions {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    width: 100%;
+  }
+
+  .actions button {
+    width: 100%;
+    padding: 10px 8px;
+    font-size: 13px;
+    border-radius: 10px;
+    white-space: normal;
+    line-height: 1.25;
+  }
+
+  .question-card {
+    padding: 14px;
+    margin-bottom: 12px;
+    border-radius: 14px;
+  }
+
+  .question-header {
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+
+  .question-title {
+    font-size: 15px;
+    line-height: 1.45;
+  }
+
+  .tags {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 5px;
+  }
+
+  .tag {
+    font-size: 11px;
+    padding: 3px 7px;
+    white-space: normal;
+  }
+
+  pre {
+    padding: 10px;
+    font-size: 12px;
+    border-radius: 10px;
+    max-width: 100%;
+  }
+
+  code {
+    font-size: 12px;
+  }
+
+  .options {
+    gap: 8px;
+  }
+
+  label.option {
+    padding: 10px;
+    gap: 8px;
+    border-radius: 10px;
+  }
+
+  label.option span {
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
+  input[type="radio"] {
+    margin-top: 3px;
+    transform: scale(1);
+    flex-shrink: 0;
+  }
+
+  .result-box {
+    padding: 11px;
+    font-size: 13px;
+    border-radius: 10px;
+  }
+
+  .summary-card {
+    padding: 14px;
+    border-radius: 14px;
+  }
+
+  .score {
+    font-size: 22px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-note {
+    font-size: 12px;
+    padding: 0 8px;
+  }
+}
+
+@media (max-width: 420px) {
+  .actions {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-inline {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .app-header p {
+    display: none;
+  }
+
+  .toolbar {
+    max-height: 78vh;
+  }
+}
