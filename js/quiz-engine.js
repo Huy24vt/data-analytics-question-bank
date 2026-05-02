@@ -371,6 +371,12 @@ class QuizEngine {
     `;
     }).join("");
 
+    // Append inline submit placeholder (may be replaced by button)
+    const inlineContainer = document.createElement('div');
+    inlineContainer.id = 'inlineSubmitContainer';
+    inlineContainer.style.margin = '16px 0';
+    this.quizEl.appendChild(inlineContainer);
+
     this.quizEl.querySelectorAll("input[type='radio']").forEach(input => {
       // Allow un-tick behaviour: capture previous checked state on mousedown
       input.addEventListener('mousedown', (ev) => {
@@ -411,9 +417,33 @@ class QuizEngine {
           isCorrect: false
         };
         this.saveAnswerState();
-        this.updateGlobalStats();
+        this.updateStatsAfterSelection();
       });
     });
+
+    // Ensure inline submit button visibility based on current selections
+    this.updateInlineSubmitButton();
+  }
+
+  updateInlineSubmitButton() {
+    const container = document.getElementById('inlineSubmitContainer');
+    if (!container) return;
+
+    // if already submitted, hide inline button
+    if (this.lastSubmitted) {
+      container.innerHTML = '';
+      return;
+    }
+
+    const allSelected = this.activeQuestions.length > 0 && this.activeQuestions.every((_, i) => this.getSelected(i) !== null);
+
+    if (allSelected) {
+      container.innerHTML = `<button id="btnSubmitInline" class="btn-primary">Nộp bài</button>`;
+      const btn = document.getElementById('btnSubmitInline');
+      if (btn) btn.addEventListener('click', () => this.submitQuiz());
+    } else {
+      container.innerHTML = '';
+    }
   }
 
   getSelected(qIndex) {
@@ -574,9 +604,9 @@ class QuizEngine {
     }).join("");
 
     this.summaryEl.style.display = "block";
-    // After submit, exclude submitted questions from the current active pool
-    this.applyFilters();
-    // ensure summary remains visible after re-render
+    // Keep the current activeQuestions rendered so the user can review
+    // answers and explanations. Do not reapply filters here (that would
+    // immediately remove the questions and prevent review).
     this.summaryEl.style.display = "block";
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
