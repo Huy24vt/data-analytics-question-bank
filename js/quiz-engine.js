@@ -46,6 +46,10 @@ class QuizEngine {
     this.applyFilters();
   }
 
+  isSubmitted(q) {
+    return this.answerState[q.id] && this.answerState[q.id].submitted === true;
+  }
+
   bindEvents() {
     this.libraryFilterEl.addEventListener("change", () => this.applyFilters());
     this.levelFilterEl.addEventListener("change", () => this.applyFilters());
@@ -215,6 +219,9 @@ class QuizEngine {
     if (selectedLevel !== "all") pool = pool.filter(q => q.level === selectedLevel);
     if (selectedTopic !== "all") pool = pool.filter(q => q.topic === selectedTopic);
 
+    // Exclude questions that were already submitted (đã nộp bài)
+    pool = pool.filter(q => !this.isSubmitted(q));
+
     return pool;
   }
 
@@ -239,6 +246,8 @@ class QuizEngine {
       pool = this.getFilteredPool();
     }
 
+    // Always exclude already-submitted questions from random picks
+    pool = pool.filter(q => !this.isSubmitted(q));
     this.activeQuestions = this.pickBalancedRandom(pool, Math.min(limit, pool.length), mode);
     this.renderQuiz();
   }
@@ -363,6 +372,34 @@ class QuizEngine {
     }).join("");
 
     this.quizEl.querySelectorAll("input[type='radio']").forEach(input => {
+      // Allow un-tick behaviour: capture previous checked state on mousedown
+      input.addEventListener('mousedown', (ev) => {
+        input.dataset.wasChecked = input.checked ? 'true' : 'false';
+      });
+
+      input.addEventListener('click', (ev) => {
+        const was = input.dataset.wasChecked === 'true';
+        const qIndex = Number(input.name.replace("q", ""));
+        const item = this.activeQuestions[qIndex];
+
+        if (was) {
+          // user clicked the already-checked radio -> uncheck it
+          input.checked = false;
+          if (this.answerState[item.id]) {
+            delete this.answerState[item.id].selected;
+            this.answerState[item.id].submitted = false;
+            this.answerState[item.id].isCorrect = false;
+            // if object empty, leave as empty object for future tracking
+          }
+          this.saveAnswerState();
+          this.updateStatsAfterSelection();
+          return;
+        }
+
+        // normal selection flow
+        input.addEventListener('change', () => {});
+      });
+
       input.addEventListener("change", () => {
         const qIndex = Number(input.name.replace("q", ""));
         const item = this.activeQuestions[qIndex];
@@ -536,6 +573,10 @@ class QuizEngine {
       `;
     }).join("");
 
+    this.summaryEl.style.display = "block";
+    // After submit, exclude submitted questions from the current active pool
+    this.applyFilters();
+    // ensure summary remains visible after re-render
     this.summaryEl.style.display = "block";
     window.scrollTo({ top: 0, behavior: "smooth" });
   }

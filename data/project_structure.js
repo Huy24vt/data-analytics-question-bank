@@ -7,12 +7,12 @@ const PROJECT_STRUCTURE_QUESTIONS = [
     question: "Trong một project Data Analytics, thư mục src thường nên dùng để làm gì?",
     code: "",
     options: [
+      "Chứa dữ liệu raw và file export cuối",
       "Chứa code/module có thể tái sử dụng",
-      "Chứa toàn bộ file dữ liệu raw nhạy cảm",
-      "Chứa screenshot không liên quan",
-      "Chứa password và API key"
+      "Chứa screenshot dùng cho README",
+      "Chứa secret và API key production"
     ],
-    answer: 0,
+    answer: 1,
     explanation: "Thư mục src thường dùng để chứa code/module có thể tái sử dụng như hàm xử lý dữ liệu, feature engineering, validation hoặc utility. Dữ liệu nhạy cảm và secret không nên lưu trực tiếp trong repo."
   },
   {
@@ -23,12 +23,12 @@ const PROJECT_STRUCTURE_QUESTIONS = [
     question: "Mục tiêu chính của việc tổ chức project Data Analytics rõ ràng là gì?",
     code: "",
     options: [
-      "Giúp project dễ đọc, dễ chạy lại, dễ review và dễ bảo trì",
-      "Làm project trông phức tạp hơn dù không cần thiết",
-      "Ẩn toàn bộ logic xử lý dữ liệu",
-      "Thay thế hoàn toàn phân tích dữ liệu"
+      "Giảm số lượng file trong project",
+      "Ẩn bớt logic xử lý dữ liệu",
+      "Giúp dễ đọc, chạy lại, review và bảo trì",
+      "Thay thế bước phân tích dữ liệu"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Project structure rõ ràng giúp người khác hiểu luồng xử lý, chạy lại kết quả, kiểm tra code và mở rộng project dễ hơn."
   },
   {
@@ -39,12 +39,12 @@ const PROJECT_STRUCTURE_QUESTIONS = [
     question: "README trong project Data Analytics thường nên dùng để làm gì?",
     code: "",
     options: [
-      "Giải thích mục tiêu project, dữ liệu, cách chạy và kết quả chính",
-      "Lưu password database",
+      "Lưu model binary để deploy nhanh",
+      "Giải thích mục tiêu, dữ liệu, cách chạy và kết quả",
       "Thay thế toàn bộ source code",
-      "Chứa file model binary lớn"
+      "Chứa password database dùng thử"
     ],
-    answer: 0,
+    answer: 1,
     explanation: "README là tài liệu cửa vào của project, giúp người đọc hiểu project làm gì, cấu trúc ra sao, cách setup, cách chạy và output chính là gì."
   },
   {
@@ -55,12 +55,12 @@ const PROJECT_STRUCTURE_QUESTIONS = [
     question: "requirements.txt thường dùng để làm gì?",
     code: "",
     options: [
-      "Khai báo các Python packages cần cài cho project",
-      "Lưu dữ liệu raw",
       "Lưu kết quả phân tích cuối cùng",
-      "Chứa API key để deploy"
+      "Chứa API key để deploy",
+      "Lưu dữ liệu raw cần phân tích",
+      "Khai báo Python packages cần cài"
     ],
-    answer: 0,
+    answer: 3,
     explanation: "requirements.txt liệt kê dependencies như pandas, numpy, streamlit, scikit-learn để người khác có thể cài môi trường chạy project."
   },
   {
@@ -71,10 +71,10 @@ const PROJECT_STRUCTURE_QUESTIONS = [
     question: ".gitignore thường dùng để làm gì?",
     code: "",
     options: [
-      "Khai báo các file/thư mục không nên đưa vào Git",
+      "Khai báo file/thư mục không nên đưa vào Git",
       "Tự động xóa file khỏi máy tính",
-      "Tạo môi trường Python mới",
-      "Chạy toàn bộ notebook"
+      "Tạo virtual environment mới",
+      "Chạy toàn bộ notebook theo thứ tự"
     ],
     answer: 0,
     explanation: ".gitignore giúp tránh commit các file không cần hoặc nhạy cảm như __pycache__, .env, file tạm, dữ liệu lớn hoặc output sinh ra tự động."
@@ -87,12 +87,12 @@ const PROJECT_STRUCTURE_QUESTIONS = [
     question: "Trong project Data Analytics, thư mục data thường dùng để làm gì?",
     code: "",
     options: [
-      "Tổ chức dữ liệu đầu vào, dữ liệu trung gian hoặc dữ liệu đã xử lý",
-      "Lưu toàn bộ API key",
       "Chứa code Python tái sử dụng chính",
+      "Lưu toàn bộ API key cá nhân",
+      "Tổ chức dữ liệu đầu vào, trung gian hoặc đã xử lý",
       "Chứa file README duy nhất"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Thư mục data thường dùng để tổ chức raw, processed hoặc external data. Tuy nhiên không nên commit dữ liệu nhạy cảm hoặc file quá lớn nếu chưa có chiến lược phù hợp."
   },
   {
@@ -103,12 +103,12 @@ const PROJECT_STRUCTURE_QUESTIONS = [
     question: "raw data nên được hiểu là gì?",
     code: "",
     options: [
-      "Dữ liệu gốc nhận được, chưa hoặc rất ít xử lý",
       "Dữ liệu đã được làm sạch hoàn toàn",
-      "File model đã train",
+      "Dữ liệu gốc chưa hoặc rất ít xử lý",
+      "File model đã train xong",
       "Code dùng để deploy app"
     ],
-    answer: 0,
+    answer: 1,
     explanation: "Raw data là dữ liệu đầu vào ban đầu. Nên hạn chế chỉnh sửa trực tiếp raw data để có thể trace lại nguồn gốc và tái lập pipeline."
   },
   {
@@ -119,12 +119,12 @@ const PROJECT_STRUCTURE_QUESTIONS = [
     question: "processed data thường là gì?",
     code: "",
     options: [
-      "Dữ liệu đã được làm sạch, biến đổi hoặc chuẩn hóa để phân tích/modeling",
-      "Dữ liệu gốc chưa xử lý",
-      "Password đã mã hóa",
-      "File notebook rỗng"
+      "Password đã mã hóa để dùng lại",
+      "File notebook rỗng chưa chạy",
+      "Dữ liệu gốc chưa qua xử lý",
+      "Dữ liệu đã được làm sạch hoặc biến đổi"
     ],
-    answer: 0,
+    answer: 3,
     explanation: "Processed data là dữ liệu đã qua bước xử lý như clean, aggregate, feature engineering hoặc chuẩn hóa schema để dùng cho phân tích tiếp theo."
   },
   {
@@ -135,12 +135,12 @@ const PROJECT_STRUCTURE_QUESTIONS = [
     question: "Notebook thường phù hợp nhất cho giai đoạn nào?",
     code: "",
     options: [
-      "EDA, exploration, thử nghiệm ý tưởng và trình bày phân tích",
       "Lưu secret production",
-      "Chạy service backend lâu dài",
+      "EDA, thử nghiệm ý tưởng và trình bày phân tích",
+      "Chạy backend service lâu dài",
       "Thay thế toàn bộ README"
     ],
-    answer: 0,
+    answer: 1,
     explanation: "Notebook rất phù hợp cho khám phá dữ liệu, thử nghiệm và storytelling. Nhưng logic dùng lại nhiều lần nên được tách sang src hoặc script."
   },
   {
@@ -151,12 +151,12 @@ const PROJECT_STRUCTURE_QUESTIONS = [
     question: "Thư mục scripts thường nên chứa gì?",
     code: "",
     options: [
-      "Các script chạy tác vụ cụ thể như build dataset, train model hoặc generate report",
       "Dữ liệu raw nhạy cảm",
       "File secret .env đã commit",
+      "Script chạy tác vụ như build dataset hoặc report",
       "Screenshot không liên quan"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "scripts thường chứa các file chạy một workflow cụ thể. Code reusable nên cân nhắc đặt trong src rồi scripts import lại."
   },
   {
@@ -167,12 +167,12 @@ const PROJECT_STRUCTURE_QUESTIONS = [
     question: "Thư mục reports thường dùng để lưu gì?",
     code: "",
     options: [
-      "Output phân tích như HTML report, PDF, chart hoặc slide kết quả",
       "API key cá nhân",
       "Virtual environment",
+      "Output phân tích như HTML, PDF, chart hoặc slide",
       "Toàn bộ package đã cài"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "reports thường chứa output phục vụ trình bày kết quả. Các file sinh tự động lớn có thể cần được gitignore tùy mục tiêu project."
   },
   {
@@ -183,12 +183,12 @@ const PROJECT_STRUCTURE_QUESTIONS = [
     question: "Tên file nào là naming convention tốt hơn cho output phân tích?",
     code: "",
     options: [
+      "final_final_v2.csv",
+      "abc_new_file.csv",
       "sales_summary_2026_04.csv",
-      "final_final_v2_really_final.csv",
-      "abc.csv",
-      "new file copy copy.csv"
+      "new copy data.csv"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "sales_summary_2026_04.csv rõ nội dung và kỳ dữ liệu. Các tên như final_final_v2 hoặc abc mơ hồ, khó review và khó bảo trì."
   },
   {
@@ -199,12 +199,12 @@ const PROJECT_STRUCTURE_QUESTIONS = [
     question: "Cấu trúc nào hợp lý hơn cho một project Data Analytics cơ bản?",
     code: "",
     options: [
-      "data/, notebooks/, src/, scripts/, reports/, tests/, README.md, requirements.txt",
       "all_files/, final/, final2/, temp/, copy/",
+      "data/, notebooks/, src/, scripts/, reports/, tests/",
       "passwords/, raw_sensitive_data/, random_screenshots/",
       "only_one_notebook.ipynb và không có README"
     ],
-    answer: 0,
+    answer: 1,
     explanation: "Cấu trúc có data, notebooks, src, scripts, reports, tests và tài liệu giúp project rõ ràng, dễ chạy lại và dễ review hơn."
   },
   {
@@ -215,9 +215,9 @@ const PROJECT_STRUCTURE_QUESTIONS = [
     question: "Phân biệt đúng giữa src và scripts trong project Data Analytics là gì?",
     code: "",
     options: [
-      "src chứa module/hàm tái sử dụng, scripts chứa file chạy tác vụ cụ thể",
+      "src chứa module tái sử dụng, scripts chứa entrypoint tác vụ",
       "src chỉ chứa dữ liệu raw, scripts chỉ chứa README",
-      "src và scripts luôn giống nhau hoàn toàn",
+      "src và scripts luôn có cùng vai trò",
       "scripts chỉ dùng để lưu secret"
     ],
     answer: 0,
@@ -231,12 +231,12 @@ const PROJECT_STRUCTURE_QUESTIONS = [
     question: "Khi một đoạn logic trong notebook được dùng lại nhiều lần, nên làm gì?",
     code: "",
     options: [
-      "Tách thành function/module trong src rồi import lại vào notebook hoặc script",
-      "Copy paste sang nhiều notebook khác nhau",
-      "Đổi tên notebook thành final_final.ipynb",
+      "Copy paste sang nhiều notebook",
+      "Đổi tên notebook thành final_final",
+      "Tách thành function/module trong src",
       "Hard-code output vào markdown"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Logic dùng lại nên được đóng gói thành function/module để giảm duplication, dễ test và dễ bảo trì."
   },
   {
@@ -247,12 +247,12 @@ const PROJECT_STRUCTURE_QUESTIONS = [
     question: "Config file trong project thường dùng để làm gì?",
     code: "",
     options: [
-      "Lưu các tham số có thể thay đổi như path, threshold, date range hoặc model settings",
       "Lưu password rồi commit public",
+      "Lưu tham số như path, threshold hoặc date range",
       "Thay thế toàn bộ source code",
       "Lưu dữ liệu raw lớn"
     ],
-    answer: 0,
+    answer: 1,
     explanation: "Config giúp tách tham số khỏi code, giúp pipeline linh hoạt hơn. Secret không nên lưu trong config public."
   },
   {
@@ -263,12 +263,12 @@ const PROJECT_STRUCTURE_QUESTIONS = [
     question: "Vì sao nên tránh hard-code nhiều đường dẫn và threshold trong code?",
     code: "",
     options: [
-      "Vì làm project khó chạy ở môi trường khác và khó thay đổi tham số",
       "Vì Python không cho phép string path",
-      "Vì hard-code luôn làm kết quả chính xác hơn",
+      "Vì hard-code luôn làm kết quả đúng hơn",
+      "Vì làm project khó chạy ở môi trường khác",
       "Vì config chỉ dùng cho frontend"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Hard-code khiến project phụ thuộc máy cá nhân hoặc một setting cố định. Config/argument giúp tái lập và thay đổi dễ hơn."
   },
   {
@@ -279,12 +279,12 @@ const PROJECT_STRUCTURE_QUESTIONS = [
     question: "Environment variables thường phù hợp nhất để lưu gì?",
     code: "",
     options: [
-      "Thông tin cấu hình hoặc secret cần tách khỏi source code",
       "Toàn bộ raw data",
+      "Thông tin cấu hình hoặc secret ngoài source code",
       "File report HTML",
       "Notebook output image"
     ],
-    answer: 0,
+    answer: 1,
     explanation: "Environment variables thường dùng cho secret hoặc config theo môi trường như API token, database URL hoặc mode chạy."
   },
   {
@@ -295,12 +295,12 @@ const PROJECT_STRUCTURE_QUESTIONS = [
     question: "Best practice nào đúng với API key hoặc password?",
     code: "",
     options: [
-      "Không hard-code trong code; dùng environment variables, .env không commit hoặc platform secrets",
-      "Commit trực tiếp vào GitHub để dễ chạy",
+      "Commit trực tiếp vào GitHub",
       "Viết vào README public",
+      "Không hard-code; dùng env vars hoặc platform secrets",
       "In ra log mỗi lần chạy"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Secret không nên xuất hiện trong source code, README hoặc log. Nên dùng cơ chế quản lý secret an toàn."
   },
   {
@@ -311,12 +311,12 @@ const PROJECT_STRUCTURE_QUESTIONS = [
     question: "Dòng nào nên có trong .gitignore để tránh commit file environment chứa secret?",
     code: "",
     options: [
-      ".env",
       "README.md",
+      ".env",
       "requirements.txt",
       "src/"
     ],
-    answer: 0,
+    answer: 1,
     explanation: ".env thường chứa biến môi trường hoặc secret local, nên cần đưa vào .gitignore. README và requirements thường nên được commit."
   },
   {
@@ -327,12 +327,12 @@ const PROJECT_STRUCTURE_QUESTIONS = [
     question: "Vì sao không nên commit file dữ liệu quá lớn trực tiếp lên Git thông thường?",
     code: "",
     options: [
-      "Vì làm repo nặng, clone chậm và khó quản lý version",
       "Vì Git không lưu được file text",
-      "Vì dữ liệu lớn luôn là dữ liệu sai",
+      "Vì dữ liệu lớn luôn sai",
+      "Vì làm repo nặng, clone chậm và khó quản lý",
       "Vì README sẽ bị xóa"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "File lớn làm lịch sử Git nặng và khó chia sẻ. Có thể dùng storage ngoài, sample data, data instructions hoặc Git LFS nếu phù hợp."
   },
   {
@@ -343,12 +343,12 @@ const PROJECT_STRUCTURE_QUESTIONS = [
     question: "Git LFS thường dùng để làm gì?",
     code: "",
     options: [
-      "Quản lý file lớn bằng Git theo cách phù hợp hơn Git thường",
       "Tự động viết README",
       "Tạo virtual environment",
+      "Quản lý file lớn phù hợp hơn Git thường",
       "Xóa toàn bộ commit history"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Git LFS giúp track file lớn như model artifact hoặc dataset sample lớn hơn mức bình thường. Tuy nhiên vẫn cần cân nhắc quota và tính phù hợp."
   },
   {
@@ -359,12 +359,12 @@ const PROJECT_STRUCTURE_QUESTIONS = [
     question: "Vì sao relative path thường tốt hơn absolute path cá nhân trong portfolio project?",
     code: "",
     options: [
-      "Vì người khác có thể chạy project ở máy/thư mục khác dễ hơn",
       "Vì absolute path luôn sai syntax",
       "Vì relative path tự động tạo dữ liệu",
+      "Vì project dễ chạy ở máy/thư mục khác hơn",
       "Vì Git chỉ commit được relative path"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Absolute path như C:/Users/... phụ thuộc máy cá nhân. Relative path giúp project portable hơn nếu cấu trúc repo rõ ràng."
   },
   {
@@ -375,12 +375,12 @@ const PROJECT_STRUCTURE_QUESTIONS = [
     question: "pathlib trong Python hữu ích nhất cho việc gì trong project structure?",
     code: "",
     options: [
-      "Xử lý đường dẫn file/thư mục rõ ràng và portable hơn nối string thủ công",
       "Tự động train model",
+      "Xử lý đường dẫn file/thư mục rõ và portable",
       "Tự động tạo README",
       "Lưu secret an toàn trên cloud"
     ],
-    answer: 0,
+    answer: 1,
     explanation: "pathlib cung cấp Path object để nối path, kiểm tra tồn tại, tạo folder và xử lý file path dễ đọc hơn."
   },
   {
@@ -391,12 +391,12 @@ const PROJECT_STRUCTURE_QUESTIONS = [
     question: "Hàm reusable trong project Data Analytics nên có đặc điểm nào?",
     code: "",
     options: [
-      "Tên rõ nghĩa, input/output rõ và không phụ thuộc biến global không cần thiết",
-      "Chỉ chạy khi notebook cell trước đã chạy thủ công",
+      "Chỉ chạy khi cell trước đã chạy thủ công",
       "Luôn đọc file hard-code từ máy cá nhân",
-      "Không cần return kết quả"
+      "Không cần return kết quả",
+      "Tên rõ, input/output rõ và ít phụ thuộc global"
     ],
-    answer: 0,
+    answer: 3,
     explanation: "Function reusable nên độc lập, dễ test, dễ import và dễ hiểu. Phụ thuộc biến global hoặc path hard-code làm code khó bảo trì."
   },
   {
@@ -407,7 +407,7 @@ const PROJECT_STRUCTURE_QUESTIONS = [
     question: "Modular code giúp ích gì cho project analytics?",
     code: "",
     options: [
-      "Tách logic thành phần nhỏ để dễ test, tái sử dụng và debug",
+      "Tách logic nhỏ để dễ test, tái sử dụng và debug",
       "Làm code dài hơn nhưng khó hiểu hơn",
       "Bắt buộc mọi thứ nằm trong một notebook",
       "Ẩn toàn bộ lỗi dữ liệu"
@@ -423,12 +423,12 @@ const PROJECT_STRUCTURE_QUESTIONS = [
     question: "Thư mục tests thường dùng để làm gì?",
     code: "",
     options: [
-      "Chứa test kiểm tra logic code, transformation hoặc data validation",
       "Chứa raw data nhạy cảm",
+      "Chứa test kiểm tra logic code hoặc data validation",
       "Chứa toàn bộ file output lớn",
       "Chứa password để test nhanh"
     ],
-    answer: 0,
+    answer: 1,
     explanation: "tests chứa unit test hoặc integration test giúp kiểm tra function và pipeline. Test tốt hơn việc chỉ kiểm tra thủ công trong notebook."
   },
   {
@@ -439,12 +439,12 @@ const PROJECT_STRUCTURE_QUESTIONS = [
     question: "Check nào phù hợp trước khi export processed data?",
     code: "",
     options: [
-      "Kiểm tra schema, null key, duplicate key và row count bất thường",
       "Chỉ đổi tên file thành final.csv",
-      "Bỏ qua mọi lỗi để pipeline chạy nhanh hơn",
-      "Chỉ xem 1 dòng đầu và kết luận dữ liệu đúng"
+      "Bỏ qua lỗi để pipeline chạy nhanh hơn",
+      "Kiểm tra schema, null key, duplicate key và row count",
+      "Chỉ xem 1 dòng đầu rồi kết luận"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Data validation giúp phát hiện dữ liệu thiếu, sai schema, trùng key hoặc output bất thường trước khi dùng cho report/model."
   },
   {
@@ -455,12 +455,12 @@ const PROJECT_STRUCTURE_QUESTIONS = [
     question: "Phân biệt đúng giữa code comment và README là gì?",
     code: "",
     options: [
-      "Comment giải thích logic cụ thể trong code; README giải thích project tổng thể và cách chạy",
       "README chỉ dùng để comment từng dòng code",
+      "Comment giải thích logic cụ thể; README giải thích project",
       "Comment thay thế hoàn toàn hướng dẫn setup",
       "README không nên có mục tiêu project"
     ],
-    answer: 0,
+    answer: 1,
     explanation: "Comment nên giải thích phần code khó hiểu. README nên mô tả mục tiêu, cấu trúc, setup, cách chạy và kết quả chính của project."
   },
   {
@@ -471,12 +471,12 @@ const PROJECT_STRUCTURE_QUESTIONS = [
     question: "Artifact trong analytics project thường là gì?",
     code: "",
     options: [
-      "Output sinh ra từ pipeline như model file, processed dataset, report hoặc chart",
       "Một dòng code comment",
       "Tên branch Git",
+      "Output sinh ra như model, processed data hoặc report",
       "API key của user"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Artifact là sản phẩm được sinh ra từ code hoặc pipeline. Cần phân biệt artifact với source code và quản lý version/lưu trữ phù hợp."
   },
   {
@@ -487,12 +487,12 @@ const PROJECT_STRUCTURE_QUESTIONS = [
     question: "Thư mục models thường dùng để lưu gì trong project có machine learning?",
     code: "",
     options: [
-      "Model artifacts hoặc pipeline đã train cần dùng cho inference/evaluation",
       "Raw password file",
+      "Model artifacts hoặc pipeline đã train",
       "Notebook EDA duy nhất",
       "File requirements.txt"
     ],
-    answer: 0,
+    answer: 1,
     explanation: "models có thể chứa artifact như model.joblib hoặc inference pipeline. Nếu file lớn, cần cân nhắc Git LFS, external storage hoặc release artifact."
   },
   {
@@ -503,7 +503,7 @@ const PROJECT_STRUCTURE_QUESTIONS = [
     question: "environment.yml thường khác requirements.txt ở điểm nào?",
     code: "",
     options: [
-      "environment.yml thường mô tả Conda environment, có thể gồm Python version và dependencies Conda/pip",
+      "environment.yml mô tả Conda env, gồm Python version và dependencies",
       "environment.yml dùng để lưu raw data",
       "requirements.txt chỉ dùng để lưu password",
       "Hai file này luôn là notebook"
@@ -519,12 +519,12 @@ const PROJECT_STRUCTURE_QUESTIONS = [
     question: "Pipeline structure nào hợp lý cho project xử lý dữ liệu định kỳ?",
     code: "",
     options: [
-      "load data → validate input → transform → validate output → export/report",
-      "export trước → load sau → xóa validation",
-      "chỉ mở notebook và sửa tay dữ liệu",
+      "export trước → load sau → bỏ validation",
+      "load → validate input → transform → validate output → export",
+      "mở notebook và sửa tay dữ liệu",
       "copy dữ liệu vào README rồi tính thủ công"
     ],
-    answer: 0,
+    answer: 1,
     explanation: "Pipeline nên có thứ tự rõ ràng: load, validate, transform, validate output và export. Validation giúp tránh đưa dữ liệu sai vào downstream."
   },
   {
@@ -535,12 +535,12 @@ const PROJECT_STRUCTURE_QUESTIONS = [
     question: "Yếu tố nào quan trọng nhất để người khác chạy lại project của bạn?",
     code: "",
     options: [
-      "README hướng dẫn rõ, dependencies cố định, config/path rõ ràng và dữ liệu/artifacts có hướng dẫn",
       "Chỉ upload screenshot kết quả",
       "Không ghi cách chạy để tránh người khác sửa",
-      "Đặt toàn bộ code trong một cell không có chú thích"
+      "README rõ, dependencies cố định, config và data instruction đầy đủ",
+      "Đặt toàn bộ code trong một cell"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Reproducibility cần hướng dẫn setup, dependencies, input data, config, command chạy và output kỳ vọng."
   },
   {
@@ -551,12 +551,12 @@ const PROJECT_STRUCTURE_QUESTIONS = [
     question: "Vì sao random seed có thể quan trọng trong project modeling hoặc sampling?",
     code: "",
     options: [
-      "Giúp kết quả random split/sampling/model có thể tái lập hơn",
       "Làm model chắc chắn chính xác hơn",
+      "Giúp kết quả random split/sampling tái lập hơn",
       "Thay thế toàn bộ validation",
       "Lưu password an toàn hơn"
     ],
-    answer: 0,
+    answer: 1,
     explanation: "Cố định random seed giúp kết quả liên quan đến randomness ổn định hơn giữa các lần chạy, thuận tiện cho debug và review."
   },
   {
@@ -567,12 +567,12 @@ const PROJECT_STRUCTURE_QUESTIONS = [
     question: "Vì sao nên ghi dependency vào requirements.txt hoặc environment.yml?",
     code: "",
     options: [
-      "Để môi trường chạy project có thể được cài lại nhất quán hơn",
       "Để lưu dữ liệu processed",
       "Để tự động tạo dashboard đẹp",
+      "Để môi trường chạy project có thể cài lại nhất quán",
       "Để thay thế toàn bộ code"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Dependency file giúp người khác hoặc CI/deployment cài đúng package cần thiết, giảm lỗi do thiếu thư viện hoặc khác môi trường."
   },
   {
@@ -583,12 +583,12 @@ const PROJECT_STRUCTURE_QUESTIONS = [
     question: "Một project Streamlit app chuẩn bị deploy thường cần chú ý gì?",
     code: "",
     options: [
-      "Entrypoint app rõ, requirements đầy đủ, relative paths, config/secrets an toàn và artifacts cần thiết",
       "Chỉ cần notebook EDA trên máy cá nhân",
+      "Entrypoint rõ, requirements đủ, path portable và secrets an toàn",
       "Hard-code path C:/Users/... trong app",
       "Commit API key vào GitHub public"
     ],
-    answer: 0,
+    answer: 1,
     explanation: "Deployment cần app entrypoint, dependencies, đường dẫn portable, secrets an toàn và model/data artifacts được quản lý đúng."
   },
   {
@@ -599,12 +599,12 @@ const PROJECT_STRUCTURE_QUESTIONS = [
     question: "Khi lưu model artifact cho inference, nên lưu kèm thông tin nào?",
     code: "",
     options: [
-      "Feature schema, preprocessing pipeline/config và version hoặc hướng dẫn sử dụng",
       "Chỉ tên model thật ngắn",
+      "Feature schema, preprocessing/config và version",
       "Password database",
       "Screenshot accuracy"
     ],
-    answer: 0,
+    answer: 1,
     explanation: "Inference ổn định cần biết input schema, preprocessing, model version và cách load/use artifact. Chỉ lưu file model không đủ nếu thiếu context."
   },
   {
@@ -615,12 +615,12 @@ const PROJECT_STRUCTURE_QUESTIONS = [
     question: "Dấu hiệu nào cho thấy nên chuyển một phần notebook thành script/module?",
     code: "",
     options: [
-      "Logic được dùng lại, cần chạy định kỳ hoặc cần test tự động",
       "Notebook chỉ dùng để ghi chú insight một lần",
       "Code chỉ là biểu đồ thử nghiệm nhanh",
+      "Logic được dùng lại, chạy định kỳ hoặc cần test",
       "Markdown giải thích business context"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Khi logic cần tái sử dụng, chạy lặp lại hoặc test, nên tách thành script/module để ổn định và maintain tốt hơn."
   },
   {
@@ -631,12 +631,12 @@ const PROJECT_STRUCTURE_QUESTIONS = [
     question: "Logging trong pipeline project giúp ích gì?",
     code: "",
     options: [
-      "Theo dõi job chạy đến đâu, số dòng xử lý và lỗi xảy ra ở bước nào",
       "Tự động sửa mọi lỗi dữ liệu",
       "Thay thế toàn bộ README",
-      "Bảo mật secret tốt hơn nếu in hết ra log"
+      "Theo dõi job chạy, số dòng xử lý và lỗi từng bước",
+      "Bảo mật secret tốt hơn nếu in ra log"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Logging giúp debug và monitoring. Tuy nhiên không nên log secret hoặc dữ liệu nhạy cảm."
   },
   {
@@ -647,12 +647,12 @@ const PROJECT_STRUCTURE_QUESTIONS = [
     question: "Vì sao test folder tốt hơn việc chỉ kiểm tra output thủ công trong notebook?",
     code: "",
     options: [
-      "Test có thể chạy lại tự động và phát hiện lỗi logic khi code thay đổi",
       "Test luôn thay thế hoàn toàn EDA",
       "Notebook không thể có lỗi",
+      "Test có thể chạy lại tự động khi code thay đổi",
       "Test chỉ để làm repo nặng hơn"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Automated tests giúp bảo vệ logic transformation, validation hoặc utility function khi refactor hoặc thêm feature."
   },
   {
@@ -663,12 +663,12 @@ const PROJECT_STRUCTURE_QUESTIONS = [
     question: "Commit message nào rõ ràng hơn trong project analytics?",
     code: "",
     options: [
-      "add data validation for processed sales dataset",
       "update",
       "fix stuff",
+      "add data validation for processed sales dataset",
       "final"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Commit message nên mô tả thay đổi cụ thể. Các message như update, fix stuff hoặc final quá mơ hồ khi review lịch sử Git."
   },
   {
@@ -679,12 +679,12 @@ const PROJECT_STRUCTURE_QUESTIONS = [
     question: "Cấu trúc data folder nào rõ ràng hơn?",
     code: "",
     options: [
-      "data/raw/, data/processed/, data/external/",
       "data/final/, data/final2/, data/new/",
+      "data/raw/, data/processed/, data/external/",
       "data/passwords/, data/secrets/",
       "data/all_mixed_together/"
     ],
-    answer: 0,
+    answer: 1,
     explanation: "Tách raw, processed và external giúp phân biệt nguồn gốc và trạng thái xử lý của dữ liệu. Tên mơ hồ như final2 dễ gây nhầm lẫn."
   },
   {
@@ -695,12 +695,12 @@ const PROJECT_STRUCTURE_QUESTIONS = [
     question: "Lỗi phổ biến nào làm project khó chạy lại trên máy người khác?",
     code: "",
     options: [
-      "Hard-code absolute path, thiếu requirements và không hướng dẫn lấy dữ liệu",
       "Có README rõ ràng",
       "Có requirements.txt",
-      "Dùng relative path nhất quán"
+      "Dùng relative path nhất quán",
+      "Hard-code absolute path, thiếu requirements và thiếu data instruction"
     ],
-    answer: 0,
+    answer: 3,
     explanation: "Absolute path cá nhân, dependency thiếu và không có data instruction khiến người khác khó reproduce project."
   },
   {
@@ -711,12 +711,12 @@ const PROJECT_STRUCTURE_QUESTIONS = [
     question: "Tên file nào là anti-pattern rõ nhất trong project analytics?",
     code: "",
     options: [
-      "final_final_v3_use_this_one_REAL.csv",
       "customer_features_2026_04.parquet",
       "build_features.py",
+      "final_final_v3_use_this_one_REAL.csv",
       "model_registry.json"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "final_final_v3_use_this_one_REAL.csv mơ hồ và thể hiện versioning thủ công kém. Tên nên rõ nội dung, kỳ dữ liệu hoặc chức năng."
   },
   {
@@ -727,12 +727,12 @@ const PROJECT_STRUCTURE_QUESTIONS = [
     question: "Một portfolio project Data Analytics chuyên nghiệp nên ưu tiên điều gì?",
     code: "",
     options: [
-      "Story rõ, cấu trúc repo gọn, README tốt, code chạy lại được và output dễ review",
       "Chỉ có hình dashboard không có code",
+      "Story rõ, repo gọn, README tốt, code chạy lại được",
       "Chỉ có notebook dài không cấu trúc",
       "Ẩn toàn bộ dữ liệu, code và hướng dẫn"
     ],
-    answer: 0,
+    answer: 1,
     explanation: "Portfolio tốt cần vừa có business/storytelling, vừa có technical reproducibility: repo rõ, README, code, data instruction và output review được."
   },
   {
@@ -743,12 +743,12 @@ const PROJECT_STRUCTURE_QUESTIONS = [
     question: "Phân biệt đúng giữa artifact và source code là gì?",
     code: "",
     options: [
-      "Source code tạo ra kết quả; artifact là output sinh ra như model, report hoặc processed data",
-      "Artifact là code Python chính, source code là file CSV",
+      "Artifact là code Python chính, source code là CSV",
       "Artifact luôn là secret",
+      "Source code tạo kết quả; artifact là output sinh ra",
       "Source code không cần version control"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Source code là logic có thể chạy để tạo output. Artifact là sản phẩm sinh ra từ code/pipeline và cần quản lý version/lưu trữ phù hợp."
   },
   {
@@ -759,12 +759,12 @@ const PROJECT_STRUCTURE_QUESTIONS = [
     question: "Thiết kế nào tốt nhất để tái lập kết quả phân tích?",
     code: "",
     options: [
-      "Code modular, dependency cố định, config rõ, seed nếu có randomness, data instruction và command chạy trong README",
       "Notebook chạy tay theo trí nhớ của tác giả",
+      "Code modular, dependency cố định, config rõ, data instruction đầy đủ",
       "File output final không có code tạo ra nó",
-      "Dữ liệu và code nằm rải rác ngoài repo không có hướng dẫn"
+      "Dữ liệu và code nằm rải rác ngoài repo"
     ],
-    answer: 0,
+    answer: 1,
     explanation: "Tái lập cần đủ code, môi trường, config, dữ liệu hoặc hướng dẫn lấy dữ liệu, và command chạy. Nếu phụ thuộc trí nhớ cá nhân thì không reproducible."
   },
   {
@@ -775,12 +775,12 @@ const PROJECT_STRUCTURE_QUESTIONS = [
     question: "Trong repo public, chiến lược nào an toàn hơn cho secrets?",
     code: "",
     options: [
-      "Dùng .env local đã gitignore, environment variables hoặc platform secrets; cung cấp .env.example không chứa secret thật",
       "Commit .env thật để người khác chạy ngay",
       "Đưa token vào README nhưng che một phần",
-      "In secret ra log để kiểm tra deploy"
+      "In secret ra log để kiểm tra deploy",
+      "Dùng .env gitignore, env vars hoặc platform secrets"
     ],
-    answer: 0,
+    answer: 3,
     explanation: ".env.example có thể mô tả biến cần có mà không lộ giá trị thật. Secret thật phải nằm ngoài repo public và không được log."
   },
   {
@@ -791,12 +791,12 @@ const PROJECT_STRUCTURE_QUESTIONS = [
     question: "Dấu hiệu nào cho thấy project analytics chưa sẵn sàng deploy/demo cho người khác?",
     code: "",
     options: [
-      "Phụ thuộc path local, thiếu requirements, thiếu hướng dẫn chạy và secret hard-code",
       "Có README hướng dẫn setup",
       "Có relative path và config rõ",
-      "Có file requirements.txt"
+      "Có file requirements.txt",
+      "Phụ thuộc path local, thiếu requirements, thiếu hướng dẫn và hard-code secret"
     ],
-    answer: 0,
+    answer: 3,
     explanation: "Path local, dependency thiếu, secret hard-code và không có hướng dẫn chạy là các rủi ro lớn khi deploy/demo project cho người khác."
   }
 ];

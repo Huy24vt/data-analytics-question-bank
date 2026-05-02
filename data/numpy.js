@@ -17,7 +17,7 @@ const NUMPY_QUESTIONS = [
     topic: "Array Creation",
     question: "Hàm nào thường dùng để tạo ndarray từ Python list?",
     code: "import numpy as np\narr = np.array([1, 2, 3])",
-    options: ["np.list()", "np.array()", "np.ndarray_from()", "np.to_numpy()"],
+    options: ["np.asarray_list()", "np.array()", "np.ndarray()", "np.to_numpy()"],
     answer: 1,
     explanation: "np.array() dùng để tạo ndarray từ list hoặc các object dạng sequence. np.to_numpy() thường là method của pandas object, không phải hàm NumPy phổ biến để tạo array từ list."
   },
@@ -39,7 +39,7 @@ const NUMPY_QUESTIONS = [
     topic: "Shape & Dimension",
     question: "Thuộc tính nào cho biết kích thước theo từng chiều của ndarray?",
     code: "import numpy as np\narr = np.array([[1, 2, 3], [4, 5, 6]])",
-    options: ["arr.length", "arr.shape", "arr.size()", "arr.dimension"],
+    options: ["arr.ndim", "arr.shape", "arr.size", "arr.dtype"],
     answer: 1,
     explanation: "arr.shape trả về tuple mô tả số phần tử theo từng chiều, ví dụ (2, 3). arr.size là thuộc tính tổng số phần tử, không phải method."
   },
@@ -72,7 +72,12 @@ const NUMPY_QUESTIONS = [
     topic: "dtype",
     question: "dtype của ndarray dùng để làm gì?",
     code: "",
-    options: ["Cho biết số chiều của array", "Cho biết kiểu dữ liệu của phần tử trong array", "Cho biết tổng số phần tử", "Cho biết array có bị sort chưa"],
+    options: [
+      "Cho biết số chiều của array",
+      "Cho biết kiểu dữ liệu của phần tử",
+      "Cho biết tổng số phần tử",
+      "Cho biết array đã được sort chưa"
+    ],
     answer: 1,
     explanation: "dtype mô tả kiểu dữ liệu của các phần tử, ví dụ int64, float64, bool. Số chiều dùng ndim, tổng số phần tử dùng size."
   },
@@ -105,7 +110,7 @@ const NUMPY_QUESTIONS = [
     topic: "Array Creation",
     question: "Kết quả của đoạn code sau là gì?",
     code: "import numpy as np\narr = np.arange(2, 8, 2)\nprint(arr.tolist())",
-    options: ["[2, 4, 6]", "[2, 4, 6, 8]", "[0, 2, 4, 6]", "[2, 3, 4, 5, 6, 7]"],
+    options: ["[2, 4, 6]", "[2, 4, 6, 8]", "[0, 2, 4, 6]", "[2, 3, 4, 5]"],
     answer: 0,
     explanation: "np.arange(start, stop, step) tạo dãy từ start đến trước stop. Vì stop=8 không được lấy, kết quả là [2, 4, 6]."
   },
@@ -116,7 +121,7 @@ const NUMPY_QUESTIONS = [
     topic: "Indexing & Slicing",
     question: "Kết quả của đoạn code sau là gì?",
     code: "import numpy as np\narr = np.array([10, 20, 30, 40])\nprint(arr[1])",
-    options: ["10", "20", "30", "Lỗi vì NumPy bắt đầu index từ 1"],
+    options: ["10", "20", "30", "40"],
     answer: 1,
     explanation: "NumPy dùng zero-based indexing giống Python list. arr[1] là phần tử thứ hai, có giá trị 20."
   },
@@ -127,7 +132,7 @@ const NUMPY_QUESTIONS = [
     topic: "Indexing & Slicing",
     question: "Kết quả của đoạn code sau là gì?",
     code: "import numpy as np\narr = np.array([10, 20, 30, 40, 50])\nprint(arr[1:4].tolist())",
-    options: ["[10, 20, 30]", "[20, 30, 40]", "[20, 30, 40, 50]", "[10, 20, 30, 40]"],
+    options: ["[10, 20, 30]", "[20, 30, 40]", "[30, 40, 50]", "[10, 20, 30, 40]"],
     answer: 1,
     explanation: "Slicing [1:4] lấy từ index 1 đến trước index 4, nên kết quả là [20, 30, 40]."
   },
@@ -138,7 +143,7 @@ const NUMPY_QUESTIONS = [
     topic: "Aggregation",
     question: "Hàm nào tính trung bình cộng của các phần tử trong array?",
     code: "import numpy as np\narr = np.array([1, 2, 3])",
-    options: ["np.avg(arr)", "np.mean(arr)", "np.middle(arr)", "np.total(arr)"],
+    options: ["np.median(arr)", "np.mean(arr)", "np.sum(arr)", "np.average_all(arr)"],
     answer: 1,
     explanation: "np.mean(arr) tính trung bình cộng. np.avg, np.middle và np.total không phải hàm chuẩn tương ứng trong NumPy."
   },
@@ -160,7 +165,7 @@ const NUMPY_QUESTIONS = [
     topic: "Vectorization",
     question: "Kết quả của đoạn code sau là gì?",
     code: "import numpy as np\narr = np.array([1, 2, 3])\nprint((arr * 2).tolist())",
-    options: ["[1, 2, 3, 1, 2, 3]", "[2, 4, 6]", "[3, 4, 5]", "Lỗi vì không thể nhân array với số"],
+    options: ["[1, 2, 3, 1, 2, 3]", "[2, 4, 6]", "[3, 4, 5]", "[1, 4, 9]"],
     answer: 1,
     explanation: "Với ndarray, phép nhân với scalar được áp dụng theo từng phần tử. Đây là khác biệt quan trọng so với Python list, nơi list * 2 sẽ lặp list."
   },
@@ -171,7 +176,7 @@ const NUMPY_QUESTIONS = [
     topic: "Boolean Masking",
     question: "Kết quả của đoạn code sau là gì?",
     code: "import numpy as np\narr = np.array([1, 2, 3, 4])\nmask = arr > 2\nprint(mask.tolist())",
-    options: ["[False, False, True, True]", "[True, True, False, False]", "[3, 4]", "[1, 2]"],
+    options: ["[False, False, True, True]", "[True, True, False, False]", "[False, True, True, True]", "[True, False, True, False]"],
     answer: 0,
     explanation: "arr > 2 trả về boolean array theo từng phần tử. Chỉ 3 và 4 lớn hơn 2, nên mask là [False, False, True, True]."
   },
@@ -204,7 +209,7 @@ const NUMPY_QUESTIONS = [
     topic: "Missing / NaN Handling",
     question: "Trong NumPy, giá trị nào thường dùng để biểu diễn missing value trong array số thực?",
     code: "import numpy as np",
-    options: ["np.null", "np.nan", "np.missing", "None bắt buộc cho mọi numeric array"],
+    options: ["np.null", "np.nan", "np.missing", "np.none"],
     answer: 1,
     explanation: "np.nan thường dùng để biểu diễn missing value trong numeric array dạng float. None có thể làm array chuyển sang dtype object, không phải lựa chọn chuẩn cho tính toán số."
   },
@@ -215,7 +220,7 @@ const NUMPY_QUESTIONS = [
     topic: "Random",
     question: "Hàm nào dưới đây tạo 3 số ngẫu nhiên phân phối đều trong khoảng [0, 1)?",
     code: "import numpy as np",
-    options: ["np.random.random(3)", "np.random.zeros(3)", "np.random.arange(3)", "np.random.mean(3)"],
+    options: ["np.random.random(3)", "np.random.zeros(3)", "np.random.arange(3)", "np.random.sample_int(3)"],
     answer: 0,
     explanation: "np.random.random(3) tạo 3 số ngẫu nhiên trong khoảng [0, 1). Các lựa chọn còn lại không có ý nghĩa tương ứng."
   },
@@ -248,7 +253,7 @@ const NUMPY_QUESTIONS = [
     topic: "Broadcasting",
     question: "Kết quả của đoạn code sau là gì?",
     code: "import numpy as np\na = np.array([[1, 2, 3], [4, 5, 6]])\nb = np.array([10, 20, 30])\nprint((a + b).tolist())",
-    options: ["[[11, 22, 33], [14, 25, 36]]", "[[11, 12, 13], [24, 25, 26]]", "[[11, 22, 33]]", "Lỗi vì shape khác nhau"],
+    options: ["[[11, 22, 33], [14, 25, 36]]", "[[11, 12, 13], [24, 25, 26]]", "[[10, 20, 30], [11, 22, 33]]", "[[1, 2, 3], [14, 25, 36]]"],
     answer: 0,
     explanation: "b có shape (3,) được broadcast theo từng hàng của a có shape (2, 3). Kết quả là cộng từng cột tương ứng."
   },
@@ -281,7 +286,7 @@ const NUMPY_QUESTIONS = [
     topic: "Indexing & Slicing",
     question: "Kết quả của đoạn code sau là gì?",
     code: "import numpy as np\narr = np.array([[1, 2, 3], [4, 5, 6]])\nprint(arr[:, 1].tolist())",
-    options: ["[1, 4]", "[2, 5]", "[3, 6]", "[4, 5, 6]"],
+    options: ["[1, 4]", "[2, 5]", "[3, 6]", "[4, 5]"],
     answer: 1,
     explanation: "arr[:, 1] lấy tất cả hàng ở cột index 1. Kết quả là [2, 5]."
   },
@@ -292,7 +297,7 @@ const NUMPY_QUESTIONS = [
     topic: "Boolean Masking",
     question: "Cách đúng để lọc các phần tử lớn hơn 2 và nhỏ hơn 5 là gì?",
     code: "import numpy as np\narr = np.array([1, 2, 3, 4, 5, 6])",
-    options: ["arr[arr > 2 and arr < 5]", "arr[(arr > 2) & (arr < 5)]", "arr[arr > 2 & arr < 5]", "arr[(arr > 2) && (arr < 5)]"],
+    options: ["arr[arr > 2 and arr < 5]", "arr[(arr > 2) & (arr < 5)]", "arr[arr > (2 & arr) < 5]", "arr[(arr > 2) && (arr < 5)]"],
     answer: 1,
     explanation: "Với NumPy boolean array, dùng toán tử & và cần ngoặc quanh từng điều kiện. and dùng cho boolean scalar, không dùng trực tiếp cho array."
   },
@@ -303,7 +308,7 @@ const NUMPY_QUESTIONS = [
     topic: "Fancy Indexing",
     question: "Kết quả của đoạn code sau là gì?",
     code: "import numpy as np\narr = np.array([10, 20, 30, 40])\nidx = [3, 0, 2]\nprint(arr[idx].tolist())",
-    options: ["[40, 10, 30]", "[10, 30, 40]", "[3, 0, 2]", "Lỗi vì idx là list"],
+    options: ["[40, 10, 30]", "[10, 30, 40]", "[3, 0, 2]", "[30, 10, 40]"],
     answer: 0,
     explanation: "Fancy indexing cho phép dùng list hoặc array index để lấy phần tử theo thứ tự chỉ định. arr[[3,0,2]] là [40,10,30]."
   },
@@ -325,7 +330,7 @@ const NUMPY_QUESTIONS = [
     topic: "Copy vs View",
     question: "Điều gì xảy ra sau đoạn code sau?",
     code: "import numpy as np\narr = np.array([1, 2, 3, 4])\nview = arr[1:3]\nview[0] = 99\nprint(arr.tolist())",
-    options: ["[1, 2, 3, 4]", "[1, 99, 3, 4]", "[99, 2, 3, 4]", "Lỗi vì slice không thể sửa"],
+    options: ["[1, 2, 3, 4]", "[1, 99, 3, 4]", "[99, 2, 3, 4]", "[1, 2, 99, 4]"],
     answer: 1,
     explanation: "Slice cơ bản thường tạo view, không phải copy. Sửa view[0] tương ứng với arr[1], nên arr thành [1, 99, 3, 4]."
   },
@@ -336,7 +341,7 @@ const NUMPY_QUESTIONS = [
     topic: "Copy vs View",
     question: "Cách nào đảm bảo tạo bản sao độc lập của một slice?",
     code: "import numpy as np\narr = np.array([1, 2, 3, 4])",
-    options: ["part = arr[1:3]", "part = arr[1:3].copy()", "part = arr.view[1:3]", "part = np.slice(arr, 1, 3)"],
+    options: ["part = arr[1:3]", "part = arr[1:3].copy()", "part = arr[1:3].view()", "part = np.asarray(arr[1:3])"],
     answer: 1,
     explanation: ".copy() tạo bản sao độc lập. Nếu chỉ dùng arr[1:3], kết quả thường là view và thay đổi có thể ảnh hưởng array gốc."
   },
@@ -347,7 +352,7 @@ const NUMPY_QUESTIONS = [
     topic: "Reshape & Flatten",
     question: "Kết quả của đoạn code sau là gì?",
     code: "import numpy as np\narr = np.arange(6)\nprint(arr.reshape(3, 2).tolist())",
-    options: ["[[0, 1, 2], [3, 4, 5]]", "[[0, 1], [2, 3], [4, 5]]", "[[1, 2], [3, 4], [5, 6]]", "Lỗi vì 6 không reshape được thành 3x2"],
+    options: ["[[0, 1, 2], [3, 4, 5]]", "[[0, 1], [2, 3], [4, 5]]", "[[1, 2], [3, 4], [5, 6]]", "[[0, 2], [1, 3], [4, 5]]"],
     answer: 1,
     explanation: "np.arange(6) tạo [0,1,2,3,4,5]. reshape(3,2) tạo 3 hàng, 2 cột: [[0,1],[2,3],[4,5]]."
   },
@@ -358,7 +363,12 @@ const NUMPY_QUESTIONS = [
     topic: "Reshape & Flatten",
     question: "Ý nghĩa của -1 trong reshape là gì?",
     code: "import numpy as np\narr = np.arange(12)\narr.reshape(3, -1)",
-    options: ["Xóa chiều đó khỏi array", "Tự suy ra kích thước phù hợp cho chiều đó", "Đảo ngược array", "Tạo lỗi vì shape không được âm"],
+    options: [
+      "Xóa chiều đó khỏi array",
+      "Tự suy ra kích thước phù hợp",
+      "Đảo ngược thứ tự của array",
+      "Ép toàn bộ array về 1 chiều"
+    ],
     answer: 1,
     explanation: "-1 cho NumPy tự suy ra kích thước còn lại dựa trên tổng số phần tử. Với 12 phần tử và 3 hàng, số cột được suy ra là 4."
   },
@@ -380,7 +390,12 @@ const NUMPY_QUESTIONS = [
     topic: "Concatenate / Stack / Split",
     question: "Khác biệt chính giữa np.concatenate và np.stack là gì?",
     code: "",
-    options: ["np.concatenate nối theo axis đã có, np.stack tạo thêm axis mới", "np.concatenate chỉ dùng cho list, np.stack chỉ dùng cho ndarray", "np.concatenate luôn sort dữ liệu, np.stack không sort", "Không có khác biệt"],
+    options: [
+      "concatenate nối axis có sẵn, stack tạo axis mới",
+      "concatenate tạo axis mới, stack nối axis có sẵn",
+      "concatenate chỉ dùng cho list, stack chỉ dùng ndarray",
+      "concatenate luôn sort dữ liệu, stack giữ nguyên thứ tự"
+    ],
     answer: 0,
     explanation: "np.concatenate nối các array theo một axis hiện có. np.stack gom các array bằng cách tạo thêm một chiều mới."
   },
@@ -391,7 +406,7 @@ const NUMPY_QUESTIONS = [
     topic: "Sorting",
     question: "Kết quả của đoạn code sau là gì?",
     code: "import numpy as np\narr = np.array([3, 1, 2])\nprint(np.sort(arr).tolist())\nprint(arr.tolist())",
-    options: ["[1, 2, 3] và [3, 1, 2]", "[1, 2, 3] và [1, 2, 3]", "[3, 2, 1] và [3, 1, 2]", "Lỗi vì np.sort sửa inplace"],
+    options: ["[1, 2, 3] và [3, 1, 2]", "[1, 2, 3] và [1, 2, 3]", "[3, 2, 1] và [3, 1, 2]", "[3, 1, 2] và [1, 2, 3]"],
     answer: 0,
     explanation: "np.sort(arr) trả về array đã sort và không sửa arr gốc. Nếu muốn sort inplace có thể dùng arr.sort()."
   },
@@ -402,7 +417,7 @@ const NUMPY_QUESTIONS = [
     topic: "Sorting",
     question: "np.argsort(arr) trả về gì?",
     code: "import numpy as np\narr = np.array([30, 10, 20])\nprint(np.argsort(arr).tolist())",
-    options: ["[10, 20, 30]", "[1, 2, 0]", "[0, 1, 2]", "[30, 20, 10]"],
+    options: ["[10, 20, 30]", "[1, 2, 0]", "[0, 1, 2]", "[2, 1, 0]"],
     answer: 1,
     explanation: "np.argsort trả về index sẽ sắp xếp array tăng dần. Giá trị 10 ở index 1, 20 ở index 2, 30 ở index 0, nên kết quả là [1, 2, 0]."
   },
@@ -413,7 +428,7 @@ const NUMPY_QUESTIONS = [
     topic: "Missing / NaN Handling",
     question: "Kết quả của np.mean với array có np.nan thường là gì?",
     code: "import numpy as np\narr = np.array([1.0, np.nan, 3.0])\nprint(np.mean(arr))",
-    options: ["2.0", "nan", "0.0", "Lỗi vì np.nan không được phép trong array"],
+    options: ["2.0", "nan", "0.0", "3.0"],
     answer: 1,
     explanation: "np.mean không tự bỏ qua NaN. Nếu array có NaN, kết quả thường là nan. Muốn bỏ qua NaN có thể dùng np.nanmean."
   },
@@ -424,7 +439,7 @@ const NUMPY_QUESTIONS = [
     topic: "Missing / NaN Handling",
     question: "Hàm nào tính trung bình và bỏ qua np.nan?",
     code: "import numpy as np\narr = np.array([1.0, np.nan, 3.0])",
-    options: ["np.mean(arr)", "np.nanmean(arr)", "np.ignoremean(arr)", "np.mean(arr, skipna=True)"],
+    options: ["np.mean(arr)", "np.nanmean(arr)", "np.skipmean(arr)", "np.mean_na(arr)"],
     answer: 1,
     explanation: "np.nanmean bỏ qua giá trị NaN khi tính trung bình. skipna=True là tham số quen thuộc trong pandas, không phải cách dùng chuẩn của np.mean."
   },
@@ -435,7 +450,7 @@ const NUMPY_QUESTIONS = [
     topic: "Random",
     question: "Cách hiện đại được khuyến nghị để tạo random generator riêng trong NumPy là gì?",
     code: "import numpy as np",
-    options: ["rng = np.random.default_rng(42)", "rng = np.random.seed_generator(42)", "rng = np.Random(42)", "rng = random.numpy(42)"],
+    options: ["rng = np.random.default_rng(42)", "rng = np.random.RandomState(42)", "rng = np.random.seed(42)", "rng = np.random.generator(42)"],
     answer: 0,
     explanation: "np.random.default_rng(seed) tạo Generator hiện đại, giúp quản lý random state rõ ràng hơn so với dùng global random state."
   },
@@ -457,7 +472,7 @@ const NUMPY_QUESTIONS = [
     topic: "Linear Algebra Basics",
     question: "Kết quả của đoạn code sau là gì?",
     code: "import numpy as np\na = np.array([1, 2, 3])\nb = np.array([4, 5, 6])\nprint(np.dot(a, b))",
-    options: ["[4, 10, 18]", "32", "[5, 7, 9]", "Lỗi vì dot không dùng cho vector"],
+    options: ["[4, 10, 18]", "32", "[5, 7, 9]", "77"],
     answer: 1,
     explanation: "Với hai vector 1D, np.dot tính tích vô hướng: 1*4 + 2*5 + 3*6 = 32."
   },
@@ -468,7 +483,12 @@ const NUMPY_QUESTIONS = [
     topic: "Performance & Memory",
     question: "Vì sao phép toán vectorized trong NumPy thường nhanh hơn vòng lặp Python thuần?",
     code: "",
-    options: ["Vì NumPy tự động dùng pandas", "Vì nhiều phép toán được thực thi ở tầng C và xử lý theo block dữ liệu đồng nhất", "Vì NumPy luôn dùng GPU", "Vì NumPy bỏ qua kiểm tra lỗi"],
+    options: [
+      "Vì NumPy tự động chuyển mọi dữ liệu sang pandas",
+      "Vì nhiều phép toán chạy ở tầng C trên dữ liệu đồng nhất",
+      "Vì NumPy luôn dùng GPU cho mọi phép toán array",
+      "Vì NumPy bỏ qua toàn bộ kiểm tra lỗi khi tính toán"
+    ],
     answer: 1,
     explanation: "NumPy tối ưu bằng mảng kiểu dữ liệu đồng nhất và nhiều operation chạy ở tầng C. NumPy không mặc định dùng GPU và không phụ thuộc pandas."
   },
@@ -479,7 +499,7 @@ const NUMPY_QUESTIONS = [
     topic: "Performance & Memory",
     question: "Thuộc tính nào cho biết tổng số byte mà dữ liệu trong ndarray đang chiếm?",
     code: "import numpy as np\narr = np.array([1, 2, 3])",
-    options: ["arr.bytes", "arr.nbytes", "arr.memory", "arr.size_bytes"],
+    options: ["arr.itemsize", "arr.nbytes", "arr.size", "arr.dtype"],
     answer: 1,
     explanation: "arr.nbytes trả về số byte phần dữ liệu của array. arr.size là số phần tử, không phải số byte."
   },
@@ -490,7 +510,12 @@ const NUMPY_QUESTIONS = [
     topic: "dtype",
     question: "Lý do nào hợp lý để dùng dtype=np.float32 thay vì float64?",
     code: "import numpy as np\narr = np.array([1.0, 2.0, 3.0], dtype=np.float32)",
-    options: ["Luôn chính xác hơn float64", "Tiết kiệm bộ nhớ hơn, nhưng độ chính xác thấp hơn float64", "Biến array thành string", "Bắt buộc nếu muốn dùng np.mean"],
+    options: [
+      "float32 luôn chính xác hơn float64",
+      "float32 tiết kiệm bộ nhớ nhưng kém chính xác hơn",
+      "float32 biến toàn bộ array thành string",
+      "float32 bắt buộc nếu muốn dùng np.mean"
+    ],
     answer: 1,
     explanation: "float32 dùng ít bộ nhớ hơn float64 nhưng có độ chính xác số học thấp hơn. Không phải lúc nào cũng phù hợp nếu cần độ chính xác cao."
   },
@@ -501,7 +526,12 @@ const NUMPY_QUESTIONS = [
     topic: "Common Errors",
     question: "Lỗi phổ biến khi chạy đoạn code sau là gì?",
     code: "import numpy as np\narr = np.array([1, 2, 3])\nif arr > 1:\n    print('ok')",
-    options: ["ValueError do truth value của array nhiều phần tử không rõ ràng", "TypeError vì không so sánh được array với số", "SyntaxError vì thiếu dấu ngoặc", "Không lỗi, in ra ok"],
+    options: [
+      "ValueError vì truth value của array không rõ",
+      "TypeError vì array không so sánh được với số",
+      "SyntaxError vì điều kiện if thiếu dấu ngoặc",
+      "Không lỗi vì NumPy tự hiểu là dùng any()"
+    ],
     answer: 0,
     explanation: "arr > 1 tạo boolean array nhiều phần tử. Python không biết nên coi cả array là True hay False. Cần dùng .any() hoặc .all() tùy logic."
   },
@@ -512,7 +542,7 @@ const NUMPY_QUESTIONS = [
     topic: "Common Errors",
     question: "Cách đúng để kiểm tra có ít nhất một phần tử lớn hơn 1 là gì?",
     code: "import numpy as np\narr = np.array([1, 2, 3])",
-    options: ["if arr > 1:", "if (arr > 1).any():", "if (arr > 1).all_any():", "if np.check(arr > 1):"],
+    options: ["if arr > 1:", "if (arr > 1).any():", "if (arr > 1).all():", "if np.where(arr > 1):"],
     answer: 1,
     explanation: "(arr > 1).any() trả về True nếu có ít nhất một phần tử thỏa điều kiện. .all() dùng khi tất cả phần tử phải thỏa điều kiện."
   },
@@ -523,7 +553,7 @@ const NUMPY_QUESTIONS = [
     topic: "Vectorization",
     question: "Cách vectorized nào thay thế vòng lặp cộng 10 vào từng phần tử?",
     code: "import numpy as np\narr = np.array([1, 2, 3])",
-    options: ["arr + 10", "for x in arr: x + 10", "arr.append(10)", "np.loop(arr, +10)"],
+    options: ["arr + 10", "arr.append(10)", "np.add_axis(arr, 10)", "np.loop(arr, 10)"],
     answer: 0,
     explanation: "arr + 10 áp dụng phép cộng cho từng phần tử theo cách vectorized. Vòng lặp for x in arr: x + 10 không tự cập nhật arr."
   },
@@ -545,7 +575,12 @@ const NUMPY_QUESTIONS = [
     topic: "Array Creation",
     question: "Sự khác biệt chính giữa np.arange và np.linspace là gì?",
     code: "import numpy as np",
-    options: ["np.arange tạo theo step, np.linspace tạo số lượng điểm xác định trong khoảng", "np.arange chỉ tạo số float, np.linspace chỉ tạo số int", "np.arange luôn gồm stop, np.linspace không bao giờ gồm stop", "Hai hàm giống hệt nhau"],
+    options: [
+      "arange dùng step, linspace dùng số lượng điểm",
+      "arange chỉ tạo float, linspace chỉ tạo int",
+      "arange luôn gồm stop, linspace luôn bỏ stop",
+      "arange và linspace luôn cho cùng kết quả"
+    ],
     answer: 0,
     explanation: "np.arange dùng start, stop, step. np.linspace dùng start, stop và số lượng điểm num. Theo mặc định linspace bao gồm stop."
   },
@@ -556,7 +591,7 @@ const NUMPY_QUESTIONS = [
     topic: "Broadcasting",
     question: "Kết quả shape của phép cộng sau là gì?",
     code: "import numpy as np\na = np.ones((3, 1, 4))\nb = np.ones((1, 5, 4))\nc = a + b\nprint(c.shape)",
-    options: ["(3, 5, 4)", "(1, 1, 4)", "(3, 1, 4)", "Lỗi vì chiều giữa khác nhau"],
+    options: ["(3, 5, 4)", "(1, 1, 4)", "(3, 1, 4)", "(1, 5, 4)"],
     answer: 0,
     explanation: "Broadcasting so sánh từ phải sang trái: 4 khớp 4, 1 broadcast lên 5, 3 broadcast với 1. Kết quả là (3, 5, 4)."
   },
@@ -589,7 +624,7 @@ const NUMPY_QUESTIONS = [
     topic: "Copy vs View",
     question: "Kết quả của đoạn code sau là gì?",
     code: "import numpy as np\narr = np.array([10, 20, 30, 40])\npart = arr[[1, 2]]\npart[0] = 99\nprint(arr.tolist())",
-    options: ["[10, 99, 30, 40]", "[10, 20, 30, 40]", "[99, 20, 30, 40]", "Lỗi vì fancy indexing không sửa được"],
+    options: ["[10, 99, 30, 40]", "[10, 20, 30, 40]", "[99, 20, 30, 40]", "[10, 20, 99, 40]"],
     answer: 1,
     explanation: "arr[[1, 2]] tạo copy. Sửa part không ảnh hưởng arr gốc, nên arr vẫn là [10, 20, 30, 40]."
   },
@@ -600,7 +635,12 @@ const NUMPY_QUESTIONS = [
     topic: "Performance & Memory",
     question: "Khi xử lý array lớn, vì sao biểu thức (a + b + c) có thể tốn bộ nhớ hơn np.add dùng out?",
     code: "import numpy as np",
-    options: ["Vì có thể tạo temporary array trung gian", "Vì NumPy tự convert sang pandas", "Vì np.add luôn dùng GPU", "Vì toán tử + không hỗ trợ ndarray"],
+    options: [
+      "Vì có thể tạo temporary array trung gian",
+      "Vì NumPy tự convert array sang pandas",
+      "Vì np.add luôn chạy bằng GPU riêng",
+      "Vì toán tử + không hỗ trợ ndarray"
+    ],
     answer: 0,
     explanation: "Biểu thức a + b + c có thể tạo array trung gian cho a + b rồi mới cộng c. Dùng out trong một số trường hợp giúp tái sử dụng bộ nhớ."
   },
@@ -611,7 +651,12 @@ const NUMPY_QUESTIONS = [
     topic: "Performance & Memory",
     question: "Ý nghĩa chính của tham số out trong nhiều ufunc NumPy là gì?",
     code: "import numpy as np\na = np.array([1, 2, 3])\nout = np.empty_like(a)\nnp.add(a, 10, out=out)",
-    options: ["Chỉ định nơi ghi kết quả để giảm cấp phát array mới", "Xuất kết quả ra file", "In kết quả ra màn hình", "Chuyển array sang list"],
+    options: [
+      "Chỉ định nơi ghi kết quả",
+      "Xuất kết quả ra file CSV",
+      "In kết quả ra màn hình",
+      "Chuyển array sang list"
+    ],
     answer: 0,
     explanation: "out cho phép ghi kết quả vào array đã có sẵn, hữu ích khi muốn kiểm soát memory allocation."
   },
@@ -644,7 +689,12 @@ const NUMPY_QUESTIONS = [
     topic: "Axis Logic",
     question: "keepdims=True hữu ích nhất trong tình huống nào?",
     code: "",
-    options: ["Giữ chiều sau aggregation để kết quả dễ broadcast lại với array gốc", "Tăng tốc mọi phép tính lên gấp đôi", "Ép dtype thành int", "Tự động sort theo axis"],
+    options: [
+      "Giữ chiều sau aggregation để dễ broadcast lại",
+      "Tăng tốc mọi phép tính lên đúng gấp đôi",
+      "Ép dtype của kết quả aggregation thành int",
+      "Tự động sort kết quả theo từng axis"
+    ],
     answer: 0,
     explanation: "keepdims=True giữ số chiều của array sau reduction, giúp các phép như chuẩn hóa theo hàng/cột broadcast thuận tiện hơn."
   },
@@ -655,7 +705,7 @@ const NUMPY_QUESTIONS = [
     topic: "Linear Algebra Basics",
     question: "Kết quả của đoạn code sau là gì?",
     code: "import numpy as np\na = np.array([[1, 2], [3, 4]])\nprint(round(np.linalg.det(a), 1))",
-    options: ["-2.0", "2.0", "10.0", "[[1, 3], [2, 4]]"],
+    options: ["-2.0", "2.0", "10.0", "4.0"],
     answer: 0,
     explanation: "Định thức ma trận [[1,2],[3,4]] là 1*4 - 2*3 = -2. NumPy thường trả về dạng float."
   },
@@ -699,7 +749,12 @@ const NUMPY_QUESTIONS = [
     topic: "Random",
     question: "Vì sao nên dùng cùng một seed khi cần kết quả random có thể tái lập?",
     code: "import numpy as np\nrng = np.random.default_rng(42)",
-    options: ["Để kết quả random có thể được tạo lại giống nhau trong cùng điều kiện", "Để random nhanh hơn mọi trường hợp", "Để loại bỏ hoàn toàn tính ngẫu nhiên trong NumPy", "Để array tự động sort"],
+    options: [
+      "Để chuỗi random có thể tạo lại giống nhau",
+      "Để random nhanh hơn trong mọi trường hợp",
+      "Để loại bỏ hoàn toàn tính ngẫu nhiên",
+      "Để array tự động sort sau khi tạo"
+    ],
     answer: 0,
     explanation: "Seed giúp random generator tạo chuỗi số có thể tái lập, hữu ích cho debug, testing và notebook phân tích."
   },
@@ -732,7 +787,12 @@ const NUMPY_QUESTIONS = [
     topic: "Common Errors",
     question: "Nguyên nhân của lỗi reshape phổ biến sau là gì?",
     code: "import numpy as np\narr = np.arange(10)\narr.reshape(3, 4)",
-    options: ["Tổng số phần tử 10 không khớp với shape mới cần 12 phần tử", "reshape không hỗ trợ 2D", "np.arange luôn tạo float", "Cần dùng axis=1"],
+    options: [
+      "10 phần tử không khớp shape mới cần 12",
+      "reshape không hỗ trợ array hai chiều",
+      "np.arange luôn tạo dữ liệu dạng float",
+      "reshape bắt buộc phải truyền axis=1"
+    ],
     answer: 0,
     explanation: "reshape không được thay đổi tổng số phần tử. Shape (3,4) cần 12 phần tử nhưng arr chỉ có 10."
   },
@@ -743,7 +803,12 @@ const NUMPY_QUESTIONS = [
     topic: "Common Errors",
     question: "Lý do đoạn code sau lỗi là gì?",
     code: "import numpy as np\na = np.ones((2, 3))\nb = np.ones((2, 2))\nprint(a + b)",
-    options: ["Hai shape không tương thích broadcasting", "Không thể cộng array toàn số 1", "np.ones chỉ hỗ trợ vector", "Cần dùng dtype object"],
+    options: [
+      "Hai shape không tương thích broadcasting",
+      "Không thể cộng hai array toàn số 1",
+      "np.ones chỉ hỗ trợ tạo vector 1D",
+      "Cần ép cả hai array sang dtype object"
+    ],
     answer: 0,
     explanation: "Shape (2,3) và (2,2) không tương thích vì chiều cuối 3 và 2 khác nhau và không có chiều nào là 1."
   },
@@ -754,7 +819,12 @@ const NUMPY_QUESTIONS = [
     topic: "dtype",
     question: "Điều gì có thể xảy ra khi tạo array từ các phần tử có kiểu rất khác nhau?",
     code: "import numpy as np\narr = np.array([1, '2', 3])",
-    options: ["NumPy có thể upcast sang dtype string", "NumPy luôn giữ từng phần tử đúng kiểu riêng", "NumPy tự động tạo pandas Series", "NumPy luôn báo lỗi"],
+    options: [
+      "NumPy có thể upcast sang dtype string",
+      "NumPy luôn giữ từng phần tử đúng kiểu riêng",
+      "NumPy tự động tạo pandas Series",
+      "NumPy luôn báo lỗi khi trộn kiểu"
+    ],
     answer: 0,
     explanation: "NumPy ndarray thường có dtype đồng nhất. Khi trộn int và string, NumPy có thể upcast các phần tử thành string."
   },
@@ -765,7 +835,12 @@ const NUMPY_QUESTIONS = [
     topic: "ndarray Basics",
     question: "np.asarray khác np.array ở điểm nào trong tình huống input đã là ndarray phù hợp?",
     code: "import numpy as np\narr = np.array([1, 2, 3])",
-    options: ["np.asarray có thể trả về chính object gốc nếu không cần copy", "np.asarray luôn tạo copy mới", "np.asarray chỉ dùng cho pandas", "np.asarray luôn đổi dtype thành float"],
+    options: [
+      "asarray có thể trả về object gốc nếu không cần copy",
+      "asarray luôn tạo copy mới từ input ndarray",
+      "asarray chỉ dùng được cho pandas object",
+      "asarray luôn đổi dtype của array thành float"
+    ],
     answer: 0,
     explanation: "np.asarray cố gắng tránh copy nếu input đã là ndarray phù hợp. np.array mặc định thường linh hoạt hơn và có thể tạo copy tùy tham số."
   },
@@ -776,7 +851,12 @@ const NUMPY_QUESTIONS = [
     topic: "Performance & Memory",
     question: "Trong NumPy, memory layout C-contiguous nghĩa là gì?",
     code: "",
-    options: ["Dữ liệu được lưu theo thứ tự hàng trước, phù hợp row-major", "Dữ liệu được lưu theo thứ tự cột trước, phù hợp column-major", "Array bắt buộc chỉ có một chiều", "Array không thể bị slice"],
+    options: [
+      "Dữ liệu lưu theo thứ tự hàng trước",
+      "Dữ liệu lưu theo thứ tự cột trước",
+      "Array bắt buộc chỉ có một chiều",
+      "Array không thể bị slice thành view"
+    ],
     answer: 0,
     explanation: "C-contiguous nghĩa là dữ liệu được lưu liên tục theo row-major order. Fortran-contiguous thường là column-major."
   },
@@ -787,7 +867,12 @@ const NUMPY_QUESTIONS = [
     topic: "Performance & Memory",
     question: "Tại sao arr.T đôi khi không copy dữ liệu ngay?",
     code: "import numpy as np\narr = np.arange(6).reshape(2, 3)\nt = arr.T",
-    options: ["Vì transpose có thể tạo view bằng cách thay đổi strides", "Vì transpose luôn nén dữ liệu", "Vì arr.T chỉ hoạt động với list", "Vì NumPy bỏ qua dữ liệu gốc"],
+    options: [
+      "Vì transpose có thể tạo view bằng strides khác",
+      "Vì transpose luôn nén dữ liệu trước khi trả về",
+      "Vì arr.T chỉ hoạt động với Python list",
+      "Vì NumPy bỏ qua dữ liệu gốc sau transpose"
+    ],
     answer: 0,
     explanation: "Transpose thường có thể được biểu diễn bằng view với strides khác, nên không nhất thiết copy dữ liệu ngay."
   },
@@ -798,7 +883,12 @@ const NUMPY_QUESTIONS = [
     topic: "Performance & Memory",
     question: "strides của ndarray mô tả điều gì?",
     code: "import numpy as np\narr = np.arange(6).reshape(2, 3)\nprint(arr.strides)",
-    options: ["Số byte cần nhảy trong bộ nhớ để đi sang phần tử kế tiếp theo từng chiều", "Số chiều của array", "Tổng số phần tử", "Kiểu dữ liệu của array"],
+    options: [
+      "Số byte cần nhảy theo từng chiều",
+      "Số chiều hiện tại của array",
+      "Tổng số phần tử trong array",
+      "Kiểu dữ liệu của từng phần tử"
+    ],
     answer: 0,
     explanation: "strides cho biết cần nhảy bao nhiêu byte trong memory khi tăng index ở từng axis. Nó liên quan trực tiếp đến view, transpose và slicing."
   },
@@ -809,7 +899,12 @@ const NUMPY_QUESTIONS = [
     topic: "Broadcasting",
     question: "Khi dùng np.broadcast_to, điểm cần cẩn thận là gì?",
     code: "import numpy as np\narr = np.array([1, 2, 3])\nb = np.broadcast_to(arr, (2, 3))",
-    options: ["Kết quả có thể là read-only view với strides đặc biệt, không phải copy độc lập", "Kết quả luôn copy toàn bộ dữ liệu", "Kết quả luôn có dtype object", "Kết quả không thể dùng trong phép toán"],
+    options: [
+      "Kết quả có thể là read-only view đặc biệt",
+      "Kết quả luôn copy toàn bộ dữ liệu gốc",
+      "Kết quả luôn có dtype object",
+      "Kết quả không thể dùng trong phép toán"
+    ],
     answer: 0,
     explanation: "np.broadcast_to thường tạo view broadcasted, có thể read-only và không copy dữ liệu như một array độc lập thông thường."
   },
@@ -820,7 +915,12 @@ const NUMPY_QUESTIONS = [
     topic: "Vectorization",
     question: "Khi nào np.vectorize thường KHÔNG phải là giải pháp tăng tốc thực sự?",
     code: "import numpy as np",
-    options: ["Khi nó chỉ bọc một Python function và vẫn gọi function theo từng phần tử", "Khi input là ndarray", "Khi output là số", "Khi function có một tham số"],
+    options: [
+      "Khi nó chỉ bọc Python function theo từng phần tử",
+      "Khi input truyền vào là ndarray một chiều",
+      "Khi output của function là một số scalar",
+      "Khi function chỉ nhận một tham số đầu vào"
+    ],
     answer: 0,
     explanation: "np.vectorize chủ yếu tiện về cú pháp, không biến Python function thành ufunc C-level. Nó thường không nhanh như ufunc NumPy thật hoặc code vectorized đúng nghĩa."
   },
@@ -831,7 +931,12 @@ const NUMPY_QUESTIONS = [
     topic: "Linear Algebra Basics",
     question: "Vì sao không nên dùng np.linalg.inv(A) @ b để giải hệ Ax=b nếu có thể dùng solve?",
     code: "import numpy as np",
-    options: ["Tính inverse trực tiếp thường kém ổn định và tốn chi phí hơn solve", "np.linalg.inv không tồn tại", "Toán tử @ không hỗ trợ vector", "solve chỉ dùng cho ma trận đường chéo"],
+    options: [
+      "Tính inverse thường kém ổn định và tốn hơn solve",
+      "np.linalg.inv không tồn tại trong NumPy",
+      "Toán tử @ không hỗ trợ nhân với vector",
+      "solve chỉ dùng được cho ma trận đường chéo"
+    ],
     answer: 0,
     explanation: "Giải hệ bằng np.linalg.solve thường ổn định số học và hiệu quả hơn so với tính inverse rồi nhân với b."
   },
@@ -842,7 +947,12 @@ const NUMPY_QUESTIONS = [
     topic: "dtype",
     question: "Vấn đề tiềm ẩn của phép cộng integer array với giá trị vượt quá giới hạn dtype là gì?",
     code: "import numpy as np\narr = np.array([127], dtype=np.int8)\nprint((arr + 1)[0])",
-    options: ["Có thể xảy ra overflow theo giới hạn dtype", "NumPy luôn tự chuyển sang Python int vô hạn", "NumPy luôn báo lỗi trước khi overflow", "Kết quả luôn là float"],
+    options: [
+      "Có thể overflow theo giới hạn dtype",
+      "NumPy luôn chuyển sang Python int vô hạn",
+      "NumPy luôn báo lỗi trước khi overflow",
+      "Kết quả luôn được chuyển thành float64"
+    ],
     answer: 0,
     explanation: "Với integer dtype cố định như int8, phép toán có thể overflow theo giới hạn biểu diễn. Đây là điểm khác Python int thuần có độ lớn linh hoạt."
   },
@@ -853,7 +963,12 @@ const NUMPY_QUESTIONS = [
     topic: "Copy vs View",
     question: "Tại sao np.shares_memory(a, b) hữu ích khi debug?",
     code: "import numpy as np\na = np.arange(5)\nb = a[1:4]",
-    options: ["Để kiểm tra hai array có thể chia sẻ cùng vùng nhớ hay không", "Để kiểm tra hai array có cùng dtype hay không", "Để so sánh giá trị từng phần tử", "Để ép array thành contiguous"],
+    options: [
+      "Kiểm tra hai array có chia sẻ vùng nhớ không",
+      "Kiểm tra hai array có cùng dtype không",
+      "So sánh giá trị từng phần tử của hai array",
+      "Ép array thành C-contiguous trong bộ nhớ"
+    ],
     answer: 0,
     explanation: "np.shares_memory giúp kiểm tra quan hệ memory giữa các array, rất hữu ích khi cần biết thay đổi một array có thể ảnh hưởng array khác hay không."
   },
@@ -864,7 +979,12 @@ const NUMPY_QUESTIONS = [
     topic: "Performance & Memory",
     question: "Khi nào np.ascontiguousarray thường hữu ích?",
     code: "import numpy as np\narr = np.arange(6).reshape(2, 3).T",
-    options: ["Khi cần đảm bảo dữ liệu nằm liên tục theo C-order cho thư viện hoặc thao tác cần contiguous memory", "Khi muốn sort array tăng dần", "Khi muốn loại bỏ NaN", "Khi muốn chuyển int thành string"],
+    options: [
+      "Khi cần đảm bảo dữ liệu liên tục theo C-order",
+      "Khi muốn sort array tăng dần theo từng cột",
+      "Khi muốn loại bỏ toàn bộ NaN khỏi array",
+      "Khi muốn chuyển integer array thành string"
+    ],
     answer: 0,
     explanation: "Một số thao tác hoặc thư viện native cần C-contiguous memory. np.ascontiguousarray sẽ trả về array C-contiguous, copy nếu cần."
   },
@@ -875,7 +995,12 @@ const NUMPY_QUESTIONS = [
     topic: "Common Errors",
     question: "Trong tính toán số, vì sao so sánh float bằng == thường không an toàn?",
     code: "import numpy as np\na = np.array([0.1 + 0.2])\nb = np.array([0.3])",
-    options: ["Vì số thực floating-point có sai số biểu diễn, nên nên dùng np.isclose trong nhiều trường hợp", "Vì NumPy không hỗ trợ so sánh float", "Vì == luôn trả về True với float", "Vì float trong NumPy thực chất là string"],
+    options: [
+      "Vì floating-point có sai số biểu diễn",
+      "Vì NumPy không hỗ trợ so sánh float",
+      "Vì == luôn trả về True với float",
+      "Vì float trong NumPy là string"
+    ],
     answer: 0,
     explanation: "Floating-point có sai số biểu diễn nhị phân, nên các giá trị nhìn có vẻ bằng nhau có thể khác rất nhỏ. np.isclose phù hợp hơn khi so sánh gần đúng."
   }

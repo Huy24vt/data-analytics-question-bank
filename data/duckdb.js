@@ -8,9 +8,9 @@ const DUCKDB_QUESTIONS = [
     code: "",
     options: [
       "Chạy SQL analytics local trên dữ liệu dạng bảng như CSV, Parquet hoặc DataFrame",
-      "Huấn luyện deep learning model trên GPU",
-      "Thiết kế giao diện website frontend",
-      "Thay thế hoàn toàn mọi hệ thống data warehouse trong mọi trường hợp"
+      "Lưu giao dịch OLTP nhiều user đồng thời như hệ thống banking core",
+      "Huấn luyện mô hình deep learning phân tán trên nhiều GPU server",
+      "Thiết kế dashboard frontend tương tác thay thế Power BI/Tableau"
     ],
     answer: 0,
     explanation: "DuckDB là analytical SQL engine chạy local/in-process, rất phù hợp để query dữ liệu dạng bảng như CSV, Parquet hoặc DataFrame. Nó không phải framework deep learning hay công cụ frontend, và cũng không nên xem là thay thế tuyệt đối cho mọi data warehouse."
@@ -24,9 +24,9 @@ const DUCKDB_QUESTIONS = [
     code: "",
     options: [
       "DuckDB chạy trong cùng process với ứng dụng, không cần server database riêng",
-      "DuckDB bắt buộc phải chạy trên cloud server",
-      "DuckDB chỉ chạy được qua trình duyệt",
-      "DuckDB không thể dùng trong Python"
+      "DuckDB luôn chạy như một database server riêng và client phải kết nối qua network",
+      "DuckDB chỉ hoạt động khi được deploy lên cloud data warehouse",
+      "DuckDB chỉ có thể dùng qua SQL CLI, không thể nhúng vào Python script"
     ],
     answer: 0,
     explanation: "In-process nghĩa là DuckDB được nhúng trực tiếp vào ứng dụng hoặc script Python, không cần quản lý một database server client-server riêng."
@@ -40,9 +40,9 @@ const DUCKDB_QUESTIONS = [
     code: "",
     options: [
       "Analytical queries trên dữ liệu dạng cột và aggregation lớn",
-      "Ghi từng giao dịch nhỏ liên tục trong ứng dụng mobile",
-      "Thiết kế API backend",
-      "Render giao diện người dùng"
+      "Ghi từng transaction nhỏ liên tục với độ trễ thấp trong app mobile",
+      "Quản lý session state cho backend web application nhiều request nhỏ",
+      "Lưu key-value config đơn giản cho ứng dụng desktop embedded"
     ],
     answer: 0,
     explanation: "DuckDB được thiết kế cho analytical processing như scan, filter, join, aggregation trên dữ liệu bảng. SQLite thường phổ biến hơn cho transactional embedded database."
@@ -56,9 +56,9 @@ const DUCKDB_QUESTIONS = [
     code: "",
     options: [
       "Có thể dùng SQL để query trực tiếp CSV/Parquet/DataFrame mà không nhất thiết load thủ công mọi thứ vào pandas trước",
-      "Luôn nhanh hơn pandas trong mọi trường hợp",
-      "Chỉ xử lý được dữ liệu text",
-      "Không hỗ trợ join"
+      "Luôn nhanh hơn pandas cho mọi phép biến đổi dù dữ liệu nhỏ hay logic đơn giản",
+      "Thay thế hoàn toàn pandas vì DuckDB không cần object DataFrame trong Python",
+      "Chỉ phù hợp với dữ liệu text, còn dữ liệu numeric nên xử lý bằng pandas"
     ],
     answer: 0,
     explanation: "DuckDB rất tiện cho SQL analytics trên file và DataFrame. Tuy nhiên không nên khẳng định DuckDB luôn nhanh hơn pandas trong mọi tình huống vì còn phụ thuộc dữ liệu và workflow."
@@ -74,7 +74,7 @@ const DUCKDB_QUESTIONS = [
       "import duckdb",
       "import duckdb as pd",
       "from pandas import duckdb",
-      "import sql.duckdb"
+      "from sql import duckdb"
     ],
     answer: 0,
     explanation: "DuckDB thường được import trực tiếp bằng import duckdb. Sau đó có thể dùng duckdb.sql(), duckdb.connect() hoặc connection.execute()."
@@ -88,9 +88,9 @@ const DUCKDB_QUESTIONS = [
     code: "",
     options: [
       "Tạo kết nối DuckDB để chạy query",
-      "Đọc file Excel trực tiếp thành pandas",
-      "Huấn luyện model machine learning",
-      "Tạo biểu đồ"
+      "Tạo pandas DataFrame trực tiếp từ file Excel",
+      "Khởi động một PostgreSQL-compatible server trên local machine",
+      "Đăng ký tài khoản DuckDB Cloud để lưu dữ liệu online"
     ],
     answer: 0,
     explanation: "duckdb.connect() tạo connection object. Có thể dùng connection này để execute SQL, tạo table, đọc file hoặc lưu database."
@@ -104,9 +104,9 @@ const DUCKDB_QUESTIONS = [
     code: "import duckdb\ncon = duckdb.connect()",
     options: [
       "Trong memory của session hiện tại",
-      "Tự động lưu vào cloud",
-      "Tự động ghi vào file Excel",
-      "Tự động tạo PostgreSQL server"
+      "Trong file .duckdb mặc định cùng thư mục với script",
+      "Trong cache của pandas và tự động restore ở lần chạy sau",
+      "Trong một local PostgreSQL server do DuckDB tự tạo"
     ],
     answer: 0,
     explanation: "duckdb.connect() không truyền path thường tạo in-memory database. Dữ liệu sẽ không còn sau khi session/kết nối kết thúc nếu không lưu ra file."
@@ -120,7 +120,7 @@ const DUCKDB_QUESTIONS = [
     code: "",
     options: [
       "duckdb.connect(\"analytics.duckdb\")",
-      "duckdb.memory(\"analytics.duckdb\")",
+      "duckdb.connect(memory=\"analytics.duckdb\")",
       "duckdb.open_csv(\"analytics.duckdb\")",
       "duckdb.DataFrame(\"analytics.duckdb\")"
     ],
@@ -136,9 +136,9 @@ const DUCKDB_QUESTIONS = [
     code: "",
     options: [
       "SELECT * FROM sales",
-      "GET * FROM sales",
-      "READ sales ALL",
-      "SHOW ALL sales"
+      "SELECT sales.* WHERE sales",
+      "READ * FROM sales",
+      "FROM sales SELECT ALL"
     ],
     answer: 0,
     explanation: "SELECT * FROM sales là cú pháp SQL cơ bản để lấy tất cả cột từ bảng sales."
@@ -152,9 +152,9 @@ const DUCKDB_QUESTIONS = [
     code: "",
     options: [
       "Lọc các dòng thỏa điều kiện",
-      "Tạo cột mới bắt buộc",
-      "Sắp xếp kết quả",
-      "Đổi tên database"
+      "Lọc các group sau aggregation",
+      "Sắp xếp kết quả theo một hoặc nhiều cột",
+      "Đổi tên cột trong kết quả query"
     ],
     answer: 0,
     explanation: "WHERE dùng để lọc dòng, ví dụ WHERE amount > 100 chỉ giữ các dòng có amount lớn hơn 100."
@@ -168,9 +168,9 @@ const DUCKDB_QUESTIONS = [
     code: "",
     options: [
       "Khi cần tính aggregation theo từng nhóm",
-      "Khi cần xóa database",
-      "Khi cần đổi kiểu dữ liệu Python",
-      "Khi cần import thư viện"
+      "Khi cần lọc từng dòng trước khi tính toán aggregate",
+      "Khi cần sắp xếp dữ liệu giảm dần theo metric",
+      "Khi cần đổi kiểu dữ liệu của một cột trong SELECT"
     ],
     answer: 0,
     explanation: "GROUP BY gom các dòng theo key rồi tính aggregate như SUM, COUNT, AVG cho từng nhóm."
@@ -184,9 +184,9 @@ const DUCKDB_QUESTIONS = [
     code: "",
     options: [
       "Chỉ lấy tối đa 10 dòng kết quả",
-      "Chỉ lấy 10 cột đầu tiên",
-      "Tạo 10 bản copy của bảng",
-      "Chỉ query dữ liệu trong 10 giây"
+      "Chỉ giữ 10 cột đầu tiên trong kết quả",
+      "Chỉ chạy query nếu bảng có ít nhất 10 dòng",
+      "Chỉ scan 10 MB dữ liệu đầu tiên của file"
     ],
     answer: 0,
     explanation: "LIMIT giới hạn số dòng trả về. LIMIT 10 thường dùng để xem nhanh sample kết quả."
@@ -200,9 +200,9 @@ const DUCKDB_QUESTIONS = [
     code: "",
     options: [
       "Có, có thể query trực tiếp file CSV bằng các hàm đọc CSV như read_csv_auto",
-      "Không, bắt buộc phải import vào PostgreSQL trước",
-      "Không, DuckDB chỉ đọc được JSON",
-      "Không, DuckDB không hỗ trợ SQL"
+      "Có, nhưng bắt buộc phải import CSV vào pandas DataFrame trước",
+      "Không, DuckDB chỉ query được table đã lưu trong database file",
+      "Không, DuckDB chỉ hỗ trợ Parquet vì CSV không có schema"
     ],
     answer: 0,
     explanation: "Một điểm mạnh của DuckDB là có thể query trực tiếp CSV/Parquet bằng SQL mà không nhất thiết tạo table trước."
@@ -216,9 +216,9 @@ const DUCKDB_QUESTIONS = [
     code: "",
     options: [
       "Đọc CSV và tự suy luận schema cơ bản",
-      "Ghi DataFrame ra Excel",
-      "Tạo model dự báo",
-      "Xóa file CSV"
+      "Đọc Parquet và tận dụng predicate pushdown",
+      "Export query result ra CSV với schema cố định",
+      "Đăng ký pandas DataFrame thành temporary table"
     ],
     answer: 0,
     explanation: "read_csv_auto giúp đọc CSV và tự detect delimiter, header, kiểu dữ liệu ở mức tiện dụng cho nhiều workflow phân tích."
@@ -232,9 +232,9 @@ const DUCKDB_QUESTIONS = [
     code: "",
     options: [
       "Đọc hoặc query file Parquet",
-      "Đọc file ảnh",
-      "Tạo HTTP server",
-      "Huấn luyện classifier"
+      "Chuyển DuckDB table thành pandas DataFrame",
+      "Tạo persistent database file từ CSV",
+      "Tối ưu index cho transactional workload"
     ],
     answer: 0,
     explanation: "read_parquet dùng để đọc/query file Parquet, format rất phổ biến trong analytics vì lưu dạng cột và thường hiệu quả cho query."
@@ -248,9 +248,9 @@ const DUCKDB_QUESTIONS = [
     code: "import duckdb",
     options: [
       "duckdb.sql(\"SELECT 1 AS x\").df()",
-      "duckdb.run(\"SELECT 1 AS x\").to_list()",
-      "duckdb.query_df(\"SELECT 1 AS x\")",
-      "duckdb.select(\"SELECT 1 AS x\").pandas()"
+      "duckdb.sql(\"SELECT 1 AS x\").to_table()",
+      "duckdb.execute(\"SELECT 1 AS x\").to_pandas_df()",
+      "duckdb.query_df(\"SELECT 1 AS x\", output='pandas')"
     ],
     answer: 0,
     explanation: "duckdb.sql(\"SELECT 1 AS x\").df() chạy query và chuyển kết quả sang pandas DataFrame."
@@ -264,9 +264,9 @@ const DUCKDB_QUESTIONS = [
     code: "import duckdb\ncon = duckdb.connect()\nresult = con.execute(\"SELECT 1 AS x\").fetchdf()",
     options: [
       "pandas DataFrame",
-      "Python string",
-      "DuckDB database file",
-      "Matplotlib chart"
+      "DuckDB relation object",
+      "Python list of tuples",
+      "Arrow schema object"
     ],
     answer: 0,
     explanation: "fetchdf() trả kết quả query thành pandas DataFrame, tiện cho phân tích tiếp bằng pandas hoặc hiển thị trong notebook."
@@ -281,8 +281,8 @@ const DUCKDB_QUESTIONS = [
     options: [
       "duckdb.sql(\"SELECT SUM(amount) AS total FROM df\").df()",
       "duckdb.sql(\"SELECT SUM(amount) AS total FROM pandas.df\").df()",
-      "df.sql(\"SELECT SUM(amount) AS total\")",
-      "duckdb.from_csv(df)"
+      "duckdb.sql(\"SELECT SUM(amount) AS total FROM DataFrame(df)\").df()",
+      "df.sql(\"SELECT SUM(amount) AS total\").to_duckdb()"
     ],
     answer: 0,
     explanation: "DuckDB Python có thể tham chiếu DataFrame trong scope Python bằng tên biến như df trong SQL string."
@@ -296,9 +296,9 @@ const DUCKDB_QUESTIONS = [
     code: "",
     options: [
       "Đăng ký một Python object như pandas DataFrame để query bằng tên trong DuckDB",
-      "Tạo user account trong DuckDB Cloud",
-      "Đổi kiểu dữ liệu của cột",
-      "Xóa bảng khỏi database"
+      "Lưu vĩnh viễn DataFrame thành table trong DuckDB database file",
+      "Ép kiểu toàn bộ cột trong DataFrame theo schema DuckDB tự suy luận",
+      "Đăng ký user permission để nhiều connection cùng truy cập dữ liệu"
     ],
     answer: 0,
     explanation: "con.register(\"table_name\", df) cho phép DuckDB query DataFrame hoặc object tương thích bằng tên table_name."
@@ -312,9 +312,9 @@ const DUCKDB_QUESTIONS = [
     code: "",
     options: [
       "DuckDB table nằm trong DuckDB database, còn pandas DataFrame là object trong Python memory",
-      "pandas DataFrame luôn nằm trong DuckDB database",
-      "DuckDB table chỉ chứa một cột",
-      "Hai khái niệm này luôn giống nhau"
+      "DuckDB table luôn là view logic, còn pandas DataFrame luôn là table persistent",
+      "pandas DataFrame chỉ query được bằng SQL, còn DuckDB table chỉ query được bằng Python",
+      "Hai khái niệm giống nhau nếu chúng có cùng tên cột và cùng số dòng"
     ],
     answer: 0,
     explanation: "DuckDB table được quản lý bởi DuckDB connection/database. pandas DataFrame là object Python có thể được DuckDB query hoặc import khi cần."
@@ -328,9 +328,9 @@ const DUCKDB_QUESTIONS = [
     code: "",
     options: [
       "SELECT * FROM sales WHERE amount > 100",
-      "SELECT * FROM sales HAVING amount > 100 WITHOUT GROUP",
-      "FILTER sales BY amount > 100",
-      "SELECT amount > 100 FROM sales DELETE FALSE"
+      "SELECT * FROM sales HAVING amount > 100",
+      "SELECT * FROM sales GROUP BY amount > 100",
+      "SELECT amount > 100 AS sales FROM sales"
     ],
     answer: 0,
     explanation: "WHERE là mệnh đề lọc dòng trước aggregation. SELECT * FROM sales WHERE amount > 100 là cú pháp đúng."
@@ -344,9 +344,9 @@ const DUCKDB_QUESTIONS = [
     code: "",
     options: [
       "SELECT category, SUM(amount) AS total_amount FROM sales GROUP BY category",
-      "SELECT category, amount FROM sales GROUP BY amount",
-      "GROUP sales BY category SUM amount",
-      "SELECT SUM(category) FROM sales"
+      "SELECT category, SUM(amount) AS total_amount FROM sales",
+      "SELECT category, amount AS total_amount FROM sales GROUP BY category",
+      "SELECT SUM(category) AS total_category, amount FROM sales GROUP BY amount"
     ],
     answer: 0,
     explanation: "Khi select category cùng aggregate SUM(amount), cần GROUP BY category để tính tổng theo từng nhóm."
@@ -361,8 +361,8 @@ const DUCKDB_QUESTIONS = [
     options: [
       "SELECT * FROM sales ORDER BY amount DESC LIMIT 5",
       "SELECT * FROM sales ORDER BY amount ASC LIMIT 5",
-      "SELECT TOP LOWEST 5 FROM sales",
-      "SELECT * FROM sales LIMIT BY amount 5"
+      "SELECT * FROM sales LIMIT 5 ORDER BY amount DESC",
+      "SELECT TOP 5 * FROM sales WHERE amount IS MAX"
     ],
     answer: 0,
     explanation: "ORDER BY amount DESC sắp xếp amount giảm dần, LIMIT 5 lấy 5 dòng đầu sau khi sắp xếp."
@@ -376,9 +376,9 @@ const DUCKDB_QUESTIONS = [
     code: "",
     options: [
       "Những dòng có key khớp ở cả hai bảng",
-      "Tất cả dòng bảng trái dù không khớp",
-      "Chỉ dòng không khớp ở bảng trái",
-      "Tất cả dòng của cả hai bảng không cần điều kiện"
+      "Tất cả dòng bảng trái và thêm NULL nếu bảng phải không khớp",
+      "Tất cả dòng của cả hai bảng, kể cả những dòng không khớp key",
+      "Chỉ những dòng ở bảng trái không có key khớp ở bảng phải"
     ],
     answer: 0,
     explanation: "INNER JOIN chỉ giữ những record có key matching ở cả hai bảng."
@@ -392,9 +392,9 @@ const DUCKDB_QUESTIONS = [
     code: "",
     options: [
       "Tất cả dòng từ bảng trái và dữ liệu bảng phải nếu key khớp",
-      "Chỉ các dòng khớp ở cả hai bảng",
-      "Chỉ các dòng của bảng phải",
-      "Chỉ các dòng bị duplicate"
+      "Chỉ những dòng có key khớp ở cả bảng trái và bảng phải",
+      "Tất cả dòng từ bảng phải và dữ liệu bảng trái nếu key khớp",
+      "Chỉ những dòng không khớp giữa hai bảng để kiểm tra orphan records"
     ],
     answer: 0,
     explanation: "LEFT JOIN giữ toàn bộ dòng từ bảng bên trái. Nếu không có dòng khớp ở bảng phải, các cột phía phải sẽ là NULL."
@@ -408,9 +408,9 @@ const DUCKDB_QUESTIONS = [
     code: "",
     options: [
       "Tạo truy vấn trung gian giúp SQL dễ đọc và tái sử dụng trong query",
-      "Tạo database server mới",
-      "Xóa dữ liệu khỏi bảng gốc",
-      "Chỉ định file path cho Python"
+      "Tạo table vật lý persistent để dùng lại qua nhiều session",
+      "Tạo index tạm thời để mọi JOIN trong query chạy nhanh hơn",
+      "Tạo connection mới giữa DuckDB và Python runtime"
     ],
     answer: 0,
     explanation: "CTE dùng WITH name AS (...) để đặt tên cho một subquery, giúp tách logic phức tạp thành các bước rõ ràng."
@@ -424,9 +424,9 @@ const DUCKDB_QUESTIONS = [
     code: "",
     options: [
       "Window function tính toán theo nhóm nhưng vẫn có thể giữ số dòng gốc",
-      "Window function luôn xóa hết cột",
-      "GROUP BY luôn giữ nguyên số dòng gốc",
-      "Window function chỉ dùng để đọc CSV"
+      "Window function luôn giảm dữ liệu xuống một dòng cho mỗi group",
+      "GROUP BY luôn giữ nguyên số dòng gốc và chỉ thêm cột aggregate",
+      "Window function chỉ dùng để lọc dữ liệu trước aggregation"
     ],
     answer: 0,
     explanation: "GROUP BY thường giảm số dòng thành cấp group. Window function như SUM(amount) OVER (PARTITION BY category) có thể trả kết quả trên từng dòng."
@@ -440,9 +440,9 @@ const DUCKDB_QUESTIONS = [
     code: "",
     options: [
       "ROW_NUMBER() OVER (PARTITION BY user_id ORDER BY date)",
-      "ROW_NUMBER(user_id ORDER date)",
-      "COUNT_ROW() GROUP user_id ORDER date",
-      "RANK BY user_id DATE"
+      "ROW_NUMBER() GROUP BY user_id ORDER BY date",
+      "COUNT(*) OVER user_id SORT date",
+      "RANK(user_id, date) AS row_number"
     ],
     answer: 0,
     explanation: "ROW_NUMBER() OVER (PARTITION BY user_id ORDER BY date) đánh số thứ tự các dòng trong từng user_id theo date."
@@ -456,8 +456,8 @@ const DUCKDB_QUESTIONS = [
     code: "",
     options: [
       "EXTRACT(MONTH FROM date)",
-      "MONTH_PART(date, 'name')",
-      "GET_MONTH_NAME_ONLY(date)",
+      "DATE_PART_NAME('month', date)",
+      "MONTH(date, format='number')",
       "date.month.python()"
     ],
     answer: 0,
@@ -472,9 +472,9 @@ const DUCKDB_QUESTIONS = [
     code: "",
     options: [
       "SELECT * FROM read_csv_auto('data.csv')",
-      "SELECT * FROM data.csv",
-      "READ CSV data.csv SELECT *",
-      "SELECT read_csv_auto FROM 'data.csv'"
+      "SELECT * FROM 'data.csv' USING CSV_AUTO",
+      "READ_CSV_AUTO 'data.csv' SELECT *",
+      "SELECT read_csv_auto FROM data.csv"
     ],
     answer: 0,
     explanation: "DuckDB cho phép dùng read_csv_auto('data.csv') như một table function trong FROM."
@@ -488,9 +488,9 @@ const DUCKDB_QUESTIONS = [
     code: "",
     options: [
       "SELECT * FROM read_parquet('data.parquet')",
-      "SELECT * FROM parquet.open('data.parquet')",
-      "READ PARQUET data.parquet",
-      "SELECT parquet FROM 'data.parquet'"
+      "SELECT * FROM parquet_scan('data.parquet') USING READ",
+      "READ PARQUET 'data.parquet' SELECT *",
+      "SELECT parquet.* FROM 'data.parquet'"
     ],
     answer: 0,
     explanation: "read_parquet('data.parquet') có thể được dùng trong FROM để query trực tiếp file Parquet."
@@ -504,9 +504,9 @@ const DUCKDB_QUESTIONS = [
     code: "",
     options: [
       "Query nhiều file Parquet cùng schema trong một thư mục",
-      "Tạo một file Parquet mới",
-      "Xóa toàn bộ file trong thư mục",
-      "Đổi tên tất cả cột"
+      "Tạo một file Parquet mới từ toàn bộ dữ liệu trong thư mục",
+      "Xóa các file Parquet không khớp schema trước khi query",
+      "Đổi tên tất cả cột trong nhiều file Parquet cùng lúc"
     ],
     answer: 0,
     explanation: "Glob pattern giúp query nhiều file cùng lúc, rất hữu ích cho file-based analytics với nhiều partition hoặc nhiều ngày dữ liệu."
@@ -520,9 +520,9 @@ const DUCKDB_QUESTIONS = [
     code: "",
     options: [
       "Tạo bảng mới từ kết quả của một truy vấn",
-      "Xóa bảng sales_summary",
-      "Chỉ tạo alias tạm thời trong SELECT",
-      "Tạo Python DataFrame"
+      "Tạo view logic mà không materialize dữ liệu",
+      "Tạo temporary relation chỉ tồn tại trong một câu SELECT",
+      "Tạo pandas DataFrame trực tiếp trong Python memory"
     ],
     answer: 0,
     explanation: "CREATE TABLE AS SELECT materialize kết quả truy vấn thành một bảng mới trong DuckDB database."
@@ -536,9 +536,9 @@ const DUCKDB_QUESTIONS = [
     code: "",
     options: [
       "COPY (SELECT * FROM sales) TO 'sales.parquet' (FORMAT PARQUET)",
-      "SAVE SELECT * FROM sales AS 'sales.parquet'",
-      "WRITE PARQUET sales FROM SELECT *",
-      "EXPORT sales FORMAT CSV ONLY"
+      "CREATE PARQUET 'sales.parquet' AS SELECT * FROM sales",
+      "EXPORT PARQUET FROM sales TO 'sales.parquet'",
+      "SELECT * FROM sales WRITE FORMAT PARQUET TO 'sales.parquet'"
     ],
     answer: 0,
     explanation: "COPY (SELECT ...) TO 'file.parquet' (FORMAT PARQUET) là pattern phổ biến để export kết quả ra Parquet."
@@ -552,9 +552,9 @@ const DUCKDB_QUESTIONS = [
     code: "",
     options: [
       "Chỉ tồn tại trong session/connection hiện tại",
-      "Luôn được lưu vĩnh viễn vào cloud",
-      "Không thể query bằng SQL",
-      "Chỉ chứa một dòng"
+      "Luôn được lưu vào database file và tồn tại qua nhiều session",
+      "Không thể query bằng SQL sau khi được tạo",
+      "Chỉ dùng được để đọc file CSV, không dùng được cho query result"
     ],
     answer: 0,
     explanation: "Temporary table thường dùng cho dữ liệu trung gian trong session. Khi session/kết nối kết thúc, temporary table không còn."
@@ -569,8 +569,8 @@ const DUCKDB_QUESTIONS = [
     options: [
       "Một truy vấn được lưu tên để query lại như table logic",
       "Một bản copy vật lý bắt buộc của toàn bộ dữ liệu",
-      "Một file ảnh của bảng",
-      "Một Python list"
+      "Một temporary table chỉ tồn tại trong đúng một statement",
+      "Một pandas DataFrame được lưu sẵn trong Python memory"
     ],
     answer: 0,
     explanation: "View lưu định nghĩa truy vấn, giúp tái sử dụng logic SQL. View thường không materialize dữ liệu như table vật lý."
@@ -584,9 +584,9 @@ const DUCKDB_QUESTIONS = [
     code: "",
     options: [
       "Chuyển amount sang kiểu số thực DOUBLE",
-      "Sắp xếp amount giảm dần",
-      "Tính tổng amount",
-      "Đổi tên cột amount thành DOUBLE"
+      "Tính tổng amount và trả về kiểu DOUBLE",
+      "Đổi tên cột amount thành DOUBLE",
+      "Lọc các dòng có amount là số thực"
     ],
     answer: 0,
     explanation: "CAST dùng để chuyển kiểu dữ liệu. CAST(amount AS DOUBLE) chuyển giá trị amount sang kiểu DOUBLE nếu có thể."
@@ -600,9 +600,9 @@ const DUCKDB_QUESTIONS = [
     code: "",
     options: [
       "Trả về value nếu không NULL, ngược lại trả về 0",
-      "Chỉ giữ các dòng NULL",
-      "Xóa cột value",
-      "Tính trung bình value"
+      "Chỉ giữ các dòng có value là NULL",
+      "Đổi mọi giá trị 0 thành NULL trong cột value",
+      "Tính trung bình value và thay NULL bằng trung bình đó"
     ],
     answer: 0,
     explanation: "COALESCE trả về giá trị đầu tiên không NULL trong danh sách. COALESCE(value, 0) thường dùng để thay NULL bằng 0."
@@ -616,9 +616,9 @@ const DUCKDB_QUESTIONS = [
     code: "",
     options: [
       "Không thể select cột không aggregate cùng aggregate nếu không group phù hợp",
-      "SUM không dùng được với số",
-      "category bắt buộc là kiểu boolean",
-      "DuckDB không hỗ trợ GROUP BY"
+      "SUM không thể dùng với cột amount nếu amount là kiểu numeric",
+      "category bắt buộc phải được cast sang DOUBLE trước khi SELECT",
+      "DuckDB không hỗ trợ aggregate function trong SELECT statement"
     ],
     answer: 0,
     explanation: "Khi dùng aggregate, các cột không aggregate trong SELECT thường phải xuất hiện trong GROUP BY để xác định cấp độ kết quả."
@@ -632,9 +632,9 @@ const DUCKDB_QUESTIONS = [
     code: "",
     options: [
       "Query trực tiếp CSV/Parquet, filter/select sớm, materialize kết quả cần thiết ra table hoặc Parquet",
-      "Luôn convert mọi thứ thành Excel trước",
-      "Chỉ dùng Python loop để đọc từng dòng",
-      "Không bao giờ dùng SQL aggregation"
+      "Convert toàn bộ file sang Excel trước rồi dùng DuckDB như một trình đọc Excel",
+      "Load mọi file vào pandas trước, loop từng dòng, sau đó mới dùng SQL để tổng hợp",
+      "Dùng SELECT * cho mọi bước để tránh bỏ sót cột trong pipeline phân tích"
     ],
     answer: 0,
     explanation: "DuckDB phù hợp cho local analytics trên file. Nên tận dụng SQL để filter/select/aggregate và chỉ materialize kết quả cần dùng."
@@ -648,9 +648,9 @@ const DUCKDB_QUESTIONS = [
     code: "",
     options: [
       "Xây và chain các thao tác query theo object relation thay vì chỉ viết SQL string",
-      "Tạo deep learning model",
-      "Tự động upload dữ liệu lên cloud",
-      "Thay thế hoàn toàn SQL engine"
+      "Tự động chuyển mọi SQL query thành pandas method chain",
+      "Tạo persistent table trong database mà không cần connection",
+      "Thay thế SQL engine bằng Python object thuần trong mọi trường hợp"
     ],
     answer: 0,
     explanation: "Relation API cho phép thao tác kiểu object/chaining với relation, ví dụ filter, project, aggregate, sau đó lấy kết quả khi cần."
@@ -664,9 +664,9 @@ const DUCKDB_QUESTIONS = [
     code: "",
     options: [
       "Đẩy điều kiện lọc xuống gần bước đọc file để giảm dữ liệu cần scan khi có thể",
-      "Đẩy ORDER BY lên đầu query",
-      "Chuyển mọi NULL thành 0",
-      "Ghi kết quả ra CSV tự động"
+      "Đẩy ORDER BY lên trước SELECT để kết quả luôn được sort sớm hơn",
+      "Đẩy GROUP BY xuống pandas để giảm tải cho DuckDB SQL engine",
+      "Đẩy NULL handling sang bước export để tránh thay đổi dữ liệu raw"
     ],
     answer: 0,
     explanation: "Predicate pushdown giúp engine dùng điều kiện WHERE sớm hơn, có thể giảm lượng dữ liệu đọc/xử lý, đặc biệt với format hỗ trợ metadata như Parquet."
@@ -680,9 +680,9 @@ const DUCKDB_QUESTIONS = [
     code: "",
     options: [
       "Chỉ đọc hoặc xử lý các cột cần thiết cho query",
-      "Chỉ giữ lại các dòng duplicate",
-      "Tự động tạo index cho mọi cột",
-      "Tự động chuyển CSV thành dashboard"
+      "Chỉ đọc các dòng thỏa điều kiện WHERE trước khi scan file",
+      "Tự động tạo index trên các cột được dùng trong JOIN",
+      "Tự động materialize view thành table để query nhanh hơn"
     ],
     answer: 0,
     explanation: "Projection pushdown giúp tránh đọc/xử lý các cột không cần dùng, rất hữu ích khi file có nhiều cột nhưng query chỉ cần một số cột."
@@ -696,9 +696,9 @@ const DUCKDB_QUESTIONS = [
     code: "",
     options: [
       "Hiệu quả khi scan một số cột và tính aggregation trên nhiều dòng",
-      "Luôn nhanh nhất cho mọi giao dịch ghi từng dòng",
-      "Không thể dùng với Parquet",
-      "Chỉ dùng cho dữ liệu ảnh"
+      "Tối ưu nhất cho ghi từng transaction nhỏ với nhiều update liên tục",
+      "Bắt buộc phải dùng với CSV vì CSV đã là format columnar",
+      "Chỉ phù hợp cho xử lý dữ liệu ảnh hoặc tensor nhiều chiều"
     ],
     answer: 0,
     explanation: "Analytics query thường đọc một số cột trên nhiều dòng. Columnar execution và columnar storage như Parquet giúp các tác vụ này hiệu quả hơn."
@@ -712,9 +712,9 @@ const DUCKDB_QUESTIONS = [
     code: "",
     options: [
       "DuckDB có nhiều tối ưu cho analytics, nhưng hiệu năng vẫn phụ thuộc dữ liệu, query, file format và cách dùng",
-      "DuckDB luôn nhanh hơn mọi database trong mọi trường hợp",
-      "DuckDB không hỗ trợ query song song",
-      "DuckDB chỉ nhanh khi dữ liệu có đúng 1 dòng"
+      "DuckDB luôn nhanh hơn pandas, SQLite và mọi data warehouse trong mọi workload",
+      "DuckDB chỉ nhanh khi dữ liệu đã được import thành persistent table trước",
+      "DuckDB không có optimizer nên hiệu năng chủ yếu phụ thuộc vào Python loop"
     ],
     answer: 0,
     explanation: "DuckDB thường mạnh cho analytical workload nhờ vectorized/columnar execution và tối ưu query, nhưng không nên khẳng định tuyệt đối cho mọi trường hợp."
@@ -728,9 +728,9 @@ const DUCKDB_QUESTIONS = [
     code: "",
     options: [
       "Có thể query trực tiếp file Parquet, tận dụng columnar format và một số tối ưu như pushdown",
-      "Parquet bắt buộc phải convert sang Excel trước",
-      "DuckDB chỉ đọc được dữ liệu trong database server",
-      "DuckDB không hỗ trợ SQL trên file"
+      "Parquet bắt buộc phải được convert sang table DuckDB trước khi query bằng SQL",
+      "DuckDB chỉ đọc được Parquet nếu file đã được upload vào cloud warehouse",
+      "DuckDB tránh dùng SQL trên Parquet và chuyển toàn bộ xử lý sang Python"
     ],
     answer: 0,
     explanation: "DuckDB có thể query Parquet trực tiếp bằng SQL, phù hợp để phân tích dữ liệu lưu dạng file mà không cần dựng server database riêng."
@@ -744,9 +744,9 @@ const DUCKDB_QUESTIONS = [
     code: "",
     options: [
       "Kiểu dữ liệu có thể bị suy luận chưa đúng nếu sample không đại diện hoặc dữ liệu không nhất quán",
-      "DuckDB sẽ không đọc được bất kỳ CSV nào",
-      "Tất cả cột luôn thành kiểu đúng tuyệt đối",
-      "Schema inference chỉ dùng cho Parquet"
+      "CSV sẽ luôn bị đọc thành một cột duy nhất nếu không tự khai báo schema",
+      "DuckDB sẽ tự động bỏ qua toàn bộ dòng có giá trị thiếu trong CSV",
+      "Schema inference chỉ áp dụng cho Parquet, không áp dụng cho CSV"
     ],
     answer: 0,
     explanation: "CSV không lưu schema rõ như Parquet. Auto inference tiện lợi nhưng cần kiểm tra lại dtype, nhất là cột date, id, amount hoặc dữ liệu lẫn kiểu."
@@ -760,9 +760,9 @@ const DUCKDB_QUESTIONS = [
     code: "",
     options: [
       "Vì kiểu dữ liệu ảnh hưởng đến tính toán, join, filter và kết quả aggregation",
-      "Vì DuckDB không có kiểu dữ liệu",
-      "Vì mọi cột bắt buộc phải là VARCHAR",
-      "Vì kiểm tra dtype sẽ tự động sửa mọi lỗi logic"
+      "Vì DuckDB luôn đọc mọi cột thành VARCHAR nếu không tạo table trước",
+      "Vì data type chỉ ảnh hưởng đến cách hiển thị, không ảnh hưởng kết quả SQL",
+      "Vì kiểm tra dtype sẽ tự động sửa các lỗi nghiệp vụ trong dữ liệu"
     ],
     answer: 0,
     explanation: "Nếu date bị đọc thành string hoặc amount bị đọc sai kiểu, query có thể sai hoặc cần cast trước khi phân tích."
@@ -776,9 +776,9 @@ const DUCKDB_QUESTIONS = [
     code: "",
     options: [
       "Tên DataFrame không tồn tại trong scope hiện tại hoặc chưa được register",
-      "DuckDB không bao giờ query được pandas DataFrame",
-      "pandas DataFrame bắt buộc phải có index datetime",
-      "DuckDB chỉ query DataFrame có đúng một cột"
+      "DataFrame phải được lưu thành file Parquet trước khi DuckDB query được",
+      "DataFrame bắt buộc phải có index datetime để DuckDB resolve tên biến",
+      "DuckDB chỉ query được DataFrame nếu mọi cột đều là numeric"
     ],
     answer: 0,
     explanation: "DuckDB Python có thể resolve DataFrame trong scope, nhưng nếu tên không tồn tại, sai scope hoặc chưa register với connection phù hợp thì query sẽ lỗi."
@@ -792,9 +792,9 @@ const DUCKDB_QUESTIONS = [
     code: "",
     options: [
       "Khi muốn giữ table/view qua nhiều session hoặc chia sẻ một file database local",
-      "Khi chỉ cần chạy một query tạm thời duy nhất và không cần lưu gì",
-      "Khi không muốn dùng SQL",
-      "Khi muốn DuckDB tự động chạy như web server"
+      "Khi chỉ chạy một query ad-hoc và không cần lưu bất kỳ kết quả trung gian nào",
+      "Khi muốn tránh SQL và chỉ dùng pandas API trong toàn bộ workflow",
+      "Khi muốn DuckDB tự hoạt động như một web server cho nhiều user truy cập"
     ],
     answer: 0,
     explanation: "Persistent database file hữu ích khi cần lưu table, view hoặc kết quả trung gian để dùng lại sau khi đóng session."
@@ -808,9 +808,9 @@ const DUCKDB_QUESTIONS = [
     code: "",
     options: [
       "Lưu kết quả trung gian chỉ cần trong session hiện tại",
-      "Lưu dữ liệu vĩnh viễn cho nhiều tháng",
-      "Thay thế mọi file Parquet",
-      "Tạo user permission trên cloud"
+      "Lưu dataset curated để các session sau có thể dùng lại lâu dài",
+      "Thay thế file Parquet vì temporary table có khả năng nén tốt hơn",
+      "Chia sẻ dữ liệu giữa nhiều user thông qua database server production"
     ],
     answer: 0,
     explanation: "Temporary table phù hợp cho bước trung gian trong một script hoặc notebook, không cần tồn tại lâu dài."
@@ -824,9 +824,9 @@ const DUCKDB_QUESTIONS = [
     code: "",
     options: [
       "Khi muốn tái sử dụng logic query mà không cần materialize dữ liệu ngay",
-      "Khi muốn nhân đôi toàn bộ dữ liệu bắt buộc",
-      "Khi muốn xóa query gốc",
-      "Khi dữ liệu không có schema"
+      "Khi muốn tạo snapshot vật lý để kết quả không thay đổi theo source",
+      "Khi muốn tăng dung lượng lưu trữ để audit mọi bản copy trung gian",
+      "Khi dữ liệu không có schema nên không thể tạo table persistent"
     ],
     answer: 0,
     explanation: "View lưu logic truy vấn, giúp code SQL rõ ràng và tái sử dụng mà không tạo thêm bản copy vật lý của dữ liệu."
@@ -840,9 +840,9 @@ const DUCKDB_QUESTIONS = [
     code: "",
     options: [
       "COPY thường dùng để import/export dữ liệu hàng loạt giữa table/query và file, còn INSERT thêm dòng vào table",
-      "COPY chỉ dùng để đổi tên cột",
-      "INSERT chỉ dùng để export Parquet",
-      "COPY không liên quan đến file"
+      "COPY dùng để thêm từng dòng vào table, còn INSERT chỉ dùng để export dữ liệu ra file",
+      "COPY chỉ đổi tên cột trong table, còn INSERT thay đổi schema của database",
+      "COPY tạo view logic, còn INSERT luôn tạo temporary table trong session hiện tại"
     ],
     answer: 0,
     explanation: "INSERT thường thêm record vào table. COPY thường tiện cho bulk load/export dữ liệu từ hoặc ra CSV/Parquet."
@@ -856,9 +856,9 @@ const DUCKDB_QUESTIONS = [
     code: "",
     options: [
       "Một SQL engine local để query, join, aggregate file và DataFrame nhanh gọn trong notebook/script",
-      "Một hệ thống orchestration thay thế Airflow",
-      "Một BI dashboard frontend",
-      "Một hệ thống deep learning distributed"
+      "Một orchestration tool để schedule DAG thay thế Airflow hoặc Prefect",
+      "Một BI dashboard frontend để stakeholder tự kéo thả chart",
+      "Một distributed training engine cho machine learning model lớn"
     ],
     answer: 0,
     explanation: "DuckDB rất phù hợp làm analytical SQL engine trong workflow local, nhất là khi làm việc với CSV, Parquet và DataFrame."
@@ -872,9 +872,9 @@ const DUCKDB_QUESTIONS = [
     code: "",
     options: [
       "Viết SQL rõ ràng, kiểm tra schema, filter/select sớm, và lưu output sạch ra Parquet/table khi cần",
-      "Luôn dùng SELECT * cho mọi bước production",
-      "Không cần kiểm tra NULL hoặc data type",
-      "Chỉ query từng dòng bằng Python loop"
+      "Dùng SELECT * ở mọi bước để tránh phải cập nhật query khi source thêm cột mới",
+      "Bỏ qua kiểm tra NULL và data type vì DuckDB tự đảm bảo kết quả aggregation đúng",
+      "Query từng dòng bằng Python loop rồi mới đưa kết quả cuối vào DuckDB để tổng hợp"
     ],
     answer: 0,
     explanation: "DuckDB phát huy tốt khi dùng SQL rõ ràng, kiểm tra dtype/schema, giảm dữ liệu sớm bằng filter/select và materialize kết quả đáng tin cậy."
@@ -888,9 +888,9 @@ const DUCKDB_QUESTIONS = [
     code: "",
     options: [
       "Vì DuckDB mạnh cho local/in-process analytics, nhưng workload nhiều user đồng thời, governance và serving production lớn có thể cần hệ thống client-server chuyên biệt",
-      "Vì DuckDB không chạy được SQL",
-      "Vì DuckDB chỉ đọc được file text nhỏ",
-      "Vì DuckDB không thể dùng trong Python"
+      "Vì DuckDB chỉ hỗ trợ SQL cơ bản và không thể query file Parquet hoặc pandas DataFrame",
+      "Vì DuckDB không thể lưu dữ liệu persistent qua nhiều session dù có database file",
+      "Vì DuckDB chỉ dùng cho dữ liệu nhỏ hơn vài dòng và không hỗ trợ aggregation"
     ],
     answer: 0,
     explanation: "DuckDB rất mạnh cho embedded/local analytics, nhưng không phải giải pháp tuyệt đối cho mọi nhu cầu data warehouse như multi-user concurrency, governance, access control hoặc production serving lớn."
@@ -904,9 +904,9 @@ const DUCKDB_QUESTIONS = [
     code: "",
     options: [
       "Khi cần phân tích nhanh dữ liệu file, không cần lưu persistent table hoặc chỉ cần một pipeline đọc-lọc-aggregate",
-      "Khi cần update từng dòng liên tục trong nhiều tháng",
-      "Khi file không có schema và không thể đọc",
-      "Khi muốn tránh SQL hoàn toàn"
+      "Khi cần nhiều user cùng update từng dòng dữ liệu liên tục trong nhiều tháng",
+      "Khi cần enforce permission phức tạp, audit access và governance ở cấp enterprise",
+      "Khi muốn loại bỏ hoàn toàn SQL và chỉ dùng Python object để xử lý dữ liệu"
     ],
     answer: 0,
     explanation: "Query file trực tiếp giúp exploratory analysis và file-based pipeline gọn hơn. Nếu cần dùng lại nhiều lần hoặc quản lý dữ liệu lâu dài, có thể tạo table persistent."
@@ -920,9 +920,9 @@ const DUCKDB_QUESTIONS = [
     code: "",
     options: [
       "Chỉ select cột cần thiết, filter sớm bằng WHERE, và để DuckDB đọc trực tiếp Parquet/glob khi phù hợp",
-      "SELECT * mọi cột rồi lọc ở Python sau",
-      "Convert toàn bộ dữ liệu sang list Python trước khi lọc",
-      "Luôn ghi ra CSV rồi mới query"
+      "SELECT * toàn bộ dữ liệu vào pandas trước rồi mới lọc để tránh phụ thuộc optimizer",
+      "Convert toàn bộ Parquet sang CSV vì CSV dễ đọc tuần tự hơn cho analytics query",
+      "Materialize mọi bước trung gian thành table trước khi áp dụng bất kỳ filter nào"
     ],
     answer: 0,
     explanation: "Chọn cột cần thiết và filter sớm giúp tận dụng các tối ưu như projection/predicate pushdown khi có thể, giảm I/O và dữ liệu cần xử lý."
@@ -936,9 +936,9 @@ const DUCKDB_QUESTIONS = [
     code: "",
     options: [
       "Vì đọc/xử lý nhiều cột không cần thiết, làm query nặng hơn và khó kiểm soát schema",
-      "Vì SELECT * luôn sai cú pháp",
-      "Vì SELECT * chỉ trả về một cột",
-      "Vì SELECT * tự động xóa dữ liệu"
+      "Vì SELECT * luôn sai cú pháp khi query file Parquet bằng DuckDB",
+      "Vì SELECT * chỉ trả về metadata của bảng thay vì dữ liệu thật",
+      "Vì SELECT * tự động materialize mọi view thành persistent table"
     ],
     answer: 0,
     explanation: "SELECT * tiện khi explore, nhưng trong pipeline lớn nên chọn cột cần thiết để giảm I/O, tránh schema không mong muốn và giúp logic rõ hơn."
@@ -952,9 +952,9 @@ const DUCKDB_QUESTIONS = [
     code: "",
     options: [
       "Đọc/query raw file, chuẩn hóa schema/type, validate logic, rồi COPY kết quả sạch ra Parquet",
-      "Đọc CSV bằng Python loop từng dòng và không kiểm tra schema",
-      "Chỉ đổi tên file CSV thành .parquet",
-      "Fit machine learning model trước khi kiểm tra dữ liệu"
+      "Đổi extension file từ .csv sang .parquet nếu cột đã đúng format trong source",
+      "Load CSV vào pandas bằng Python loop từng dòng, bỏ qua schema rồi export ngay",
+      "Fit machine learning model trước để phát hiện dtype sai thay cho validation rule"
     ],
     answer: 0,
     explanation: "Pipeline tốt nên đọc raw, chuẩn hóa dtype/schema, xử lý null/cast, validate row count/logic, sau đó export curated data ra Parquet hoặc table để dùng tiếp."

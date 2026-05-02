@@ -7,10 +7,10 @@ const TIME_SERIES_QUESTIONS = [
     question: "Điểm khác biệt quan trọng nhất của dữ liệu time series so với dữ liệu bảng thông thường là gì?",
     code: "",
     options: [
-      "Luôn có đúng một cột số",
+      "Dữ liệu time series luôn chỉ có đúng một cột số",
       "Thứ tự thời gian của quan sát có ý nghĩa phân tích",
-      "Không bao giờ có missing value",
-      "Không thể vẽ biểu đồ"
+      "Dữ liệu time series không bao giờ có missing value",
+      "Dữ liệu time series không thể trực quan hóa bằng chart"
     ],
     answer: 1,
     explanation: "Trong time series, thứ tự thời gian rất quan trọng vì giá trị hiện tại thường liên quan đến quá khứ. Vì vậy không nên xử lý như các quan sát độc lập hoàn toàn nếu bài toán phụ thuộc thời gian."
@@ -39,10 +39,10 @@ const TIME_SERIES_QUESTIONS = [
     question: "Timestamp khác date ở điểm nào?",
     code: "",
     options: [
-      "Timestamp thường có cả ngày và thời gian cụ thể, còn date thường chỉ biểu diễn ngày",
-      "Timestamp chỉ lưu được năm",
-      "Date luôn có timezone còn timestamp thì không",
-      "Hai khái niệm này luôn giống hệt nhau"
+      "Timestamp thường có ngày và giờ; date thường chỉ có ngày",
+      "Timestamp chỉ lưu được phần năm của một mốc thời gian",
+      "Date luôn có timezone còn timestamp thì không có",
+      "Timestamp và date luôn giống nhau trong mọi hệ thống"
     ],
     answer: 0,
     explanation: "Timestamp thường biểu diễn một thời điểm cụ thể như 2026-04-27 10:30:00, còn date thường chỉ là ngày như 2026-04-27."
@@ -55,10 +55,10 @@ const TIME_SERIES_QUESTIONS = [
     question: "Trong pandas time series, việc đặt cột datetime làm index thường hữu ích vì lý do nào?",
     code: "",
     options: [
-      "Giúp thao tác theo thời gian như resample, rolling theo thời gian và slicing theo date thuận tiện hơn",
-      "Tự động làm dữ liệu không còn missing value",
-      "Tự động tạo model forecasting",
-      "Bắt buộc mọi DataFrame phải có datetime index"
+      "Giúp slicing, resample và rolling theo thời gian thuận tiện hơn",
+      "Tự động xử lý mọi missing value trong dữ liệu",
+      "Tự động huấn luyện model forecasting phù hợp",
+      "Bắt buộc vì mọi DataFrame đều cần datetime index"
     ],
     answer: 0,
     explanation: "DatetimeIndex giúp pandas hỗ trợ nhiều thao tác time series thuận tiện như resample theo ngày/tháng, lọc theo khoảng thời gian và rolling theo thời gian."
@@ -71,10 +71,10 @@ const TIME_SERIES_QUESTIONS = [
     question: "Vì sao nên sort dữ liệu theo thời gian trước khi tạo lag hoặc rolling feature?",
     code: "",
     options: [
-      "Vì lag và rolling phụ thuộc vào thứ tự quan sát theo thời gian",
-      "Vì sort giúp xóa toàn bộ outlier",
-      "Vì rolling chỉ chạy được khi target là string",
-      "Vì sort tự động chia train/test"
+      "Vì lag và rolling phụ thuộc vào đúng thứ tự thời gian",
+      "Vì sort theo thời gian sẽ tự động xóa toàn bộ outlier",
+      "Vì rolling chỉ chạy được khi target là kiểu string",
+      "Vì sort theo thời gian sẽ tự động chia train/test"
     ],
     answer: 0,
     explanation: "Lag và rolling cần đúng thứ tự thời gian. Nếu dữ liệu chưa sort, giá trị quá khứ có thể bị lấy sai, dẫn đến feature sai hoặc leakage."
@@ -87,10 +87,10 @@ const TIME_SERIES_QUESTIONS = [
     question: "Time granularity trong time series nghĩa là gì?",
     code: "",
     options: [
-      "Mức độ chi tiết của thời gian như giờ, ngày, tuần, tháng",
-      "Số lượng feature numeric",
-      "Độ lớn của model",
-      "Số dòng bị trùng lặp"
+      "Mức chi tiết thời gian như giờ, ngày, tuần hoặc tháng",
+      "Số lượng feature numeric được dùng trong mô hình",
+      "Độ lớn của model forecasting sau khi training",
+      "Số dòng dữ liệu bị trùng lặp theo khóa chính"
     ],
     answer: 0,
     explanation: "Granularity là mức thời gian mà dữ liệu được ghi nhận hoặc phân tích, ví dụ hourly, daily, weekly hoặc monthly."
@@ -103,10 +103,10 @@ const TIME_SERIES_QUESTIONS = [
     question: "Frequency của time series mô tả điều gì?",
     code: "",
     options: [
-      "Khoảng cách thời gian giữa các quan sát, ví dụ mỗi ngày hoặc mỗi giờ",
-      "Tần suất xuất hiện của một category",
-      "Số lần model được train",
-      "Số lượng cột trong DataFrame"
+      "Khoảng cách thời gian giữa các quan sát liên tiếp",
+      "Số lần một category xuất hiện trong dữ liệu",
+      "Số lần model được train lại trong pipeline",
+      "Số lượng cột có trong một pandas DataFrame"
     ],
     answer: 0,
     explanation: "Frequency mô tả chuỗi được ghi nhận theo nhịp nào, ví dụ daily, weekly, monthly. Hiểu frequency giúp chọn resampling và forecast horizon phù hợp."
@@ -119,10 +119,10 @@ const TIME_SERIES_QUESTIONS = [
     question: "Missing date trong time series nghĩa là gì?",
     code: "",
     options: [
-      "Một timestamp/ngày kỳ vọng xuất hiện nhưng không có row trong dữ liệu",
-      "Một row có giá trị value bằng 0",
-      "Một model không dự đoán được",
-      "Một cột không phải datetime"
+      "Một timestamp kỳ vọng có trong chuỗi nhưng bị thiếu row",
+      "Một dòng dữ liệu có giá trị value bằng đúng 0",
+      "Một model forecasting không sinh được dự báo",
+      "Một cột dữ liệu không được parse thành datetime"
     ],
     answer: 0,
     explanation: "Missing date là khoảng thời gian bị thiếu row, ví dụ chuỗi daily thiếu ngày 2026-04-10. Nó khác với missing value trong một row đã tồn tại."
@@ -135,10 +135,10 @@ const TIME_SERIES_QUESTIONS = [
     question: "Missing value trong time series khác missing date như thế nào?",
     code: "",
     options: [
-      "Missing value là timestamp có row nhưng cột value bị thiếu; missing date là thiếu hẳn timestamp/row",
-      "Missing value luôn là giá trị 0",
-      "Missing date chỉ xảy ra với dữ liệu không có thời gian",
-      "Hai khái niệm này luôn giống nhau"
+      "Missing value có row nhưng value thiếu; missing date thiếu hẳn timestamp",
+      "Missing value luôn có nghĩa là value bằng đúng 0",
+      "Missing date chỉ xảy ra với dữ liệu không có timestamp",
+      "Missing value và missing date luôn là cùng một lỗi"
     ],
     answer: 0,
     explanation: "Một timestamp có row nhưng value là NaN là missing value. Nếu timestamp kỳ vọng không có row, đó là missing date hoặc time gap."
@@ -151,10 +151,10 @@ const TIME_SERIES_QUESTIONS = [
     question: "Resampling trong time series thường dùng để làm gì?",
     code: "",
     options: [
-      "Đổi tần suất dữ liệu theo thời gian, ví dụ từ daily sang monthly",
-      "Tạo model classification",
-      "Xóa tất cả cột datetime",
-      "Tự động phát hiện outlier"
+      "Đổi tần suất dữ liệu, ví dụ từ daily sang monthly",
+      "Tạo model classification từ dữ liệu không có thời gian",
+      "Xóa toàn bộ cột datetime ra khỏi DataFrame",
+      "Tự động phát hiện outlier trong mọi chuỗi"
     ],
     answer: 0,
     explanation: "Resampling dùng để chuyển dữ liệu sang tần suất khác, ví dụ tổng hợp dữ liệu ngày thành tháng hoặc tạo dữ liệu theo giờ từ dữ liệu ngày."
@@ -167,10 +167,10 @@ const TIME_SERIES_QUESTIONS = [
     question: "Downsampling là gì?",
     code: "",
     options: [
-      "Chuyển dữ liệu từ tần suất cao xuống tần suất thấp hơn, ví dụ daily sang monthly",
-      "Chuyển dữ liệu từ monthly sang daily",
-      "Tạo thêm feature category",
-      "Xóa target khỏi dataset"
+      "Chuyển dữ liệu từ tần suất cao xuống tần suất thấp hơn",
+      "Chuyển dữ liệu từ monthly lên daily bằng thêm timestamp",
+      "Tạo thêm feature category từ biến numeric",
+      "Xóa target khỏi dataset trước khi training"
     ],
     answer: 0,
     explanation: "Downsampling giảm độ chi tiết thời gian, thường cần aggregation như sum, mean, max hoặc min."
@@ -183,10 +183,10 @@ const TIME_SERIES_QUESTIONS = [
     question: "Upsampling là gì?",
     code: "",
     options: [
-      "Chuyển dữ liệu từ tần suất thấp lên tần suất cao hơn, ví dụ monthly sang daily",
-      "Gom dữ liệu daily thành monthly",
-      "Xóa dữ liệu trùng",
-      "Tính metric forecast"
+      "Chuyển dữ liệu từ tần suất thấp lên tần suất cao hơn",
+      "Gom dữ liệu daily thành monthly bằng aggregation",
+      "Xóa dữ liệu trùng theo timestamp và group",
+      "Tính metric lỗi dự báo sau khi có forecast"
     ],
     answer: 0,
     explanation: "Upsampling tạo thêm timestamp ở tần suất chi tiết hơn. Sau upsampling thường cần xử lý missing values như forward fill hoặc interpolation tùy bài toán."
@@ -215,10 +215,10 @@ const TIME_SERIES_QUESTIONS = [
     question: "Trong pandas, shift(1) thường dùng để làm gì trong time series?",
     code: "",
     options: [
-      "Lấy giá trị của kỳ trước làm feature hiện tại",
-      "Sắp xếp dữ liệu theo ngày",
-      "Đổi timezone",
-      "Tính tổng theo tháng"
+      "Lấy giá trị kỳ trước để tạo feature cho dòng hiện tại",
+      "Sắp xếp dữ liệu theo ngày tăng dần trong DataFrame",
+      "Đổi timezone của timestamp sang múi giờ khác",
+      "Tính tổng dữ liệu theo từng tháng trong chuỗi"
     ],
     answer: 0,
     explanation: "shift(1) dịch giá trị xuống một dòng, thường dùng để tạo lag feature như giá trị ngày hôm trước."
@@ -231,10 +231,10 @@ const TIME_SERIES_QUESTIONS = [
     question: "Rolling window thường dùng để làm gì?",
     code: "",
     options: [
-      "Tính thống kê trên một cửa sổ thời gian/số quan sát gần nhất",
-      "Xóa toàn bộ dữ liệu cũ",
-      "Chuyển classification thành regression",
-      "Tạo index ngẫu nhiên"
+      "Tính thống kê trên cửa sổ quan sát gần nhất",
+      "Xóa toàn bộ dữ liệu cũ khỏi chuỗi thời gian",
+      "Chuyển bài toán classification thành regression",
+      "Tạo index ngẫu nhiên để shuffle dữ liệu"
     ],
     answer: 0,
     explanation: "Rolling window tính các thống kê như moving average, rolling sum hoặc rolling std trên một cửa sổ gần nhất."
@@ -247,10 +247,10 @@ const TIME_SERIES_QUESTIONS = [
     question: "Trend trong time series là gì?",
     code: "",
     options: [
-      "Xu hướng dài hạn tăng hoặc giảm của chuỗi",
+      "Xu hướng dài hạn tăng, giảm hoặc ổn định của chuỗi",
       "Dao động lặp lại theo chu kỳ cố định trong tuần",
-      "Sai số hoàn toàn ngẫu nhiên",
-      "Một dòng bị missing"
+      "Phần sai số ngẫu nhiên không giải thích được",
+      "Một dòng dữ liệu bị thiếu ở giữa chuỗi"
     ],
     answer: 0,
     explanation: "Trend mô tả hướng đi dài hạn của chuỗi, ví dụ tăng dần, giảm dần hoặc ổn định qua thời gian."
@@ -264,9 +264,9 @@ const TIME_SERIES_QUESTIONS = [
     code: "",
     options: [
       "Pattern lặp lại theo chu kỳ thời gian tương đối cố định",
-      "Một điểm dữ liệu bị lỗi nhập liệu",
-      "Dữ liệu không có cột thời gian",
-      "Model dự báo không có baseline"
+      "Một điểm dữ liệu bị nhập sai trong quá trình thu thập",
+      "Dữ liệu dạng bảng không có cột thời gian hợp lệ",
+      "Một model dự báo không có baseline để so sánh"
     ],
     answer: 0,
     explanation: "Seasonality là pattern lặp lại theo chu kỳ như theo giờ trong ngày, ngày trong tuần, tháng trong năm."
@@ -280,9 +280,9 @@ const TIME_SERIES_QUESTIONS = [
     code: "",
     options: [
       "Dự báo giá trị tương lai dựa trên dữ liệu quá khứ",
-      "Phân loại nhãn không có thứ tự thời gian",
-      "Xóa dữ liệu bị thiếu",
-      "Chỉ vẽ biểu đồ line chart"
+      "Phân loại nhãn category không có thứ tự thời gian",
+      "Xóa dữ liệu bị thiếu khỏi chuỗi trước khi phân tích",
+      "Chỉ vẽ line chart để quan sát dữ liệu lịch sử"
     ],
     answer: 0,
     explanation: "Forecasting tập trung dự đoán giá trị tương lai của chuỗi dựa trên pattern lịch sử như trend, seasonality và các feature liên quan."
@@ -391,10 +391,10 @@ const TIME_SERIES_QUESTIONS = [
     question: "Vì sao timezone có thể quan trọng trong time series?",
     code: "",
     options: [
-      "Vì cùng một timestamp có thể đại diện thời điểm khác nhau nếu timezone khác nhau",
-      "Vì timezone tự động làm model chính xác hơn",
-      "Vì timezone chỉ dùng cho dữ liệu không có thời gian",
-      "Vì timezone loại bỏ mọi missing value"
+      "Vì timezone khác nhau có thể làm sai ngày, giờ hoặc thứ tự sự kiện",
+      "Vì timezone tự động làm mọi model dự báo chính xác hơn",
+      "Vì timezone chỉ dùng khi dữ liệu không có cột thời gian",
+      "Vì timezone sẽ loại bỏ toàn bộ missing value trong chuỗi"
     ],
     answer: 0,
     explanation: "Khi dữ liệu đến từ nhiều khu vực hoặc hệ thống, timezone không nhất quán có thể làm sai thứ tự sự kiện, aggregation theo ngày và phân tích theo giờ."
@@ -423,10 +423,10 @@ const TIME_SERIES_QUESTIONS = [
     question: "Vì sao dùng shift(-1) làm feature để dự báo tương lai thường nguy hiểm?",
     code: "",
     options: [
-      "Vì shift(-1) lấy giá trị tương lai và có thể gây data leakage",
-      "Vì shift(-1) luôn gây SyntaxError",
-      "Vì shift(-1) chỉ dùng cho string",
-      "Vì shift(-1) xóa toàn bộ dữ liệu"
+      "Vì shift(-1) lấy giá trị tương lai, dễ gây data leakage",
+      "Vì shift(-1) luôn gây SyntaxError trong pandas",
+      "Vì shift(-1) chỉ áp dụng được cho dữ liệu string",
+      "Vì shift(-1) sẽ xóa toàn bộ dữ liệu trong cột"
     ],
     answer: 0,
     explanation: "shift(-1) đưa giá trị tương lai về dòng hiện tại. Nếu dùng làm feature khi dự báo, model đã nhìn thấy tương lai, gây leakage."
@@ -439,10 +439,10 @@ const TIME_SERIES_QUESTIONS = [
     question: "pct_change() trong pandas thường dùng để tính gì?",
     code: "",
     options: [
-      "Tỷ lệ thay đổi phần trăm giữa kỳ hiện tại và kỳ trước",
-      "Tổng tích lũy từ đầu chuỗi",
-      "Moving average",
-      "Timezone của timestamp"
+      "Tỷ lệ thay đổi tương đối giữa kỳ hiện tại và kỳ trước",
+      "Tổng tích lũy của chuỗi từ đầu đến hiện tại",
+      "Trung bình trượt trên một cửa sổ quan sát",
+      "Timezone hiện tại của một cột timestamp"
     ],
     answer: 0,
     explanation: "pct_change() tính mức thay đổi tương đối so với kỳ trước, ví dụ tăng từ 100 lên 110 thì pct_change là 0.1."
@@ -456,9 +456,9 @@ const TIME_SERIES_QUESTIONS = [
     code: "",
     options: [
       "Chênh lệch giữa giá trị hiện tại và giá trị kỳ trước",
-      "Tỷ lệ phần trăm thay đổi",
-      "Tổng lũy kế",
-      "Số ngày trong tháng"
+      "Tỷ lệ phần trăm thay đổi giữa hai kỳ",
+      "Tổng lũy kế của chuỗi theo thời gian",
+      "Số ngày trong tháng của timestamp"
     ],
     answer: 0,
     explanation: "diff() tính difference dạng value_t - value_t-1. Nó thường dùng để xem biến động tuyệt đối hoặc hỗ trợ làm chuỗi ổn định hơn."
@@ -488,9 +488,9 @@ const TIME_SERIES_QUESTIONS = [
     code: "",
     options: [
       "Làm mượt biến động ngắn hạn để nhìn xu hướng rõ hơn",
-      "Tự động tạo target tương lai",
-      "Xóa toàn bộ seasonality",
-      "Bảo đảm forecast luôn đúng"
+      "Tự động tạo target tương lai cho bài toán forecast",
+      "Xóa hoàn toàn seasonality khỏi mọi chuỗi thời gian",
+      "Bảo đảm forecast luôn đúng ở mọi giai đoạn"
     ],
     answer: 0,
     explanation: "Moving average làm mượt noise ngắn hạn, giúp quan sát trend dễ hơn. Tuy nhiên nó không đảm bảo dự báo chính xác."
@@ -503,10 +503,10 @@ const TIME_SERIES_QUESTIONS = [
     question: "Expanding window khác rolling window ở điểm nào?",
     code: "",
     options: [
-      "Expanding dùng tất cả dữ liệu từ đầu đến thời điểm hiện tại, còn rolling dùng cửa sổ kích thước cố định gần nhất",
-      "Expanding luôn dùng dữ liệu tương lai",
-      "Rolling không dùng được cho time series",
-      "Hai khái niệm này luôn giống nhau"
+      "Expanding dùng dữ liệu từ đầu chuỗi; rolling dùng cửa sổ gần nhất",
+      "Expanding luôn dùng dữ liệu tương lai để tính feature",
+      "Rolling không thể áp dụng cho dữ liệu time series",
+      "Expanding và rolling luôn giống nhau về logic"
     ],
     answer: 0,
     explanation: "Expanding window mở rộng dần từ đầu chuỗi. Rolling window chỉ nhìn một số quan sát gần nhất hoặc một khoảng thời gian gần nhất."
@@ -522,7 +522,7 @@ const TIME_SERIES_QUESTIONS = [
       "Tổng của 7 quan sát gần nhất",
       "Tổng của 7 tháng gần nhất",
       "Giá trị ở 7 ngày tương lai",
-      "Số dòng bị thiếu"
+      "Số dòng bị thiếu trong chuỗi"
     ],
     answer: 0,
     explanation: "Nếu dữ liệu daily mỗi dòng là một ngày và đã sort đúng, rolling(7).sum() là tổng 7 ngày/quan sát gần nhất."
@@ -536,9 +536,9 @@ const TIME_SERIES_QUESTIONS = [
     code: "",
     options: [
       "Mức độ biến động cục bộ của chuỗi theo thời gian",
-      "Tên cột datetime",
-      "Số lượng model đã train",
-      "Target của bài toán classification"
+      "Tên cột datetime đang được dùng làm index",
+      "Số lượng model đã train trong pipeline",
+      "Target của một bài toán classification"
     ],
     answer: 0,
     explanation: "Rolling std cho biết volatility hoặc độ biến động trong một cửa sổ gần đây, hữu ích khi chuỗi có giai đoạn biến động mạnh/yếu."
@@ -551,10 +551,10 @@ const TIME_SERIES_QUESTIONS = [
     question: "Cyclic pattern khác seasonality ở điểm nào?",
     code: "",
     options: [
-      "Cyclic pattern thường lặp lại nhưng không nhất thiết có chu kỳ cố định rõ ràng",
-      "Cyclic pattern luôn là missing date",
-      "Seasonality không bao giờ lặp lại",
-      "Hai khái niệm này đều là lỗi dữ liệu"
+      "Cyclic pattern có thể lặp lại nhưng chu kỳ không cố định rõ",
+      "Cyclic pattern luôn là missing date trong dữ liệu",
+      "Seasonality không bao giờ có tính chất lặp lại",
+      "Cyclic pattern và seasonality đều là lỗi dữ liệu"
     ],
     answer: 0,
     explanation: "Seasonality thường có chu kỳ cố định như tuần/tháng/năm. Cyclic pattern có thể lặp nhưng độ dài chu kỳ thay đổi hoặc khó xác định hơn."
@@ -568,9 +568,9 @@ const TIME_SERIES_QUESTIONS = [
     code: "",
     options: [
       "Biến động ngẫu nhiên khó giải thích bằng trend hoặc seasonality",
-      "Xu hướng dài hạn",
-      "Chu kỳ lặp lại cố định",
-      "Cột timestamp"
+      "Xu hướng dài hạn tăng hoặc giảm của chuỗi",
+      "Pattern lặp lại theo chu kỳ thời gian cố định",
+      "Cột timestamp dùng để sắp xếp dữ liệu"
     ],
     answer: 0,
     explanation: "Noise là phần biến động ngẫu nhiên còn lại sau khi xét các pattern chính như trend và seasonality."
@@ -599,10 +599,10 @@ const TIME_SERIES_QUESTIONS = [
     question: "Stationarity ở mức cơ bản thường nói về điều gì?",
     code: "",
     options: [
-      "Tính chất thống kê của chuỗi như mean/variance tương đối ổn định theo thời gian",
-      "Chuỗi có đúng một dòng dữ liệu",
-      "Chuỗi không có timestamp",
-      "Model dự báo không có lỗi"
+      "Mean/variance và đặc tính thống kê tương đối ổn định theo thời gian",
+      "Chuỗi thời gian có đúng một dòng dữ liệu duy nhất",
+      "Chuỗi không có timestamp hoặc cột thời gian hợp lệ",
+      "Model forecasting không có bất kỳ sai số nào"
     ],
     answer: 0,
     explanation: "Chuỗi stationary có các đặc tính thống kê tương đối ổn định theo thời gian. Một số mô hình truyền thống giả định hoặc hoạt động tốt hơn với chuỗi stationary."
@@ -615,10 +615,10 @@ const TIME_SERIES_QUESTIONS = [
     question: "Autocorrelation mô tả điều gì?",
     code: "",
     options: [
-      "Mức độ tương quan giữa chuỗi và phiên bản lag của chính nó",
+      "Tương quan giữa chuỗi và phiên bản lag của chính nó",
       "Tương quan giữa hai cột category bất kỳ",
-      "Sai số giữa y_true và y_pred",
-      "Số lượng missing dates"
+      "Sai số giữa giá trị thực tế và giá trị dự báo",
+      "Số lượng missing dates có trong chuỗi"
     ],
     answer: 0,
     explanation: "Autocorrelation đo xem giá trị hiện tại có liên quan đến giá trị quá khứ của chính chuỗi hay không."
@@ -632,9 +632,9 @@ const TIME_SERIES_QUESTIONS = [
     code: "",
     options: [
       "Dùng giá trị quan sát gần nhất làm dự báo",
-      "Dùng giá trị ngẫu nhiên",
-      "Luôn dự báo bằng 0",
-      "Dùng giá trị của 10 năm sau"
+      "Dùng một giá trị ngẫu nhiên làm dự báo",
+      "Luôn dự báo giá trị tương lai bằng 0",
+      "Dùng giá trị của 10 năm sau làm dự báo"
     ],
     answer: 0,
     explanation: "Naive forecast là baseline đơn giản: forecast cho kỳ tiếp theo bằng giá trị cuối cùng quan sát được."
@@ -648,9 +648,9 @@ const TIME_SERIES_QUESTIONS = [
     code: "",
     options: [
       "Trung bình của một số quan sát gần nhất",
-      "Giá trị nhỏ nhất toàn bộ lịch sử",
-      "Giá trị lớn nhất tương lai",
-      "Một nhãn classification"
+      "Giá trị nhỏ nhất trong toàn bộ lịch sử",
+      "Giá trị lớn nhất ở tương lai chưa biết",
+      "Một nhãn classification không có thứ tự"
     ],
     answer: 0,
     explanation: "Moving average forecast dùng trung bình của các kỳ gần nhất làm dự báo, giúp làm mượt biến động ngắn hạn."
@@ -663,10 +663,10 @@ const TIME_SERIES_QUESTIONS = [
     question: "Seasonal naive forecast phù hợp khi nào?",
     code: "",
     options: [
-      "Khi chuỗi có seasonality rõ và có thể dùng giá trị cùng mùa/kỳ trước làm dự báo",
-      "Khi dữ liệu không có thời gian",
-      "Khi target là category không thứ tự",
-      "Khi chỉ có một quan sát"
+      "Khi chuỗi có seasonality rõ và dùng được giá trị cùng mùa trước",
+      "Khi dữ liệu đầu vào không có bất kỳ cột thời gian nào",
+      "Khi target là category không có thứ tự thời gian",
+      "Khi dữ liệu chỉ có đúng một quan sát duy nhất"
     ],
     answer: 0,
     explanation: "Seasonal naive dùng giá trị ở cùng vị trí mùa trước, ví dụ dự báo thứ Hai tuần này bằng thứ Hai tuần trước."
@@ -680,8 +680,8 @@ const TIME_SERIES_QUESTIONS = [
     code: "",
     options: [
       "Train trên giai đoạn cũ hơn, test trên giai đoạn mới hơn",
-      "Random split mọi dòng không quan tâm thứ tự thời gian",
-      "Test trên quá khứ, train trên tương lai",
+      "Random split mọi dòng mà không quan tâm thứ tự thời gian",
+      "Test trên quá khứ, sau đó train bằng dữ liệu tương lai",
       "Fit model trên toàn bộ dữ liệu rồi đánh giá trên train"
     ],
     answer: 0,
@@ -696,9 +696,9 @@ const TIME_SERIES_QUESTIONS = [
     code: "",
     options: [
       "Khoảng thời gian hoặc số bước tương lai cần dự báo",
-      "Số lượng feature trong model",
-      "Khoảng cách giữa hai cột DataFrame",
-      "Số dòng dùng để fit scaler"
+      "Số lượng feature được đưa vào model forecasting",
+      "Khoảng cách giữa hai cột trong một DataFrame",
+      "Số dòng dữ liệu được dùng để fit scaler"
     ],
     answer: 0,
     explanation: "Forecast horizon là phạm vi dự báo, ví dụ dự báo 7 ngày tới, 4 tuần tới hoặc 12 tháng tới."
@@ -711,10 +711,10 @@ const TIME_SERIES_QUESTIONS = [
     question: "Forecast error thường là gì?",
     code: "",
     options: [
-      "Chênh lệch giữa giá trị quan sát thực tế và giá trị dự báo",
-      "Số lượng timestamp trong dữ liệu",
-      "Tên của model forecasting",
-      "Số feature category"
+      "Chênh lệch giữa giá trị thực tế và giá trị dự báo",
+      "Số lượng timestamp xuất hiện trong dataset",
+      "Tên model được dùng để tạo forecast",
+      "Số feature category trong bộ dữ liệu"
     ],
     answer: 0,
     explanation: "Forecast error thường là y_true - y_pred hoặc y_pred - y_true tùy convention. Các metric như MAE/RMSE được tính từ forecast errors."
@@ -728,9 +728,9 @@ const TIME_SERIES_QUESTIONS = [
     code: "",
     options: [
       "Có thể không xác định hoặc bị phóng đại rất lớn",
-      "Luôn trở thành MAE",
-      "Không còn phụ thuộc forecast",
-      "Tự động phát hiện seasonality"
+      "Luôn trở thành MAE khi actual bằng 0",
+      "Không còn phụ thuộc vào forecast value",
+      "Tự động phát hiện seasonality của chuỗi"
     ],
     answer: 0,
     explanation: "MAPE chia cho giá trị thực tế. Nếu actual bằng 0 hoặc gần 0, lỗi phần trăm có thể không xác định hoặc rất lớn."
@@ -743,8 +743,8 @@ const TIME_SERIES_QUESTIONS = [
     question: "Cách tạo rolling mean nào dễ gây leakage khi dự báo y tại thời điểm t?",
     code: "",
     options: [
-      "Tính rolling mean bao gồm cả y tại thời điểm t rồi dùng làm feature để dự báo y_t",
-      "Tạo lag y_t-1 bằng shift(1)",
+      "Tính rolling mean gồm cả y_t rồi dùng để dự báo chính y_t",
+      "Tạo lag y_t-1 bằng cách dùng shift(1)",
       "Tính rolling mean từ các giá trị quá khứ đã shift",
       "Sort dữ liệu theo timestamp trước khi tạo feature"
     ],
@@ -761,7 +761,7 @@ const TIME_SERIES_QUESTIONS = [
     options: [
       "df[\"lag1\"] = df[\"y\"].shift(1); df[\"roll3\"] = df[\"lag1\"].rolling(3).mean()",
       "df[\"roll3\"] = df[\"y\"].rolling(3).mean() rồi dự báo y_t",
-      "df[\"future\"] = df[\"y\"].shift(-1)",
+      "df[\"future\"] = df[\"y\"].shift(-1) rồi dùng làm feature",
       "df[\"roll3\"] = df[\"y\"].shift(-1).rolling(3).mean()"
     ],
     answer: 0,
@@ -775,10 +775,10 @@ const TIME_SERIES_QUESTIONS = [
     question: "Walk-forward validation trong forecasting là gì?",
     code: "",
     options: [
-      "Đánh giá bằng nhiều lần train trên quá khứ và validate trên giai đoạn kế tiếp",
-      "Random shuffle toàn bộ dữ liệu rồi split",
-      "Fit model trên test set trước",
-      "Chỉ đánh giá trên một dòng cuối cùng"
+      "Train trên quá khứ và validate trên giai đoạn kế tiếp qua nhiều lần",
+      "Random shuffle toàn bộ dữ liệu rồi chia train/test",
+      "Fit model trên test set trước rồi mới train",
+      "Chỉ đánh giá model trên một dòng cuối cùng"
     ],
     answer: 0,
     explanation: "Walk-forward validation mô phỏng quy trình dự báo thực tế: train bằng dữ liệu có sẵn đến một thời điểm, dự báo giai đoạn kế tiếp, rồi tiến về phía trước."
@@ -791,10 +791,10 @@ const TIME_SERIES_QUESTIONS = [
     question: "Backtesting trong time series forecasting dùng để làm gì?",
     code: "",
     options: [
-      "Đánh giá chiến lược/model dự báo trên nhiều giai đoạn lịch sử theo thứ tự thời gian",
-      "Fit model trên dữ liệu tương lai",
-      "Thay thế hoàn toàn việc kiểm tra leakage",
-      "Chỉ dùng để vẽ histogram"
+      "Đánh giá model dự báo trên nhiều giai đoạn lịch sử theo thứ tự thời gian",
+      "Fit model trực tiếp trên dữ liệu tương lai chưa quan sát được",
+      "Thay thế hoàn toàn việc kiểm tra data leakage",
+      "Chỉ dùng để vẽ histogram của forecast error"
     ],
     answer: 0,
     explanation: "Backtesting kiểm tra model sẽ hoạt động ra sao nếu được dùng trong quá khứ, qua nhiều mốc thời gian, giúp đánh giá ổn định hơn một split duy nhất."
@@ -807,10 +807,10 @@ const TIME_SERIES_QUESTIONS = [
     question: "Vì sao forecast granularity cần khớp với nhu cầu sử dụng?",
     code: "",
     options: [
-      "Vì dự báo daily, weekly hay monthly phục vụ các quyết định khác nhau và có độ nhiễu khác nhau",
-      "Vì granularity không ảnh hưởng gì đến model",
-      "Vì mọi bài toán đều bắt buộc forecast theo giây",
-      "Vì forecast monthly luôn chính xác hơn mọi trường hợp"
+      "Vì daily, weekly và monthly forecast phục vụ quyết định khác nhau",
+      "Vì granularity không ảnh hưởng đến dữ liệu hoặc mô hình",
+      "Vì mọi bài toán đều bắt buộc forecast theo từng giây",
+      "Vì forecast monthly luôn chính xác hơn mọi mức khác"
     ],
     answer: 0,
     explanation: "Granularity ảnh hưởng đến noise, seasonality, dữ liệu cần chuẩn bị và cách dùng kết quả. Cần chọn mức thời gian phù hợp với quyết định thực tế."
@@ -823,10 +823,10 @@ const TIME_SERIES_QUESTIONS = [
     question: "Multiple time series nghĩa là gì?",
     code: "",
     options: [
-      "Có nhiều chuỗi theo các group_id khác nhau, ví dụ mỗi product hoặc region có một chuỗi riêng",
-      "Một chuỗi chỉ có một timestamp",
-      "Dữ liệu không có giá trị thời gian",
-      "Một model có nhiều target classification"
+      "Có nhiều chuỗi riêng theo từng group_id như product hoặc region",
+      "Một chuỗi thời gian chỉ có đúng một timestamp",
+      "Dữ liệu dạng bảng không có giá trị thời gian",
+      "Một model có nhiều target classification khác nhau"
     ],
     answer: 0,
     explanation: "Multiple time series xuất hiện khi có nhiều entity, mỗi entity có chuỗi theo thời gian riêng. Cần xử lý group_id khi tạo lag/rolling để không trộn chuỗi."
@@ -839,10 +839,10 @@ const TIME_SERIES_QUESTIONS = [
     question: "Khi tạo lag cho grouped time series, cách nào đúng hơn?",
     code: "",
     options: [
-      "Sort theo group_id và date, rồi dùng groupby(group_id).shift(1)",
-      "Dùng shift(1) trên toàn DataFrame mà không quan tâm group",
-      "Dùng shift(-1) để lấy tương lai",
-      "Random shuffle trước khi tạo lag"
+      "Sort theo group_id/date rồi dùng groupby(group_id).shift(1)",
+      "Dùng shift(1) trên toàn DataFrame và bỏ qua group",
+      "Dùng shift(-1) để lấy giá trị tương lai làm lag",
+      "Random shuffle dữ liệu trước khi tạo lag feature"
     ],
     answer: 0,
     explanation: "Với nhiều chuỗi, cần tạo lag trong từng group riêng. Nếu shift toàn DataFrame, giá trị của group này có thể bị trộn sang group khác."
@@ -855,10 +855,10 @@ const TIME_SERIES_QUESTIONS = [
     question: "Trong time series, một điểm spike được xem là anomaly hợp lý nhất khi nào?",
     code: "",
     options: [
-      "Khi nó lệch đáng kể so với baseline hoặc expected behavior phù hợp theo thời gian",
-      "Khi nó là giá trị lớn nhất trong toàn bộ dữ liệu trong mọi trường hợp",
-      "Khi timestamp có định dạng đúng",
-      "Khi dữ liệu đã được sort"
+      "Khi nó lệch đáng kể so với baseline kỳ vọng theo thời gian",
+      "Khi nó là giá trị lớn nhất trong toàn bộ dữ liệu",
+      "Khi timestamp của điểm đó có định dạng đúng",
+      "Khi dữ liệu đã được sort tăng dần theo thời gian"
     ],
     answer: 0,
     explanation: "Anomaly cần được so với baseline phù hợp như moving average, seasonal baseline hoặc ngưỡng kỳ vọng. Giá trị lớn nhất chưa chắc là anomaly nếu có seasonality hoặc trend."
@@ -871,9 +871,9 @@ const TIME_SERIES_QUESTIONS = [
     question: "Cách nào có thể phát hiện drop bất thường so với gần đây?",
     code: "",
     options: [
-      "So sánh giá trị hiện tại với rolling mean hoặc rolling median của quá khứ",
-      "So sánh giá trị hiện tại với một timestamp tương lai chưa biết",
-      "Xóa toàn bộ các ngày có value thấp",
+      "So sánh hiện tại với rolling mean/median của quá khứ",
+      "So sánh hiện tại với timestamp tương lai chưa biết",
+      "Xóa toàn bộ các ngày có value thấp khỏi chuỗi",
       "Chỉ kiểm tra kiểu dữ liệu của cột date"
     ],
     answer: 0,
@@ -887,10 +887,10 @@ const TIME_SERIES_QUESTIONS = [
     question: "Change point trong time series là gì?",
     code: "",
     options: [
-      "Thời điểm mà hành vi thống kê của chuỗi thay đổi đáng kể",
-      "Một timestamp bị format sai",
-      "Một dòng có giá trị NaN",
-      "Một feature được one-hot encode"
+      "Thời điểm hành vi thống kê của chuỗi thay đổi đáng kể",
+      "Một timestamp bị format sai trong dữ liệu đầu vào",
+      "Một dòng có giá trị NaN ở cột target",
+      "Một feature đã được one-hot encode"
     ],
     answer: 0,
     explanation: "Change point là thời điểm chuỗi đổi regime, ví dụ mean, variance hoặc trend thay đổi rõ rệt."
@@ -904,9 +904,9 @@ const TIME_SERIES_QUESTIONS = [
     code: "",
     options: [
       "Line chart với trục x là thời gian",
-      "Pie chart không có thời gian",
-      "Scatter plot không có thứ tự thời gian",
-      "Word cloud"
+      "Pie chart không có trục thời gian",
+      "Scatter plot không xét thứ tự thời gian",
+      "Word cloud từ các nhãn category"
     ],
     answer: 0,
     explanation: "Line chart giúp quan sát xu hướng, seasonality, spike/drop và thay đổi theo thời gian một cách trực quan."
@@ -920,9 +920,9 @@ const TIME_SERIES_QUESTIONS = [
     code: "",
     options: [
       "Resample/aggregate theo granularity phù hợp hoặc thêm moving average",
-      "Xóa trục thời gian",
-      "Đổi toàn bộ giá trị thành string",
-      "Random shuffle dữ liệu trước khi vẽ"
+      "Xóa trục thời gian để chart nhìn gọn hơn",
+      "Đổi toàn bộ giá trị numeric thành string",
+      "Random shuffle dữ liệu trước khi vẽ chart"
     ],
     answer: 0,
     explanation: "Aggregation theo tuần/tháng hoặc moving average giúp giảm nhiễu thị giác, giúp pattern chính dễ nhìn hơn."
@@ -935,10 +935,10 @@ const TIME_SERIES_QUESTIONS = [
     question: "Vì sao random split có thể gây đánh giá quá lạc quan trong time series?",
     code: "",
     options: [
-      "Vì dữ liệu tương lai có thể lọt vào train set, làm model học thông tin không có thật tại thời điểm dự báo",
-      "Vì random split luôn làm mất target",
+      "Vì dữ liệu tương lai có thể lọt vào train set và gây leakage",
+      "Vì random split luôn làm mất toàn bộ target",
       "Vì random split không chạy được với pandas",
-      "Vì random split chỉ dùng cho ảnh"
+      "Vì random split chỉ dùng được cho dữ liệu ảnh"
     ],
     answer: 0,
     explanation: "Trong time series, thứ tự thời gian quan trọng. Random split có thể để quan sát tương lai nằm trong train, khiến test quá dễ và không phản ánh forecasting thực tế."
@@ -951,10 +951,10 @@ const TIME_SERIES_QUESTIONS = [
     question: "Observed value khác forecast value ở điểm nào?",
     code: "",
     options: [
-      "Observed value là giá trị thực tế đã xảy ra, forecast value là giá trị model dự báo",
+      "Observed là giá trị thực tế; forecast là giá trị model dự báo",
       "Observed value luôn là giá trị tương lai chưa biết",
-      "Forecast value luôn bằng observed value",
-      "Forecast value chỉ dùng cho missing value"
+      "Forecast value luôn bằng observed value trong mọi case",
+      "Forecast value chỉ dùng để thay thế missing value"
     ],
     answer: 0,
     explanation: "Observed value là actual đã ghi nhận. Forecast value là dự đoán cho thời điểm cần dự báo. Forecast error được tính khi có observed value để so sánh."
@@ -968,9 +968,9 @@ const TIME_SERIES_QUESTIONS = [
     code: "",
     options: [
       "Tạo rolling/lag khi dữ liệu chưa sort đúng theo thời gian",
-      "Chuyển date sang datetime",
-      "Kiểm tra missing dates",
-      "Dùng line chart để quan sát trend"
+      "Chuyển cột date từ string sang datetime trước khi xử lý",
+      "Kiểm tra missing dates trước khi phân tích chuỗi",
+      "Dùng line chart để quan sát trend theo thời gian"
     ],
     answer: 0,
     explanation: "Nếu chưa sort đúng theo thời gian, lag/rolling có thể lấy sai quan sát quá khứ, làm feature sai và kết quả phân tích không đáng tin."
@@ -983,10 +983,10 @@ const TIME_SERIES_QUESTIONS = [
     question: "Best practice nào quan trọng khi làm forecasting report?",
     code: "",
     options: [
-      "Luôn nêu rõ horizon, granularity, cách split thời gian, baseline và metric",
+      "Nêu rõ horizon, granularity, time split, baseline và metric",
       "Chỉ báo một con số forecast mà không nói horizon",
-      "Dùng random split và không cần giải thích",
-      "Fit model trên toàn bộ dữ liệu rồi báo lỗi train"
+      "Dùng random split mặc định và không cần giải thích",
+      "Fit trên toàn bộ dữ liệu rồi chỉ báo lỗi trên train"
     ],
     answer: 0,
     explanation: "Forecasting report cần rõ dự báo cho khoảng nào, mức thời gian nào, so với baseline nào và được đánh giá bằng cách nào để người đọc hiểu đúng."
@@ -1015,10 +1015,10 @@ const TIME_SERIES_QUESTIONS = [
     question: "Differencing thường được dùng với mục đích gì trong time series truyền thống?",
     code: "",
     options: [
-      "Giảm trend hoặc làm chuỗi ổn định hơn về mặt mean",
-      "Tăng số lượng cột category",
-      "Tạo nhãn classification",
-      "Xóa tất cả timestamp"
+      "Giảm trend hoặc giúp chuỗi ổn định hơn về mean",
+      "Tăng số lượng cột category trong DataFrame",
+      "Tạo nhãn classification từ biến thời gian",
+      "Xóa tất cả timestamp khỏi dữ liệu đầu vào"
     ],
     answer: 0,
     explanation: "Differencing lấy chênh lệch giữa các kỳ, thường giúp loại bỏ trend và hỗ trợ làm chuỗi gần stationary hơn trong một số mô hình truyền thống."
@@ -1031,10 +1031,10 @@ const TIME_SERIES_QUESTIONS = [
     question: "Trong forecasting, vì sao rolling mean cần được tạo cẩn thận với shift?",
     code: "",
     options: [
-      "Vì rolling mean không shift có thể bao gồm giá trị hiện tại hoặc tương lai so với thời điểm dự báo",
-      "Vì rolling mean luôn gây lỗi syntax",
-      "Vì rolling mean không thể dùng với số",
-      "Vì rolling mean chỉ dùng để forecast bằng deep learning"
+      "Vì rolling không shift có thể gồm giá trị hiện tại hoặc tương lai",
+      "Vì rolling mean luôn gây lỗi syntax trong pandas",
+      "Vì rolling mean không thể dùng với dữ liệu numeric",
+      "Vì rolling mean chỉ dùng cho deep learning model"
     ],
     answer: 0,
     explanation: "Nếu rolling feature bao gồm y tại thời điểm cần dự báo, model đã nhìn thấy target. Cách an toàn thường là shift trước rồi mới rolling."
@@ -1047,10 +1047,10 @@ const TIME_SERIES_QUESTIONS = [
     question: "Khi backtest một forecast model, vì sao nên giữ đúng thứ tự thời gian ở từng fold?",
     code: "",
     options: [
-      "Để mỗi lần đánh giá chỉ dùng dữ liệu quá khứ để dự báo tương lai",
-      "Để model được nhìn thấy toàn bộ tương lai",
-      "Để làm metric luôn bằng 0",
-      "Để bỏ qua seasonality"
+      "Để mỗi fold chỉ dùng quá khứ để dự báo tương lai",
+      "Để model được nhìn thấy toàn bộ dữ liệu tương lai",
+      "Để làm cho mọi forecast metric luôn bằng đúng 0",
+      "Để bỏ qua seasonality trong toàn bộ chuỗi"
     ],
     answer: 0,
     explanation: "Backtesting cần mô phỏng tình huống thực tế. Tại mỗi cutoff, model chỉ nên dùng dữ liệu trước cutoff để dự báo sau cutoff."
@@ -1063,10 +1063,10 @@ const TIME_SERIES_QUESTIONS = [
     question: "Trong grouped time series, lỗi nào có thể xảy ra nếu tạo lag mà không groupby group_id?",
     code: "",
     options: [
-      "Lag của group này có thể lấy nhầm giá trị cuối của group khác",
-      "Pandas sẽ luôn báo SyntaxError",
-      "Lag feature luôn bằng 0",
-      "Dữ liệu sẽ tự động được forecast"
+      "Lag của group này có thể lấy nhầm giá trị từ group khác",
+      "Pandas sẽ luôn báo SyntaxError khi dùng shift",
+      "Lag feature được tạo ra luôn bằng đúng 0",
+      "Dữ liệu sẽ tự động được forecast theo group"
     ],
     answer: 0,
     explanation: "Nếu nhiều chuỗi được xếp chung trong một DataFrame, shift toàn cục có thể trộn giá trị giữa các group. Cần groupby trước khi shift."
@@ -1079,10 +1079,10 @@ const TIME_SERIES_QUESTIONS = [
     question: "Vì sao model dự báo 1 ngày tới chưa chắc dùng tốt cho dự báo 30 ngày tới?",
     code: "",
     options: [
-      "Vì forecast horizon khác nhau có độ khó, feature availability và sai số tích lũy khác nhau",
-      "Vì horizon không ảnh hưởng gì đến forecasting",
-      "Vì dự báo 30 ngày tới luôn dễ hơn",
-      "Vì model 1 ngày tới không cần dữ liệu"
+      "Vì horizon khác nhau có độ khó, feature availability và sai số khác nhau",
+      "Vì horizon không ảnh hưởng đến bài toán forecasting",
+      "Vì dự báo 30 ngày tới luôn dễ hơn dự báo 1 ngày",
+      "Vì model dự báo 1 ngày không cần dữ liệu lịch sử"
     ],
     answer: 0,
     explanation: "Horizon dài hơn thường khó hơn vì uncertainty tăng, một số feature không còn biết trước, và lỗi có thể tích lũy nếu dự báo nhiều bước."
@@ -1095,10 +1095,10 @@ const TIME_SERIES_QUESTIONS = [
     question: "Vì sao phát hiện anomaly trong time series nên xét seasonality?",
     code: "",
     options: [
-      "Vì một giá trị cao có thể bình thường vào mùa/chu kỳ cao điểm nhưng bất thường ở thời điểm khác",
-      "Vì seasonality luôn là lỗi dữ liệu",
-      "Vì anomaly chỉ xuất hiện khi không có timestamp",
-      "Vì seasonality làm mọi điểm thành anomaly"
+      "Vì giá trị cao có thể bình thường ở mùa cao điểm nhưng lạ ở thời điểm khác",
+      "Vì seasonality luôn là lỗi dữ liệu cần loại bỏ",
+      "Vì anomaly chỉ xuất hiện khi dữ liệu không có timestamp",
+      "Vì seasonality làm mọi điểm dữ liệu trở thành anomaly"
     ],
     answer: 0,
     explanation: "Baseline kỳ vọng có thể khác nhau theo giờ, ngày trong tuần hoặc tháng. Không xét seasonality có thể báo false alarm hoặc bỏ sót anomaly."
@@ -1111,10 +1111,10 @@ const TIME_SERIES_QUESTIONS = [
     question: "Khi xây dựng feature cho time series model trong production, điều nào quan trọng nhất?",
     code: "",
     options: [
-      "Mỗi feature tại thời điểm dự báo chỉ dùng thông tin có sẵn tại hoặc trước thời điểm đó",
+      "Feature tại thời điểm dự báo chỉ dùng thông tin có sẵn đến lúc đó",
       "Dùng mọi cột tương lai để tăng accuracy offline",
       "Fit feature engineering trên cả test tương lai",
-      "Không cần kiểm tra timestamp"
+      "Không cần kiểm tra timestamp trước khi training"
     ],
     answer: 0,
     explanation: "Trong production, model không biết tương lai. Feature phải phản ánh đúng thông tin available tại thời điểm dự báo để tránh leakage và đánh giá ảo."

@@ -7,12 +7,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "Trong pandas, hàm nào thường dùng để đọc kết quả SQL query vào DataFrame?",
     code: "import pandas as pd",
     options: [
-      "pd.read_sql(query, conn)",
       "pd.write_sql(query, conn)",
       "pd.select_dataframe(query)",
+      "pd.read_sql(query, conn)",
       "pd.query_database_only(query)"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "pd.read_sql(query, conn) thường dùng để chạy SQL query và đưa kết quả vào pandas DataFrame. Các option còn lại không phải API pandas phổ biến/hợp lệ cho tác vụ này."
   },
   {
@@ -23,12 +23,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "Mục đích phổ biến của việc dùng SQL trong Python là gì?",
     code: "",
     options: [
-      "Kết nối database, chạy query và đưa kết quả vào workflow phân tích dữ liệu",
-      "Thay thế hoàn toàn mọi DataFrame trong Python",
+      "Thay thế toàn bộ DataFrame",
       "Chỉ dùng để vẽ biểu đồ",
-      "Chỉ dùng để train deep learning model"
+      "Query database cho workflow phân tích",
+      "Chỉ train deep learning model"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "SQL trong Python thường dùng để query dữ liệu từ database, xử lý/filter/aggregate bằng SQL rồi đưa kết quả vào pandas hoặc workflow phân tích."
   },
   {
@@ -39,12 +39,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "Database connection trong Python thường đại diện cho điều gì?",
     code: "",
     options: [
-      "Một kết nối tới database để chạy query hoặc transaction",
-      "Một cột dữ liệu trong DataFrame",
+      "Một cột trong DataFrame",
       "Một biểu đồ trong notebook",
+      "Một kết nối tới database",
       "Một kiểu dữ liệu string"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Connection là object đại diện cho kết nối tới database. Thông qua connection, ta có thể tạo cursor, execute query, commit hoặc rollback."
   },
   {
@@ -55,12 +55,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "Module chuẩn nào của Python thường dùng để làm việc với SQLite database?",
     code: "",
     options: [
-      "sqlite3",
       "pandasql3",
       "sqlserver",
+      "sqlite3",
       "pydbonly"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "sqlite3 là module trong Python standard library để kết nối và thao tác với SQLite database."
   },
   {
@@ -71,12 +71,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "Cách nào tạo connection tới SQLite database file bằng sqlite3?",
     code: "import sqlite3",
     options: [
-      "conn = sqlite3.connect(\"data.db\")",
       "conn = sqlite3.open_engine(\"data.db\")",
       "conn = sqlite3.read_sql(\"data.db\")",
+      "conn = sqlite3.connect(\"data.db\")",
       "conn = sqlite3.create_dataframe(\"data.db\")"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "sqlite3.connect(\"data.db\") tạo connection tới file SQLite. Nếu file chưa tồn tại, SQLite có thể tạo file mới."
   },
   {
@@ -87,12 +87,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "SQLAlchemy engine thường đại diện cho điều gì?",
     code: "",
     options: [
-      "Object quản lý kết nối tới database và làm cầu nối giữa Python/pandas với database",
-      "Một DataFrame đã được group by",
+      "Một DataFrame đã group by",
       "Một model machine learning",
+      "Object quản lý kết nối database",
       "Một function để vẽ chart"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "SQLAlchemy engine chứa thông tin kết nối và được pandas hỗ trợ trong các hàm như read_sql hoặc to_sql."
   },
   {
@@ -103,12 +103,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "Connection string thường chứa thông tin gì?",
     code: "",
     options: [
-      "Thông tin driver/database, host, port, database name và thông tin xác thực nếu cần",
-      "Chỉ chứa tên cột cần SELECT",
-      "Chỉ chứa số dòng cần đọc",
-      "Chỉ chứa metric accuracy"
+      "Chỉ tên cột cần SELECT",
+      "Chỉ số dòng cần đọc",
+      "Driver, host, database và auth",
+      "Chỉ metric accuracy"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Connection string mô tả cách kết nối tới database. Trong thực tế, không nên hard-code thông tin nhạy cảm như password trực tiếp trong code."
   },
   {
@@ -119,12 +119,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "Câu SQL nào chọn tất cả cột từ bảng users?",
     code: "",
     options: [
-      "SELECT * FROM users",
       "GET * FROM users",
       "READ users ALL",
+      "SELECT * FROM users",
       "SHOW users WHERE all"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "SELECT * FROM users là cú pháp SQL cơ bản để lấy tất cả cột từ bảng users."
   },
   {
@@ -135,12 +135,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "Mệnh đề WHERE trong SQL dùng để làm gì?",
     code: "",
     options: [
-      "Lọc dòng theo điều kiện",
       "Tạo connection",
       "Đóng database",
+      "Lọc dòng theo điều kiện",
       "Chuyển query thành DataFrame"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "WHERE dùng để lọc các dòng thỏa điều kiện, ví dụ WHERE amount > 100."
   },
   {
@@ -151,12 +151,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "GROUP BY trong SQL thường dùng khi nào?",
     code: "",
     options: [
-      "Khi cần tính tổng, trung bình, số lượng theo từng nhóm",
       "Khi cần đóng connection",
       "Khi cần import pandas",
-      "Khi cần đổi tên file database"
+      "Khi cần aggregate theo nhóm",
+      "Khi cần đổi tên database"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "GROUP BY gom dữ liệu theo một hoặc nhiều cột để tính aggregate như SUM, COUNT, AVG cho từng nhóm."
   },
   {
@@ -167,12 +167,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "Sau khi chạy query bằng pandas read_sql, kết quả thường được đưa về dạng nào?",
     code: "import pandas as pd",
     options: [
-      "pandas DataFrame",
       "Python module",
       "Database server mới",
+      "pandas DataFrame",
       "Matplotlib Figure"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "pd.read_sql trả kết quả SQL query thành pandas DataFrame, giúp tiếp tục phân tích bằng pandas."
   },
   {
@@ -183,12 +183,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "Cursor trong DB-API thường dùng để làm gì?",
     code: "",
     options: [
-      "Execute SQL statement và fetch kết quả",
       "Lưu chart vào file",
       "Tạo biến môi trường",
+      "Execute SQL và fetch kết quả",
       "Tự động tối ưu mọi query"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Cursor là object dùng để gửi SQL statement tới database và lấy kết quả trả về bằng fetchone/fetchall."
   },
   {
@@ -199,12 +199,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "cursor.execute(query) thường dùng để làm gì?",
     code: "",
     options: [
-      "Gửi một câu SQL tới database để thực thi",
-      "Chuyển DataFrame thành biểu đồ",
+      "Chuyển DataFrame thành chart",
       "Tự động tạo password",
+      "Gửi SQL tới database",
       "Đóng Python session"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "execute() dùng để chạy SQL statement như SELECT, INSERT, UPDATE hoặc DELETE thông qua cursor."
   },
   {
@@ -215,12 +215,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "commit trong transaction dùng để làm gì?",
     code: "",
     options: [
-      "Lưu các thay đổi đã thực hiện vào database",
-      "Hủy các thay đổi chưa lưu",
-      "Chỉ đọc dữ liệu từ database",
+      "Hủy thay đổi chưa lưu",
+      "Chỉ đọc dữ liệu database",
+      "Lưu thay đổi vào database",
       "Tạo query string mới"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "commit xác nhận và lưu các thay đổi như INSERT, UPDATE, DELETE vào database. rollback mới dùng để hủy thay đổi chưa commit."
   },
   {
@@ -231,12 +231,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "Vì sao nên đóng database connection khi không còn dùng?",
     code: "",
     options: [
-      "Để giải phóng tài nguyên và tránh giữ connection không cần thiết",
       "Để xóa toàn bộ database",
-      "Để tự động tăng tốc mọi query",
+      "Để mọi query nhanh hơn",
+      "Để giải phóng tài nguyên",
       "Để chuyển query thành CSV"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Đóng connection giúp giải phóng tài nguyên. Với nhiều workflow, nên dùng context manager để quản lý connection an toàn hơn."
   },
   {
@@ -247,12 +247,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "pd.read_sql_query() thường phù hợp nhất với tác vụ nào?",
     code: "import pandas as pd",
     options: [
-      "Chạy một SQL SELECT query và trả kết quả về DataFrame",
       "Ghi DataFrame xuống database",
       "Tạo database engine mới",
+      "Chạy SELECT và trả DataFrame",
       "Rollback transaction"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "pd.read_sql_query(query, conn) dùng để chạy SQL query và trả kết quả về pandas DataFrame."
   },
   {
@@ -263,12 +263,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "pd.read_sql_table() khác read_sql_query() ở mức concept như thế nào?",
     code: "",
     options: [
-      "read_sql_table đọc một table theo tên, còn read_sql_query chạy query SQL tùy chỉnh",
-      "read_sql_table chỉ dùng để ghi dữ liệu",
-      "read_sql_query không trả về DataFrame",
-      "Hai hàm luôn giống nhau trong mọi trường hợp"
+      "read_sql_table dùng để ghi dữ liệu",
+      "read_sql_query không trả DataFrame",
+      "Đọc table theo tên, không phải query tùy chỉnh",
+      "Hai hàm luôn giống nhau"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "read_sql_table thường đọc table theo tên thông qua SQLAlchemy engine. read_sql_query nhận một câu query SQL cụ thể."
   },
   {
@@ -279,12 +279,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "Cách nào viết query nhiều dòng trong Python dễ đọc hơn?",
     code: "",
     options: [
-      "Dùng triple-quoted string như `\"\"\"SELECT ...\"\"\"`",
-      "Viết mỗi từ SQL thành một biến global",
-      "Chỉ viết SQL trên một dòng rất dài",
-      "Không thể viết query nhiều dòng trong Python"
+      "Mỗi từ SQL là biến global",
+      "Chỉ viết một dòng rất dài",
+      "Dùng triple-quoted string",
+      "Python không hỗ trợ nhiều dòng"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Triple-quoted string giúp viết SQL nhiều dòng rõ ràng, dễ đọc và dễ maintain hơn."
   },
   {
@@ -295,12 +295,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "Parameterized query dùng để làm gì?",
     code: "",
     options: [
-      "Truyền giá trị vào query an toàn hơn, giảm rủi ro SQL injection",
-      "Tự động tạo index cho mọi cột",
-      "Chuyển query thành biểu đồ",
-      "Bỏ qua mọi lỗi kết nối"
+      "Tự động tạo index cho cột",
+      "Chuyển query thành chart",
+      "Truyền input vào SQL an toàn",
+      "Bỏ qua mọi lỗi connection"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Parameterized query tách SQL template khỏi giá trị input, giúp tránh nối string trực tiếp từ input người dùng và giảm rủi ro SQL injection."
   },
   {
@@ -311,12 +311,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "Cách nào dưới đây dễ gây SQL injection nhất?",
     code: "",
     options: [
-      "query = \"SELECT * FROM users WHERE status = '\" + user_input + \"'\"",
-      "Dùng parameterized query với placeholder",
+      "Dùng parameterized query",
       "Truyền params riêng cho read_sql",
-      "Dùng biến môi trường để lưu credential"
+      "Nối trực tiếp user_input vào SQL",
+      "Lấy credential từ env vars"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Nối trực tiếp user_input vào SQL string có thể cho phép input độc hại thay đổi logic query. Nên dùng parameterized query."
   },
   {
@@ -327,12 +327,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "Với sqlite3, cách nào truyền parameter an toàn hơn?",
     code: "import sqlite3\nconn = sqlite3.connect(\":memory:\")\nstatus = \"active\"",
     options: [
-      "conn.execute(\"SELECT * FROM users WHERE status = ?\", (status,))",
       "conn.execute(\"SELECT * FROM users WHERE status = \" + status)",
       "conn.execute(f\"SELECT * FROM users WHERE status = {status}\")",
+      "conn.execute(\"SELECT * FROM users WHERE status = ?\", (status,))",
       "conn.execute(\"SELECT * FROM users WHERE status = status\")"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "sqlite3 hỗ trợ placeholder ? và params tuple. Đây là cách an toàn hơn so với nối string hoặc f-string trực tiếp."
   },
   {
@@ -343,12 +343,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "Trong SQLAlchemy, text() thường dùng để làm gì?",
     code: "from sqlalchemy import text",
     options: [
-      "Biểu diễn một câu SQL text có thể truyền parameter",
       "Chuyển DataFrame thành string",
       "Tạo biểu đồ text",
+      "Biểu diễn câu SQL text",
       "Đóng engine"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "text() tạo SQL expression từ chuỗi SQL, thường dùng với engine/connection và parameterized query."
   },
   {
@@ -359,12 +359,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "Phân biệt đúng giữa connection và cursor là gì?",
     code: "",
     options: [
-      "Connection quản lý kết nối tới database; cursor dùng để execute và fetch kết quả",
-      "Cursor là database server; connection là một dòng dữ liệu",
-      "Connection chỉ dùng để vẽ chart; cursor chỉ dùng cho pandas",
-      "Hai khái niệm này luôn giống hệt nhau"
+      "Cursor là database server",
+      "Connection chỉ dùng vẽ chart",
+      "Connection kết nối, cursor execute/fetch",
+      "Hai khái niệm giống hệt nhau"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Connection đại diện cho kết nối database. Cursor là object thao tác SQL trên connection đó."
   },
   {
@@ -375,12 +375,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "fetchone() thường trả về gì?",
     code: "",
     options: [
-      "Một dòng kết quả tiếp theo hoặc None nếu không còn dòng",
       "Tất cả dòng kết quả cùng lúc",
-      "Tên database",
-      "Một pandas DataFrame bắt buộc"
+      "Tên database hiện tại",
+      "Một dòng tiếp theo hoặc None",
+      "Một DataFrame bắt buộc"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "fetchone() lấy một row tiếp theo từ result set. fetchall() mới lấy tất cả dòng còn lại."
   },
   {
@@ -391,12 +391,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "fetchall() thường dùng để làm gì?",
     code: "",
     options: [
-      "Lấy tất cả dòng còn lại từ kết quả query",
-      "Lấy đúng một dòng đầu tiên",
+      "Lấy đúng một dòng đầu",
       "Commit transaction",
+      "Lấy tất cả dòng còn lại",
       "Đóng connection"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "fetchall() trả về tất cả rows còn lại trong result set, thường là list các tuple với sqlite3."
   },
   {
@@ -407,12 +407,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "Trong pandas, method nào thường dùng để ghi DataFrame xuống database table?",
     code: "import pandas as pd",
     options: [
-      "df.to_sql(...)",
       "pd.write_database(df)",
       "df.insert_sql_only(...)",
+      "df.to_sql(...)",
       "pd.to_database_table(df)"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "df.to_sql() dùng để ghi pandas DataFrame xuống database thông qua connection hoặc SQLAlchemy engine."
   },
   {
@@ -423,12 +423,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "Trong df.to_sql(..., if_exists=\"replace\"), if_exists=\"replace\" có ý nghĩa gì?",
     code: "",
     options: [
-      "Nếu table đã tồn tại thì xóa/thay thế table cũ bằng dữ liệu mới",
-      "Nếu table đã tồn tại thì luôn báo lỗi",
-      "Nếu table đã tồn tại thì append thêm dòng",
-      "Không ảnh hưởng gì đến table"
+      "Luôn báo lỗi nếu table tồn tại",
+      "Append thêm dòng mới",
+      "Thay thế table cũ nếu tồn tại",
+      "Không ảnh hưởng table"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "if_exists=\"replace\" thay thế table hiện có. Cần dùng cẩn thận vì có thể làm mất dữ liệu table cũ."
   },
   {
@@ -439,12 +439,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "Trong df.to_sql(..., if_exists=\"append\"), if_exists=\"append\" có ý nghĩa gì?",
     code: "",
     options: [
-      "Thêm dữ liệu mới vào table đã tồn tại",
       "Xóa table cũ rồi ghi mới",
       "Luôn báo lỗi nếu table tồn tại",
+      "Thêm dữ liệu vào table có sẵn",
       "Chỉ đọc dữ liệu từ table"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "if_exists=\"append\" ghi thêm rows vào table hiện có. Cần đảm bảo schema của DataFrame phù hợp với table."
   },
   {
@@ -455,12 +455,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "Trong df.to_sql(..., index=False), index=False có tác dụng gì?",
     code: "",
     options: [
-      "Không ghi pandas index thành một cột trong database table",
       "Xóa index của database",
-      "Tạo index SQL tự động cho mọi cột",
-      "Không ghi bất kỳ dữ liệu nào"
+      "Tạo index SQL mọi cột",
+      "Không ghi pandas index",
+      "Không ghi dữ liệu nào"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "index=False giúp tránh ghi pandas index thành cột riêng trong table, phù hợp khi index không mang ý nghĩa dữ liệu."
   },
   {
@@ -471,12 +471,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "Transaction giúp ích gì khi chạy nhiều INSERT/UPDATE liên quan nhau?",
     code: "",
     options: [
-      "Cho phép commit tất cả thay đổi cùng nhau hoặc rollback nếu có lỗi",
-      "Tự động làm query nhanh nhất mọi trường hợp",
+      "Tự động làm query nhanh nhất",
       "Chỉ dùng được với SELECT",
+      "Commit/rollback các bước cùng nhau",
       "Bắt buộc phải dùng pandas"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Transaction đảm bảo tính nhất quán: nếu mọi bước thành công thì commit, nếu lỗi thì rollback để hủy thay đổi chưa lưu."
   },
   {
@@ -487,12 +487,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "rollback trong transaction dùng để làm gì?",
     code: "",
     options: [
-      "Hủy các thay đổi chưa commit",
-      "Lưu các thay đổi vào database",
+      "Lưu thay đổi vào database",
       "Chỉ lấy một dòng kết quả",
+      "Hủy thay đổi chưa commit",
       "Tạo bảng mới từ DataFrame"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "rollback hủy các thay đổi trong transaction chưa được commit, giúp tránh lưu dữ liệu sai khi xảy ra lỗi."
   },
   {
@@ -503,12 +503,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "Lợi ích của context manager khi làm việc với connection/file-like resource là gì?",
     code: "",
     options: [
-      "Giúp quản lý tài nguyên và cleanup an toàn hơn sau khi block kết thúc",
-      "Tự động viết SQL thay người dùng",
+      "Tự động viết SQL thay user",
       "Tự động tạo dashboard",
+      "Quản lý cleanup an toàn hơn",
       "Bắt buộc tăng accuracy model"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Context manager giúp đóng hoặc cleanup resource đúng cách, giảm rủi ro quên đóng connection/cursor hoặc xử lý transaction không rõ ràng."
   },
   {
@@ -519,12 +519,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "Khi chạy query từ Python, vì sao nên xử lý lỗi có chọn lọc thay vì except: pass?",
     code: "",
     options: [
-      "Vì except: pass có thể che giấu lỗi connection/query và làm pipeline tiếp tục với dữ liệu sai",
-      "Vì Python không hỗ trợ try/except",
-      "Vì lỗi SQL luôn không quan trọng",
-      "Vì except: pass tự động rollback an toàn"
+      "Python không hỗ trợ try/except",
+      "Lỗi SQL luôn không quan trọng",
+      "Tránh che giấu lỗi query/connection",
+      "except: pass tự rollback an toàn"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Bỏ qua lỗi làm pipeline khó debug và có thể tạo output sai. Nên log lỗi, rollback nếu cần và fail rõ ràng với lỗi nghiêm trọng."
   },
   {
@@ -535,12 +535,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "Best practice nào phù hợp với database password trong project Python?",
     code: "",
     options: [
-      "Không hard-code password trong code; dùng biến môi trường hoặc config an toàn",
-      "Commit password trực tiếp lên GitHub để dễ chạy",
-      "In password ra log mỗi lần kết nối",
+      "Commit password lên GitHub",
+      "In password ra log",
+      "Dùng env vars hoặc secret config",
       "Gửi password trong tên table"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Credential là thông tin nhạy cảm. Nên dùng environment variables, secret manager hoặc config không commit công khai."
   },
   {
@@ -551,12 +551,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "chunksize trong pd.read_sql thường hữu ích khi nào?",
     code: "",
     options: [
-      "Khi kết quả query lớn và muốn đọc từng phần thay vì load toàn bộ vào memory",
-      "Khi query chỉ trả về một dòng",
-      "Khi muốn tự động tạo index database",
+      "Khi query chỉ có một dòng",
+      "Khi muốn tạo index database",
+      "Khi cần đọc result lớn từng phần",
       "Khi không có connection"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "chunksize giúp pd.read_sql trả về iterator các DataFrame nhỏ hơn, phù hợp khi dữ liệu lớn và memory hạn chế."
   },
   {
@@ -567,12 +567,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "Khi bảng rất lớn, vì sao nên filter/aggregate trong SQL trước khi đưa về pandas nếu có thể?",
     code: "",
     options: [
-      "Để giảm số dòng/cột truyền về Python và tận dụng database engine xử lý",
       "Vì pandas không thể đọc SQL",
-      "Vì SQL không hỗ trợ aggregation",
-      "Vì luôn cần SELECT * trước rồi mới lọc"
+      "Vì SQL không hỗ trợ aggregate",
+      "Giảm dữ liệu đưa về Python",
+      "Vì luôn cần SELECT * trước"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Đẩy filter/aggregation xuống SQL giúp giảm dữ liệu cần chuyển về memory Python, thường hiệu quả hơn khi chỉ cần kết quả tổng hợp."
   },
   {
@@ -583,12 +583,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "Vì sao nên tránh SELECT * trong query production khi chỉ cần vài cột?",
     code: "",
     options: [
-      "Vì đọc nhiều cột không cần thiết, làm query nặng hơn và schema khó kiểm soát",
-      "Vì SELECT * luôn sai cú pháp",
-      "Vì SELECT * chỉ chạy được với pandas",
+      "Vì SELECT * luôn sai syntax",
+      "Vì chỉ chạy được với pandas",
+      "Giảm dữ liệu thừa và rõ schema",
       "Vì SELECT * tự động xóa bảng"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "SELECT cột cần thiết giúp giảm dữ liệu truyền qua network/memory và làm pipeline rõ schema hơn."
   },
   {
@@ -599,12 +599,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "Vì sao nên filter theo date trong SQL khi chỉ cần một giai đoạn nhỏ từ bảng lớn?",
     code: "",
     options: [
-      "Để giảm lượng dữ liệu đọc/trả về Python",
-      "Để database tự động xóa dữ liệu cũ",
+      "Để database xóa dữ liệu cũ",
       "Để pandas không cần import",
+      "Để giảm dữ liệu đọc về Python",
       "Để biến date thành password"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Filter date trong SQL giúp chỉ lấy giai đoạn cần phân tích, tiết kiệm I/O, memory và thời gian xử lý trong Python."
   },
   {
@@ -615,12 +615,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "Trong SQL, COALESCE(amount, 0) thường dùng để làm gì?",
     code: "",
     options: [
-      "Trả amount nếu không NULL, nếu NULL thì trả 0",
-      "Chỉ giữ dòng có amount NULL",
+      "Chỉ giữ dòng amount NULL",
       "Xóa cột amount",
+      "Thay NULL amount bằng 0",
       "Đổi tên amount thành 0"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "COALESCE trả về giá trị đầu tiên không NULL. COALESCE(amount, 0) thường dùng để thay NULL bằng 0 trong output."
   },
   {
@@ -631,12 +631,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "Lỗi phổ biến nào xảy ra khi query string có dấu nháy không escape đúng?",
     code: "",
     options: [
-      "SQL syntax error hoặc query bị hiểu sai",
-      "Database tự động sửa query",
-      "pandas tự động tạo table mới",
-      "Connection tự động đóng an toàn"
+      "Database tự sửa query",
+      "pandas tự tạo table mới",
+      "SQL syntax error hoặc sai logic",
+      "Connection tự đóng an toàn"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Dấu nháy trong string có thể làm SQL bị lỗi syntax hoặc logic. Parameterized query giúp tránh nhiều lỗi liên quan đến quoting."
   },
   {
@@ -647,12 +647,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "Vì sao f-string trực tiếp với user input trong SQL có thể nguy hiểm?",
     code: "status = user_input\nquery = f\"SELECT * FROM users WHERE status = '{status}'\"",
     options: [
-      "Vì user_input có thể chứa SQL độc hại làm thay đổi logic query",
-      "Vì f-string không chạy được trong Python",
-      "Vì SQL không cho phép WHERE",
-      "Vì pandas không đọc được string"
+      "Vì f-string không chạy Python",
+      "Vì SQL không cho WHERE",
+      "Vì input có thể đổi logic SQL",
+      "Vì pandas không đọc string"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "F-string nối input trực tiếp vào query có thể gây SQL injection. Nên dùng parameterized query thay vì tự ghép chuỗi."
   },
   {
@@ -663,12 +663,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "Pattern nào hợp lý khi chạy nhiều câu INSERT liên quan nhau?",
     code: "",
     options: [
-      "Dùng transaction: nếu tất cả thành công thì commit, nếu có lỗi thì rollback",
-      "Commit sau từng dòng dù không cần nhất quán",
-      "Bỏ qua mọi lỗi bằng except: pass",
+      "Commit từng dòng dù không cần",
+      "Bỏ qua lỗi bằng except: pass",
+      "Dùng transaction commit/rollback",
       "Không cần connection"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Transaction giúp đảm bảo nhiều thay đổi liên quan được lưu cùng nhau hoặc hủy cùng nhau nếu có lỗi."
   },
   {
@@ -679,12 +679,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "Nếu query trả về hàng chục triệu dòng, cách nào thường hợp lý hơn?",
     code: "",
     options: [
-      "Giảm dữ liệu bằng WHERE/SELECT/GROUP BY trong SQL hoặc đọc theo chunksize nếu cần",
-      "Luôn kéo toàn bộ bảng vào pandas trước",
-      "Dùng SELECT * rồi lưu vào list Python",
-      "Tắt mọi filter để query đơn giản hơn"
+      "Kéo toàn bộ bảng vào pandas",
+      "SELECT * rồi lưu vào list",
+      "Filter/aggregate SQL hoặc chunksize",
+      "Tắt filter để query đơn giản"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Với dữ liệu lớn, nên giảm dữ liệu tại database bằng filter/select/aggregation hoặc xử lý từng chunk để tránh quá tải memory."
   },
   {
@@ -695,12 +695,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "Vấn đề nào có thể xảy ra khi cột date trong database được đọc về Python như string?",
     code: "",
     options: [
-      "Filter, sort hoặc tạo feature thời gian có thể sai nếu không parse đúng datetime",
-      "Python tự động biết mọi timezone",
-      "SQL query không thể chạy nữa",
-      "DataFrame không thể có cột string"
+      "Python tự biết mọi timezone",
+      "SQL query không chạy nữa",
+      "Filter/sort date có thể sai",
+      "DataFrame không có cột string"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Nếu date là string, sort/filter theo thời gian có thể sai trong một số format. Cần kiểm tra dtype và parse datetime khi cần."
   },
   {
@@ -711,12 +711,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "Vì sao cần kiểm tra schema trước khi ghi DataFrame xuống table có sẵn?",
     code: "",
     options: [
-      "Để đảm bảo tên cột, thứ tự logic và kiểu dữ liệu tương thích với table đích",
       "Để tự động tăng số dòng",
       "Để tránh dùng SQL hoàn toàn",
-      "Để database tự động tạo chart"
+      "Để đảm bảo cột/dtype tương thích",
+      "Để database tự tạo chart"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Schema mismatch có thể gây lỗi khi to_sql append hoặc làm dữ liệu bị cast sai. Nên kiểm tra cột và dtype trước khi ghi."
   },
   {
@@ -727,12 +727,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "Khi dùng df.to_sql để append dữ liệu vào table có sẵn, rủi ro nào cần chú ý?",
     code: "",
     options: [
-      "Schema hoặc dtype của DataFrame có thể không khớp table đích",
-      "to_sql luôn xóa table dù dùng append",
-      "to_sql không bao giờ ghi được dữ liệu",
-      "DataFrame bắt buộc phải có index datetime"
+      "to_sql luôn xóa table",
+      "to_sql không ghi dữ liệu",
+      "Schema/dtype có thể không khớp",
+      "Index bắt buộc là datetime"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Append yêu cầu dữ liệu mới tương thích với table đích. Nếu cột thiếu/thừa hoặc dtype sai, query có thể lỗi hoặc dữ liệu bị lưu không đúng."
   },
   {
@@ -743,12 +743,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "Temporary table trong workflow SQL với Python thường hữu ích khi nào?",
     code: "",
     options: [
-      "Khi cần lưu kết quả trung gian trong session để dùng cho các query sau",
-      "Khi muốn lưu dữ liệu vĩnh viễn cho mọi user",
+      "Khi muốn lưu vĩnh viễn mọi user",
       "Khi muốn thay thế password",
-      "Khi chỉ cần một biến Python string"
+      "Khi cần lưu kết quả trung gian",
+      "Khi chỉ cần Python string"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Temporary table hữu ích cho pipeline nhiều bước trong cùng connection/session và không cần lưu kết quả trung gian lâu dài."
   },
   {
@@ -759,12 +759,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "Vì sao CTE có thể giúp query trong Python dễ maintain hơn?",
     code: "",
     options: [
-      "Vì CTE chia logic SQL phức tạp thành các bước có tên rõ ràng",
-      "Vì CTE tự động tạo index",
+      "Vì CTE tự tạo index",
       "Vì CTE thay thế connection",
-      "Vì CTE chỉ dùng để xóa dữ liệu"
+      "Vì chia SQL thành bước rõ ràng",
+      "Vì CTE chỉ dùng để xóa"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "CTE với WITH giúp tách query thành các khối logic dễ đọc hơn, đặc biệt khi viết query dài trong Python string."
   },
   {
@@ -775,12 +775,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "Query logging cơ bản trong pipeline dữ liệu giúp ích gì?",
     code: "",
     options: [
-      "Giúp audit/debug query đã chạy, thời điểm chạy và lỗi nếu có",
-      "Tự động sửa mọi query sai",
+      "Tự động sửa query sai",
       "Tăng accuracy model",
+      "Giúp audit/debug query chạy",
       "Thay thế credential management"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Log query hoặc metadata chạy giúp debug pipeline, theo dõi lỗi và audit quá trình xử lý dữ liệu. Cần tránh log thông tin nhạy cảm."
   },
   {
@@ -791,12 +791,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "Vì sao nên dùng biến môi trường cho credential database?",
     code: "",
     options: [
-      "Để tránh hard-code thông tin nhạy cảm trong source code",
-      "Để query tự động chạy nhanh hơn mọi trường hợp",
+      "Để query luôn nhanh hơn",
       "Để biến password thành DataFrame",
+      "Để tránh hard-code credential",
       "Để không cần connection string"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Biến môi trường giúp tách credential khỏi code, giảm rủi ro lộ thông tin khi commit hoặc chia sẻ source."
   },
   {
@@ -807,12 +807,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "Cách nào thường giúp cải thiện workflow pandas + SQL với bảng lớn?",
     code: "",
     options: [
-      "Chỉ SELECT cột cần thiết, WHERE filter sớm, aggregate trong SQL nếu phù hợp",
-      "Luôn SELECT * rồi filter trong pandas",
-      "Convert mọi dòng thành Python dict trước khi lọc",
-      "Không dùng WHERE để query đơn giản hơn"
+      "Luôn SELECT * rồi lọc pandas",
+      "Convert mọi dòng thành dict",
+      "SELECT cột cần và filter sớm",
+      "Không dùng WHERE cho đơn giản"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Đẩy logic lọc/chọn cột/tổng hợp xuống SQL giúp giảm dữ liệu truyền về Python và tận dụng database engine."
   },
   {
@@ -823,12 +823,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "Index trong database có thể giúp gì cho query?",
     code: "",
     options: [
-      "Có thể tăng tốc một số filter/join trên cột được index, tùy query và database",
-      "Luôn làm mọi query nhanh hơn tuyệt đối",
+      "Luôn làm mọi query nhanh hơn",
       "Tự động xóa NULL",
+      "Có thể tăng tốc filter/join",
       "Thay thế mọi GROUP BY"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Index có thể hỗ trợ lookup/filter/join hiệu quả hơn, nhưng hiệu quả phụ thuộc query, dữ liệu, database và chi phí maintain index."
   },
   {
@@ -839,12 +839,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "Khi join users và orders trong SQL trước khi đưa vào pandas, lợi ích chính là gì?",
     code: "",
     options: [
-      "Giảm thao tác merge trong Python và tận dụng database engine xử lý join",
       "Bắt buộc làm mất dữ liệu",
-      "Không cần kiểm tra key join",
-      "Tự động tạo machine learning feature hoàn hảo"
+      "Không cần kiểm tra key",
+      "Tận dụng database xử lý join",
+      "Tự động tạo feature hoàn hảo"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Join trong SQL có thể hiệu quả và rõ ràng hơn khi dữ liệu nằm trong database. Tuy nhiên vẫn cần kiểm tra key, duplicate và row count sau join."
   },
   {
@@ -855,12 +855,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "Lỗi phổ biến nào xảy ra khi quên commit sau INSERT/UPDATE trong một số database/connection setting?",
     code: "",
     options: [
-      "Thay đổi có thể chưa được lưu vĩnh viễn vào database",
-      "SELECT query không thể chạy nữa",
+      "SELECT query không chạy nữa",
       "DataFrame tự động bị xóa",
-      "Python tự động rollback toàn bộ database đã commit"
+      "Thay đổi có thể chưa được lưu",
+      "Python rollback database đã commit"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Với transaction, thay đổi cần commit để được lưu. Nếu quên commit và connection đóng/rollback, thay đổi có thể mất."
   },
   {
@@ -871,12 +871,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "Best practice nào phù hợp khi viết SQL trong Python cho dashboard/report định kỳ?",
     code: "",
     options: [
-      "Tách query rõ ràng, dùng parameter an toàn, log lỗi, kiểm tra schema và tránh kéo dữ liệu thừa",
-      "Hard-code password và SELECT * mọi bảng",
-      "Dùng except: pass để pipeline không bao giờ dừng",
-      "Không kiểm tra row count vì database luôn đúng"
+      "Hard-code password và SELECT *",
+      "Dùng except: pass mọi lỗi",
+      "Query rõ, params an toàn, log và validate",
+      "Không kiểm tra row count"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Pipeline định kỳ cần an toàn, dễ debug và ổn định: parameterized query, credential an toàn, kiểm tra dữ liệu, log lỗi và chỉ lấy dữ liệu cần thiết."
   },
   {
@@ -887,12 +887,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "Trong code review, dấu hiệu nào là rủi ro SQL injection rõ nhất?",
     code: "",
     options: [
-      "SQL query được tạo bằng cách nối trực tiếp user input vào string",
       "Query dùng parameter binding",
-      "Credential lấy từ biến môi trường",
-      "Query dùng WHERE với placeholder"
+      "Credential lấy từ env vars",
+      "Nối trực tiếp user input vào SQL",
+      "Query dùng WHERE placeholder"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Nối trực tiếp input vào SQL string là dấu hiệu rủi ro cao. Nên dùng parameterized query hoặc API binding của thư viện."
   },
   {
@@ -903,12 +903,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "Trong pipeline ghi dữ liệu gồm xóa dữ liệu cũ rồi insert dữ liệu mới, vì sao transaction quan trọng?",
     code: "",
     options: [
-      "Để tránh trạng thái nửa vời như đã xóa dữ liệu cũ nhưng insert dữ liệu mới thất bại",
-      "Để SELECT nhanh hơn chắc chắn",
+      "Để SELECT chắc chắn nhanh hơn",
       "Để không cần kiểm tra schema",
+      "Để tránh trạng thái ghi nửa vời",
       "Để tự động tạo dashboard"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Transaction giúp các bước thay đổi dữ liệu được commit cùng nhau hoặc rollback cùng nhau, tránh bảng rơi vào trạng thái không nhất quán."
   },
   {
@@ -919,12 +919,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "Nếu cần xử lý result rất lớn trong Python nhưng không cần giữ toàn bộ trong memory, pattern nào phù hợp hơn?",
     code: "",
     options: [
-      "Đọc theo chunksize và xử lý từng chunk, hoặc aggregate/filter thêm trong SQL nếu có thể",
-      "fetchall toàn bộ rồi convert thành list lớn",
-      "SELECT * rồi lưu mọi dòng vào dictionary global",
+      "fetchall toàn bộ rồi convert list",
+      "SELECT * rồi lưu dictionary global",
+      "Đọc chunksize hoặc aggregate SQL",
       "Tắt WHERE để tránh phức tạp"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Đọc theo chunk giúp giảm peak memory. Nhưng trước đó nên cân nhắc đẩy filter/aggregation xuống SQL để giảm dữ liệu phải xử lý."
   },
   {
@@ -935,12 +935,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "Vì sao không nên log nguyên connection string nếu nó chứa username/password?",
     code: "",
     options: [
-      "Vì log có thể làm lộ credential cho người không nên truy cập",
-      "Vì connection string không bao giờ dùng được",
-      "Vì log luôn làm database bị xóa",
-      "Vì username/password chỉ nên đặt trong SELECT"
+      "Vì connection string không dùng được",
+      "Vì log luôn xóa database",
+      "Vì log có thể làm lộ credential",
+      "Vì password chỉ đặt trong SELECT"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Log thường được lưu hoặc chia sẻ để debug. Nếu chứa credential, nó có thể làm lộ quyền truy cập database."
   },
   {
@@ -951,12 +951,12 @@ const SQL_PYTHON_QUESTIONS = [
     question: "Trong project analytics production-like, cách nào giúp SQL with Python dễ bảo trì hơn?",
     code: "",
     options: [
-      "Tách config/credential, tách query phức tạp, dùng parameterized query, kiểm tra output và log có kiểm soát",
-      "Viết tất cả query và password trong một dòng code",
-      "Không dùng transaction cho thao tác ghi dữ liệu",
-      "Luôn bỏ qua lỗi để report chạy tiếp"
+      "Viết query và password một dòng",
+      "Không dùng transaction khi ghi",
+      "Tách config, query, params và log",
+      "Luôn bỏ qua lỗi để report chạy"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Code dễ bảo trì cần tách cấu hình, bảo vệ credential, query rõ ràng, parameter an toàn, validation output và logging hợp lý."
   }
 ];

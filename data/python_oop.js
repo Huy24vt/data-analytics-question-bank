@@ -7,12 +7,12 @@ const PYTHON_OOP_QUESTIONS = [
     question: "Trong Python OOP, class thường được hiểu là gì?",
     code: "",
     options: [
-      "Một bản thiết kế để tạo ra object",
       "Một vòng lặp xử lý dữ liệu",
+      "Một bản thiết kế để tạo object",
       "Một kiểu comment đặc biệt",
-      "Một file CSV"
+      "Một file CSV dùng làm input"
     ],
-    answer: 0,
+    answer: 1,
     explanation: "Class là bản thiết kế định nghĩa thuộc tính và hành vi để tạo ra object. Object là instance cụ thể được tạo từ class."
   },
   {
@@ -23,12 +23,12 @@ const PYTHON_OOP_QUESTIONS = [
     question: "Object trong OOP là gì?",
     code: "",
     options: [
-      "Một instance cụ thể được tạo từ class",
       "Một keyword để tạo vòng lặp",
-      "Một kiểu dữ liệu chỉ lưu số nguyên",
+      "Một kiểu dữ liệu chỉ lưu số",
+      "Một instance được tạo từ class",
       "Một lỗi khi chạy Python"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Object là instance cụ thể được tạo từ class. Ví dụ user = User(\"An\") tạo một object user từ class User."
   },
   {
@@ -39,12 +39,12 @@ const PYTHON_OOP_QUESTIONS = [
     question: "__init__ trong class Python thường dùng để làm gì?",
     code: "",
     options: [
-      "Khởi tạo object và gán các giá trị ban đầu",
-      "Xóa toàn bộ object trong bộ nhớ",
-      "Import module",
-      "Bắt exception"
+      "Xóa toàn bộ object trong memory",
+      "Import module vào class",
+      "Bắt exception khi chạy code",
+      "Khởi tạo object với giá trị ban đầu"
     ],
-    answer: 0,
+    answer: 3,
     explanation: "__init__ là constructor method, thường dùng để khởi tạo các instance attributes khi object được tạo."
   },
   {
@@ -55,12 +55,12 @@ const PYTHON_OOP_QUESTIONS = [
     question: "self trong instance method thường đại diện cho điều gì?",
     code: "",
     options: [
-      "Chính object đang gọi method đó",
       "Tên của class cha",
-      "Một biến global",
-      "Một module Python"
+      "Chính object đang gọi method",
+      "Một biến global của module",
+      "Một module Python đang import"
     ],
-    answer: 0,
+    answer: 1,
     explanation: "self đại diện cho instance hiện tại. Thông qua self, method có thể truy cập attribute và method của object đó."
   },
   {
@@ -71,12 +71,12 @@ const PYTHON_OOP_QUESTIONS = [
     question: "Attribute trong object thường biểu thị điều gì?",
     code: "",
     options: [
-      "Dữ liệu hoặc trạng thái của object",
-      "Một vòng lặp",
+      "Một vòng lặp trong class",
       "Một câu lệnh import",
-      "Một lỗi cú pháp"
+      "Dữ liệu hoặc trạng thái object",
+      "Một lỗi cú pháp Python"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Attribute là dữ liệu gắn với object hoặc class, ví dụ user.name, user.age."
   },
   {
@@ -87,12 +87,12 @@ const PYTHON_OOP_QUESTIONS = [
     question: "Method trong class thường là gì?",
     code: "",
     options: [
-      "Function được định nghĩa bên trong class",
       "Một biến không thể thay đổi",
-      "Một file dữ liệu",
-      "Một kiểu exception"
+      "Function định nghĩa trong class",
+      "Một file dữ liệu bên ngoài",
+      "Một kiểu exception runtime"
     ],
-    answer: 0,
+    answer: 1,
     explanation: "Method là function nằm trong class, thường dùng để định nghĩa hành vi của object."
   },
   {
@@ -103,12 +103,12 @@ const PYTHON_OOP_QUESTIONS = [
     question: "Trong đoạn code sau, name là loại attribute nào?",
     code: "class User:\n    def __init__(self, name):\n        self.name = name",
     options: [
-      "Instance attribute",
       "Class attribute",
       "Static method",
-      "Package"
+      "Instance attribute",
+      "Package attribute"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "self.name được gán trên từng object cụ thể, nên nó là instance attribute."
   },
   {
@@ -119,12 +119,12 @@ const PYTHON_OOP_QUESTIONS = [
     question: "Class attribute thường được khai báo ở đâu?",
     code: "",
     options: [
-      "Bên trong class nhưng bên ngoài các method",
       "Chỉ bên trong vòng lặp for",
+      "Trong class, ngoài các method",
       "Chỉ trong file JSON",
-      "Bên ngoài tất cả class và function"
+      "Ngoài tất cả class/function"
     ],
-    answer: 0,
+    answer: 1,
     explanation: "Class attribute được khai báo trong class body, bên ngoài method. Nó thường được chia sẻ bởi các instance của class."
   },
   {
@@ -135,12 +135,12 @@ const PYTHON_OOP_QUESTIONS = [
     question: "Instance method trong Python thường nhận tham số đầu tiên là gì?",
     code: "",
     options: [
-      "self",
       "cls",
       "args",
+      "self",
       "main"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Instance method thường nhận self làm tham số đầu tiên để truy cập instance hiện tại."
   },
   {
@@ -151,12 +151,12 @@ const PYTHON_OOP_QUESTIONS = [
     question: "Trong đoạn code sau, User là gì và user là gì?",
     code: "class User:\n    pass\n\nuser = User()",
     options: [
-      "User là class, user là object",
       "User là object, user là class",
+      "User là class, user là object",
       "Cả hai đều là function",
       "Cả hai đều là module"
     ],
-    answer: 0,
+    answer: 1,
     explanation: "User là class định nghĩa bản thiết kế. user = User() tạo một object cụ thể từ class đó."
   },
   {
@@ -167,12 +167,12 @@ const PYTHON_OOP_QUESTIONS = [
     question: "Kết quả của đoạn code sau là gì?",
     code: "class User:\n    def __init__(self, name):\n        self.name = name\n\nuser = User(\"An\")\nprint(user.name)",
     options: [
-      "An",
       "name",
       "User",
+      "An",
       "None"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Khi tạo User(\"An\"), __init__ gán self.name = \"An\". Vì vậy user.name là \"An\"."
   },
   {
@@ -183,12 +183,12 @@ const PYTHON_OOP_QUESTIONS = [
     question: "Trong project Data Analytics, OOP hữu ích nhất trong trường hợp nào?",
     code: "",
     options: [
-      "Khi cần gom dữ liệu và hành vi liên quan vào một cấu trúc rõ ràng",
-      "Khi chỉ muốn viết toàn bộ code trên một dòng",
+      "Khi muốn viết toàn bộ code một dòng",
       "Khi không cần tái sử dụng code",
+      "Khi cần gom data và behavior liên quan",
       "Khi muốn tránh hoàn toàn function"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "OOP giúp tổ chức code có cấu trúc, ví dụ gom logic xử lý vào DataProcessor hoặc MetricCalculator để dễ tái sử dụng và bảo trì."
   },
   {
@@ -199,12 +199,12 @@ const PYTHON_OOP_QUESTIONS = [
     question: "Kết quả của đoạn code sau là gì?",
     code: "class Calculator:\n    def add(self, x, y):\n        return x + y\n\ncalc = Calculator()\nprint(calc.add(2, 3))",
     options: [
-      "5",
       "23",
       "None",
+      "5",
       "TypeError"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "calc.add(2, 3) gọi instance method add và trả về 2 + 3 = 5."
   },
   {
@@ -215,12 +215,12 @@ const PYTHON_OOP_QUESTIONS = [
     question: "Đoạn code sau gây lỗi vì lý do nào?",
     code: "class User:\n    def greet():\n        return \"Hi\"\n\nuser = User()\nprint(user.greet())",
     options: [
-      "Method thiếu tham số self",
       "Class không được đặt tên User",
       "return không dùng được trong class",
+      "Method thiếu tham số self",
       "Object không thể gọi method"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Khi gọi user.greet(), Python tự truyền instance vào method. Method greet không nhận self nên gây TypeError."
   },
   {
@@ -231,12 +231,12 @@ const PYTHON_OOP_QUESTIONS = [
     question: "Kết quả của đoạn code sau là gì?",
     code: "class User:\n    role = \"guest\"\n\nu1 = User()\nu2 = User()\nu1.role = \"admin\"\nprint(u1.role, u2.role)",
     options: [
-      "admin guest",
       "admin admin",
       "guest guest",
+      "admin guest",
       "guest admin"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "u1.role = \"admin\" tạo hoặc ghi đè instance attribute trên u1. u2 vẫn đọc class attribute role là \"guest\"."
   },
   {
@@ -248,11 +248,11 @@ const PYTHON_OOP_QUESTIONS = [
     code: "class Config:\n    source = \"local\"\n\nc1 = Config()\nc2 = Config()\nConfig.source = \"cloud\"\nprint(c1.source, c2.source)",
     options: [
       "local local",
-      "cloud cloud",
       "local cloud",
+      "cloud cloud",
       "cloud local"
     ],
-    answer: 1,
+    answer: 2,
     explanation: "source là class attribute. Khi đổi Config.source thành \"cloud\", các instance chưa override attribute này sẽ đọc giá trị mới."
   },
   {
@@ -263,12 +263,12 @@ const PYTHON_OOP_QUESTIONS = [
     question: "@classmethod thường nhận tham số đầu tiên là gì?",
     code: "",
     options: [
-      "cls",
       "self",
       "args",
+      "cls",
       "data"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Class method nhận cls làm tham số đầu tiên, đại diện cho class hiện tại thay vì instance cụ thể."
   },
   {
@@ -279,12 +279,12 @@ const PYTHON_OOP_QUESTIONS = [
     question: "@staticmethod phù hợp nhất khi nào?",
     code: "",
     options: [
-      "Khi method không cần truy cập self hoặc cls nhưng vẫn liên quan logic của class",
-      "Khi method bắt buộc thay đổi instance attribute",
-      "Khi method bắt buộc thay đổi class attribute",
+      "Khi method bắt buộc đổi instance",
+      "Khi method không cần self hoặc cls",
+      "Khi method bắt buộc đổi class",
       "Khi muốn tạo constructor"
     ],
-    answer: 0,
+    answer: 1,
     explanation: "staticmethod không tự nhận self hoặc cls. Nó phù hợp cho utility function liên quan đến class nhưng không cần trạng thái instance/class."
   },
   {
@@ -295,12 +295,12 @@ const PYTHON_OOP_QUESTIONS = [
     question: "Kết quả của đoạn code sau là gì?",
     code: "class Config:\n    env = \"dev\"\n\n    @classmethod\n    def get_env(cls):\n        return cls.env\n\nprint(Config.get_env())",
     options: [
-      "dev",
       "Config",
       "None",
+      "dev",
       "TypeError"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "get_env là class method, nhận cls là Config và trả về Config.env, tức \"dev\"."
   },
   {
@@ -311,12 +311,12 @@ const PYTHON_OOP_QUESTIONS = [
     question: "Kết quả của đoạn code sau là gì?",
     code: "class MetricCalculator:\n    @staticmethod\n    def ratio(x, y):\n        return x / y\n\nprint(MetricCalculator.ratio(10, 2))",
     options: [
-      "5.0",
       "5",
       "TypeError",
+      "5.0",
       "None"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "ratio là static method nên có thể gọi từ class. 10 / 2 trong Python trả về 5.0."
   },
   {
@@ -327,12 +327,12 @@ const PYTHON_OOP_QUESTIONS = [
     question: "Encapsulation trong OOP thường nói về điều gì?",
     code: "",
     options: [
-      "Gom dữ liệu và hành vi liên quan vào cùng một object, đồng thời kiểm soát cách truy cập",
       "Chạy nhiều thread cùng lúc",
+      "Gom state và behavior vào object",
       "Chỉ viết code bằng function",
       "Xóa tất cả attribute khỏi object"
     ],
-    answer: 0,
+    answer: 1,
     explanation: "Encapsulation giúp gom state và behavior vào object, đồng thời che giấu hoặc kiểm soát chi tiết bên trong qua method/property."
   },
   {
@@ -343,12 +343,12 @@ const PYTHON_OOP_QUESTIONS = [
     question: "Theo convention Python, attribute bắt đầu bằng một dấu gạch dưới như _value thường có ý nghĩa gì?",
     code: "",
     options: [
-      "Được xem là internal/protected theo convention, không nên truy cập trực tiếp từ bên ngoài nếu không cần",
-      "Bắt buộc không thể truy cập từ bên ngoài",
+      "Bắt buộc không thể truy cập ngoài class",
+      "Thường được xem là internal/protected",
       "Luôn là class attribute",
       "Luôn là static method"
     ],
-    answer: 0,
+    answer: 1,
     explanation: "Một dấu gạch dưới là convention báo rằng attribute mang tính internal. Python không chặn truy cập tuyệt đối."
   },
   {
@@ -359,12 +359,12 @@ const PYTHON_OOP_QUESTIONS = [
     question: "@property thường dùng để làm gì?",
     code: "",
     options: [
-      "Cho phép truy cập method như attribute và có thể kiểm soát logic tính toán/validation",
-      "Tạo vòng lặp for",
-      "Import package",
+      "Tạo vòng lặp for trong class",
+      "Cho phép method được truy cập như attribute",
+      "Import package vào object",
       "Tự động serialize object thành JSON"
     ],
-    answer: 0,
+    answer: 1,
     explanation: "@property biến method thành attribute đọc được, giúp che giấu logic tính toán hoặc validation phía sau cách truy cập đơn giản."
   },
   {
@@ -375,12 +375,12 @@ const PYTHON_OOP_QUESTIONS = [
     question: "Kết quả của đoạn code sau là gì?",
     code: "class Product:\n    def __init__(self, price):\n        self.price = price\n\n    @property\n    def double_price(self):\n        return self.price * 2\n\np = Product(10)\nprint(p.double_price)",
     options: [
-      "20",
       "10",
       "double_price",
+      "20",
       "TypeError"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "double_price là property nên được truy cập như attribute. Nó trả về self.price * 2 = 20."
   },
   {
@@ -391,12 +391,12 @@ const PYTHON_OOP_QUESTIONS = [
     question: "Setter của property thường dùng để làm gì?",
     code: "",
     options: [
-      "Kiểm soát hoặc validate giá trị trước khi gán attribute",
       "Chỉ để in object ra màn hình",
+      "Kiểm soát giá trị trước khi gán",
       "Chỉ để tạo class mới",
       "Chỉ để import module"
     ],
-    answer: 0,
+    answer: 1,
     explanation: "Setter cho phép kiểm tra hoặc biến đổi giá trị trước khi lưu vào attribute nội bộ."
   },
   {
@@ -407,12 +407,12 @@ const PYTHON_OOP_QUESTIONS = [
     question: "Inheritance trong OOP là gì?",
     code: "",
     options: [
-      "Cơ chế class con kế thừa attribute/method từ class cha",
       "Cơ chế chuyển list thành tuple",
+      "Cơ chế class con kế thừa class cha",
       "Cơ chế bắt lỗi runtime",
-      "Cơ chế đọc file"
+      "Cơ chế đọc file dữ liệu"
     ],
-    answer: 0,
+    answer: 1,
     explanation: "Inheritance cho phép class con tái sử dụng hoặc mở rộng logic từ class cha."
   },
   {
@@ -423,12 +423,12 @@ const PYTHON_OOP_QUESTIONS = [
     question: "Trong đoạn code sau, Report là gì và CsvReport là gì?",
     code: "class Report:\n    pass\n\nclass CsvReport(Report):\n    pass",
     options: [
-      "Report là parent class, CsvReport là child class",
-      "CsvReport là parent class, Report là child class",
+      "CsvReport là parent, Report là child",
+      "Report là parent, CsvReport là child",
       "Cả hai đều là object",
       "Cả hai đều là package"
     ],
-    answer: 0,
+    answer: 1,
     explanation: "CsvReport(Report) nghĩa là CsvReport kế thừa từ Report. Report là parent class, CsvReport là child class."
   },
   {
@@ -439,12 +439,12 @@ const PYTHON_OOP_QUESTIONS = [
     question: "super() thường dùng để làm gì trong class con?",
     code: "",
     options: [
+      "Xóa class cha khỏi memory",
       "Gọi method của class cha",
-      "Xóa class cha",
-      "Tạo static method",
+      "Tạo static method mới",
       "Chuyển object thành dictionary"
     ],
-    answer: 0,
+    answer: 1,
     explanation: "super() thường dùng để gọi method từ parent class, đặc biệt là __init__ khi class con cần kế thừa logic khởi tạo."
   },
   {
@@ -455,12 +455,12 @@ const PYTHON_OOP_QUESTIONS = [
     question: "Method overriding là gì?",
     code: "",
     options: [
-      "Class con định nghĩa lại method đã có ở class cha",
       "Object bị xóa khỏi bộ nhớ",
+      "Class con định nghĩa lại method cha",
       "Function được import từ module khác",
       "Class không có method nào"
     ],
-    answer: 0,
+    answer: 1,
     explanation: "Overriding xảy ra khi class con cung cấp implementation mới cho method đã tồn tại trong class cha."
   },
   {
@@ -471,12 +471,12 @@ const PYTHON_OOP_QUESTIONS = [
     question: "Polymorphism trong OOP thường giúp điều gì?",
     code: "",
     options: [
-      "Cho phép nhiều object khác class có thể dùng chung một interface method",
       "Bắt buộc mọi class có cùng attribute",
+      "Nhiều object dùng chung interface method",
       "Ngăn class con override method",
-      "Chỉ cho phép dùng một object duy nhất"
+      "Chỉ cho phép dùng một object"
     ],
-    answer: 0,
+    answer: 1,
     explanation: "Polymorphism cho phép code gọi cùng một method trên các object khác nhau, miễn là chúng hỗ trợ method đó."
   },
   {
@@ -487,12 +487,12 @@ const PYTHON_OOP_QUESTIONS = [
     question: "Composition trong OOP thường là gì?",
     code: "",
     options: [
-      "Một object chứa hoặc sử dụng object khác để thực hiện công việc",
-      "Một class tự động kế thừa mọi class khác",
-      "Một method không có self",
+      "Class tự động kế thừa mọi class khác",
+      "Object sử dụng object khác bên trong",
+      "Method không có tham số self",
       "Một cách tạo biến global"
     ],
-    answer: 0,
+    answer: 1,
     explanation: "Composition là cách thiết kế trong đó một object kết hợp các object khác như thành phần để tạo hành vi mong muốn."
   },
   {
@@ -503,12 +503,12 @@ const PYTHON_OOP_QUESTIONS = [
     question: "Magic method trong Python thường có dạng tên như thế nào?",
     code: "",
     options: [
-      "__method__",
       "_method",
+      "__method__",
       "method_",
       "METHOD"
     ],
-    answer: 0,
+    answer: 1,
     explanation: "Magic methods thường có double underscores ở hai bên, ví dụ __init__, __str__, __len__."
   },
   {
@@ -519,12 +519,12 @@ const PYTHON_OOP_QUESTIONS = [
     question: "__str__ thường dùng để làm gì?",
     code: "",
     options: [
-      "Định nghĩa chuỗi thân thiện khi print object",
       "Đếm số phần tử trong object",
+      "Định nghĩa chuỗi khi print object",
       "So sánh hai object",
       "Tạo class attribute"
     ],
-    answer: 0,
+    answer: 1,
     explanation: "__str__ trả về representation thân thiện với người dùng, thường được dùng khi print(object)."
   },
   {
@@ -535,12 +535,12 @@ const PYTHON_OOP_QUESTIONS = [
     question: "dataclass thường hữu ích nhất khi nào?",
     code: "",
     options: [
-      "Khi cần class chủ yếu để lưu dữ liệu với ít boilerplate code",
       "Khi cần viết metaclass phức tạp",
+      "Khi class chủ yếu để lưu dữ liệu",
       "Khi cần thay thế mọi function",
       "Khi cần tự động đọc database"
     ],
-    answer: 0,
+    answer: 1,
     explanation: "dataclass giúp tạo class lưu dữ liệu gọn hơn, tự sinh một số method như __init__ và __repr__."
   },
   {
@@ -552,11 +552,11 @@ const PYTHON_OOP_QUESTIONS = [
     code: "class Report:\n    def format(self):\n        return \"base\"\n\nclass CsvReport(Report):\n    def format(self):\n        return \"csv\"\n\nr = CsvReport()\nprint(r.format())",
     options: [
       "base",
-      "csv",
       "Report",
+      "csv",
       "TypeError"
     ],
-    answer: 1,
+    answer: 2,
     explanation: "CsvReport override method format của Report, nên khi gọi r.format() sẽ dùng implementation của CsvReport và trả về \"csv\"."
   },
   {
@@ -567,12 +567,12 @@ const PYTHON_OOP_QUESTIONS = [
     question: "Kết quả của đoạn code sau là gì?",
     code: "class Report:\n    def __init__(self, name):\n        self.name = name\n\nclass CsvReport(Report):\n    def __init__(self, name, delimiter):\n        super().__init__(name)\n        self.delimiter = delimiter\n\nr = CsvReport(\"sales\", \",\")\nprint(r.name, r.delimiter)",
     options: [
-      "sales ,",
       "None ,",
+      "sales ,",
       "sales None",
       "TypeError"
     ],
-    answer: 0,
+    answer: 1,
     explanation: "super().__init__(name) gọi constructor của Report để gán self.name. Sau đó CsvReport gán self.delimiter."
   },
   {
@@ -583,12 +583,12 @@ const PYTHON_OOP_QUESTIONS = [
     question: "Vấn đề chính của đoạn code sau là gì?",
     code: "class Report:\n    columns = []\n\nr1 = Report()\nr2 = Report()\nr1.columns.append(\"date\")\nprint(r2.columns)",
     options: [
-      "columns là mutable class attribute nên bị chia sẻ giữa các instance",
       "append không dùng được với list",
+      "columns là mutable class attribute",
       "Class không thể có attribute",
       "r2 không thể đọc columns"
     ],
-    answer: 0,
+    answer: 1,
     explanation: "columns là list ở cấp class nên được chia sẻ. Khi r1 append, r2 cũng thấy thay đổi đó."
   },
   {
@@ -599,12 +599,12 @@ const PYTHON_OOP_QUESTIONS = [
     question: "Cách sửa nào phù hợp hơn để mỗi Report có columns riêng?",
     code: "",
     options: [
+      "Gán Report.columns = [] sau mỗi append",
       "Gán self.columns = [] trong __init__",
-      "Gán Report.columns = [] sau mỗi lần append",
       "Dùng global columns",
       "Xóa __init__ khỏi class"
     ],
-    answer: 0,
+    answer: 1,
     explanation: "Nếu mỗi instance cần list riêng, nên tạo self.columns = [] trong __init__ để tránh chia sẻ mutable class attribute."
   },
   {
@@ -615,12 +615,12 @@ const PYTHON_OOP_QUESTIONS = [
     question: "Kết quả của đoạn code sau là gì?",
     code: "class Product:\n    def __init__(self, price):\n        self._price = price\n\n    @property\n    def price(self):\n        return self._price\n\np = Product(100)\nprint(p.price)",
     options: [
-      "100",
       "_price",
       "None",
+      "100",
       "TypeError"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "price là property trả về self._price, nên p.price cho kết quả 100."
   },
   {
@@ -631,12 +631,12 @@ const PYTHON_OOP_QUESTIONS = [
     question: "Setter trong đoạn code sau có tác dụng gì?",
     code: "class Product:\n    def __init__(self, price):\n        self.price = price\n\n    @property\n    def price(self):\n        return self._price\n\n    @price.setter\n    def price(self, value):\n        if value < 0:\n            raise ValueError(\"price must be non-negative\")\n        self._price = value",
     options: [
-      "Chặn giá trị price âm trước khi gán",
       "Tự động nhân price với 2",
+      "Chặn giá trị price âm",
       "Chuyển price thành string",
       "Xóa attribute _price"
     ],
-    answer: 0,
+    answer: 1,
     explanation: "Setter kiểm tra value < 0 và raise ValueError nếu không hợp lệ. Nếu hợp lệ, nó gán vào self._price."
   },
   {
@@ -647,12 +647,12 @@ const PYTHON_OOP_QUESTIONS = [
     question: "__repr__ thường hướng đến mục đích nào hơn so với __str__?",
     code: "",
     options: [
-      "Tạo representation rõ ràng cho developer/debugging",
       "Tự động tính độ dài object",
+      "Representation cho developer/debug",
       "Tự động so sánh object",
       "Tạo class method"
     ],
-    answer: 0,
+    answer: 1,
     explanation: "__repr__ thường hướng đến representation rõ ràng cho developer, hữu ích khi debug hoặc xem object trong console."
   },
   {
@@ -663,12 +663,12 @@ const PYTHON_OOP_QUESTIONS = [
     question: "Magic method nào được gọi khi dùng len(object)?",
     code: "",
     options: [
-      "__len__",
       "__str__",
       "__repr__",
+      "__len__",
       "__init__"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "len(object) gọi object.__len__() nếu class có định nghĩa method này."
   },
   {
@@ -679,12 +679,12 @@ const PYTHON_OOP_QUESTIONS = [
     question: "Magic method nào thường dùng để định nghĩa logic so sánh bằng giữa hai object?",
     code: "",
     options: [
-      "__eq__",
       "__len__",
       "__str__",
+      "__eq__",
       "__init__"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "__eq__ được dùng để định nghĩa hành vi của toán tử == giữa các object."
   },
   {
@@ -695,12 +695,12 @@ const PYTHON_OOP_QUESTIONS = [
     question: "Kết quả của đoạn code sau là gì?",
     code: "from dataclasses import dataclass\n\n@dataclass\nclass User:\n    name: str\n    age: int\n\nu = User(\"An\", 20)\nprint(u.name, u.age)",
     options: [
-      "An 20",
       "User An",
       "None None",
+      "An 20",
       "TypeError"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "dataclass tự tạo __init__, nên User(\"An\", 20) gán name là \"An\" và age là 20."
   },
   {
@@ -711,12 +711,12 @@ const PYTHON_OOP_QUESTIONS = [
     question: "Khi nào composition thường phù hợp hơn inheritance?",
     code: "",
     options: [
-      "Khi muốn object sử dụng một thành phần khác thay vì nói nó là một loại của class cha",
-      "Khi class con chắc chắn là một dạng cụ thể của class cha",
-      "Khi muốn override mọi method của class cha",
+      "Khi class con là một dạng class cha",
+      "Khi object dùng một thành phần khác",
+      "Khi muốn override mọi method cha",
       "Khi không cần object nào cả"
     ],
-    answer: 0,
+    answer: 1,
     explanation: "Composition phù hợp với quan hệ has-a hoặc uses-a. Inheritance phù hợp hơn với quan hệ is-a."
   },
   {
@@ -727,12 +727,12 @@ const PYTHON_OOP_QUESTIONS = [
     question: "Trong Data Analytics project, class DataProcessor thường nên chịu trách nhiệm chính nào?",
     code: "",
     options: [
-      "Đóng gói các bước xử lý dữ liệu liên quan như clean, transform, validate",
       "Lưu toàn bộ biến global của project",
+      "Đóng gói các bước xử lý dữ liệu",
       "Thay thế hoàn toàn pandas",
-      "Chỉ chứa dữ liệu hard-code không dùng method"
+      "Chỉ chứa dữ liệu hard-code"
     ],
-    answer: 0,
+    answer: 1,
     explanation: "Processor class nên gom các hành vi xử lý dữ liệu liên quan, giúp pipeline rõ ràng và dễ bảo trì."
   },
   {
@@ -759,12 +759,12 @@ const PYTHON_OOP_QUESTIONS = [
     question: "Trong single inheritance đơn giản, nếu class con không có method được gọi, Python sẽ làm gì?",
     code: "",
     options: [
-      "Tìm method đó ở class cha theo method resolution order",
       "Luôn raise SyntaxError",
+      "Tìm method ở class cha theo MRO",
       "Tự động tạo method mới",
       "Bỏ qua lời gọi method"
     ],
-    answer: 0,
+    answer: 1,
     explanation: "Python tìm attribute/method theo MRO. Với single inheritance đơn giản, nếu class con không có method, Python sẽ tìm ở class cha."
   },
   {
@@ -775,12 +775,12 @@ const PYTHON_OOP_QUESTIONS = [
     question: "Trong dataclass, vì sao không nên dùng list trực tiếp làm default value cho field?",
     code: "",
     options: [
-      "Vì mutable default có thể bị chia sẻ không mong muốn; nên dùng default_factory",
       "Vì dataclass không hỗ trợ list",
       "Vì list chỉ dùng được trong tuple",
-      "Vì default value bắt buộc phải là string"
+      "Vì nên dùng default_factory cho mutable field",
+      "Vì default value phải là string"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Với mutable field như list, nên dùng field(default_factory=list) để mỗi instance có list riêng."
   },
   {
@@ -791,12 +791,12 @@ const PYTHON_OOP_QUESTIONS = [
     question: "Đoạn code sau minh họa concept nào rõ nhất?",
     code: "class CsvReport:\n    def export(self):\n        return \"csv\"\n\nclass JsonReport:\n    def export(self):\n        return \"json\"\n\nreports = [CsvReport(), JsonReport()]\nprint([r.export() for r in reports])",
     options: [
-      "Polymorphism",
       "Mutable default argument",
       "Private attribute",
+      "Polymorphism",
       "Class attribute sharing"
     ],
-    answer: 0,
+    answer: 2,
     explanation: "Hai object khác class nhưng cùng có method export. Code có thể gọi r.export() trên từng object mà không cần biết class cụ thể, đây là polymorphism."
   }
 ];
